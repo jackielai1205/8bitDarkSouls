@@ -4,6 +4,31 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
+    public int health;
+    public int power;
+    public int attackRange;
+
+    void walk()
+    {
+        //write code here
+    }
+
+    void attack()
+    {
+        //write code here
+    }
+
+    void dead()
+    {
+        //write code here
+    }
+
+    void hurt()
+    {
+        //write code here
+    }
+
+
     // Start is called before the first frame update
     void Start()
     {

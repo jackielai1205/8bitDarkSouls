@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Boss : Enemy
 {
-    public string Name;
-    public Skill[] Skills;
+    public string name;
+    public Skill[] skills;
     
     // Start is called before the first frame update
     void Start()
@@ -17,11 +17,6 @@ public class Boss : Enemy
     void Perform()
     {
         
-    }
-
-    public override void Walk()
-    {
-        throw new System.NotImplementedException();
     }
 
     public override void Attack()

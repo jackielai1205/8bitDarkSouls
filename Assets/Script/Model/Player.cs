@@ -44,7 +44,7 @@ public class Player : Character
         
     }
 
-    public override void Walk()
+    public void Walk()
     {
         throw new System.NotImplementedException();
     }

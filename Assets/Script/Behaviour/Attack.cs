@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Attack : MonoBehaviour
 {
-    public Skeleton skeleton;
+    public Enemy enemy;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,16 +18,19 @@ public class Attack : MonoBehaviour
         
     }
 
-    private void OnTriggerStay2D(Collider2D col)
+    private void OnTriggerEnter2D(Collider2D col)
     {
+        print("Entered");
         if (col.gameObject.CompareTag("Player"))
         {
-            skeleton.Attack();
+            enemy.SetAttack(true);
+            enemy.Attack();
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        skeleton.StopAttack();
+        enemy.StopAttack();
+        enemy.SetAttack(false);
     }
 }

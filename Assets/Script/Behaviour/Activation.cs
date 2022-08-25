@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class Activate : MonoBehaviour
+public class Activation : MonoBehaviour
 {
-    public Skeleton skeleton;
+    public Enemy enemy;
     
     // Start is called before the first frame update
     void Start()
@@ -24,16 +24,17 @@ public class Activate : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            skeleton.StartWalk();
+            enemy.SetActivate(true);
+            enemy.StartWalk();
         }
     }
 
     void OnTriggerStay2D(Collider2D col)
     {
-        if (col.gameObject.CompareTag("Player"))
+        if (col.gameObject.CompareTag("Player") && !enemy.IsAttacking())
         {
-            Debug.DrawLine(skeleton.transform.position, col.transform.position, Color.green);
-            skeleton.Walk(col.transform);
+            Debug.DrawLine(enemy.transform.position, col.transform.position, Color.green);
+            enemy.Walk(col.transform);
         }
     }
 
@@ -41,7 +42,8 @@ public class Activate : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            skeleton.StopWalk();
+            enemy.StopWalk();
+            enemy.SetActivate(false);
         }
     }
 }

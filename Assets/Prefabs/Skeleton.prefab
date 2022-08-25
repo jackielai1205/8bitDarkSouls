@@ -46,7 +46,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.26067787, y: -0.13846415}
+  m_Offset: {x: -0.168728, y: -0.13846415}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -57,7 +57,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6193608, y: 0.7230717}
+  m_Size: {x: 0.43546104, y: 0.7230717}
   m_EdgeRadius: 0
 --- !u!114 &368923518
 MonoBehaviour:
@@ -71,7 +71,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 358b18c7c06d04c00bada5b1f7a2d0fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeleton: {fileID: 8579096698514027109}
+  enemy: {fileID: 1180228243}
 --- !u!1 &8579096697903268925
 GameObject:
   m_ObjectHideFlags: 0
@@ -85,7 +85,7 @@ GameObject:
   - component: {fileID: 8579096697903268866}
   - component: {fileID: 8579096697903268867}
   - component: {fileID: 8579096697903268924}
-  - component: {fileID: 8579096698514027109}
+  - component: {fileID: 1180228243}
   m_Layer: 0
   m_Name: Skeleton
   m_TagString: Untagged
@@ -229,7 +229,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.43305492, y: 0.7340866}
   m_EdgeRadius: 0
---- !u!114 &8579096698514027109
+--- !u!114 &1180228243
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -241,6 +241,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2aca37332ae63473090c44e862410c0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 1
+  power: 1
+  attackPower: 1
   movementSpeed: 1
 --- !u!1 &8579096698123474093
 GameObject:
@@ -254,12 +257,12 @@ GameObject:
   - component: {fileID: 8579096698123474098}
   - component: {fileID: 8579096698123474099}
   m_Layer: 0
-  m_Name: Area
+  m_Name: ActivateArea
   m_TagString: Untagged
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8579096698123474092
 Transform:
   m_ObjectHideFlags: 0
@@ -287,7 +290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4524da39e1a154583b7f71b1df225afd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeleton: {fileID: 8579096698514027109}
+  enemy: {fileID: 1180228243}
 --- !u!61 &8579096698123474099
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -312,5 +315,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3, y: 3}
+  m_Size: {x: 7, y: 7}
   m_EdgeRadius: 0

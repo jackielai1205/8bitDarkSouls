@@ -8,8 +8,6 @@ public abstract class Character : MonoBehaviour
     public int power;
     public int attackPower;
 
-    public abstract void Walk();
-
     public abstract void Attack();
 
     public abstract void Dead();

@@ -21,6 +21,8 @@ public class Health : MonoBehaviour
         }
    }
 
+   // hihihihihi
+
    public void Update(){
         if(Input.GetKeyDown("z")){
             TakeDamage(1);

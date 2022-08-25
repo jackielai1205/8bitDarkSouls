@@ -2,32 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Character : MonoBehaviour
+public class Player : Character
 {
-    public int health;
-    public int power;
-    public int attackRange;
+    public int stamina;
+    public Inventory inventory;
 
-    void walk()
+    void dodge()
     {
         //write code here
     }
 
-    void attack()
+    void blockIdle()
     {
         //write code here
     }
 
-    void dead()
+    void block()
     {
         //write code here
     }
 
-    void hurt()
+    void interaction()
     {
         //write code here
     }
 
+    void jump()
+    {
+        //write code here
+    }
 
     // Start is called before the first frame update
     void Start()

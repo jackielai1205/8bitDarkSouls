@@ -17,7 +17,7 @@ public class Activation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -34,7 +34,7 @@ public class Activation : MonoBehaviour
         if (col.gameObject.CompareTag("Player") && !enemy.IsAttacking())
         {
             Debug.DrawLine(enemy.transform.position, col.transform.position, Color.green);
-            enemy.Walk(col.transform);
+            enemy.Walk(col.transform.position);
         }
     }
 
@@ -42,8 +42,8 @@ public class Activation : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            enemy.StopWalk();
             enemy.SetActivate(false);
+            enemy.StopWalk();
         }
     }
 }

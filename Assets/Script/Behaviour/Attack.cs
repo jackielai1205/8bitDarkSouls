@@ -18,9 +18,8 @@ public class Attack : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter2D(Collider2D col)
+    private void OnTriggerStay2D(Collider2D col)
     {
-        print("Entered");
         if (col.gameObject.CompareTag("Player"))
         {
             enemy.SetAttack(true);

@@ -5,11 +5,11 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     public float speed = .1f;
-    private Rigidbody2D rigidbody;
+    private Rigidbody2D _rigidbody;
     // Start is called before the first frame update
     void Start()
     {
-        rigidbody = GetComponent<Rigidbody2D>();
+        _rigidbody = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -17,10 +17,10 @@ public class PlayerMove : MonoBehaviour
     {
         if (Input.GetKey ("right")) {
             transform.localScale = new Vector3 (1, 1, 1);
-            rigidbody.AddForce(new Vector2(speed, 0));
+            _rigidbody.AddForce(new Vector2(speed, 0));
         } else if (Input.GetKey ("left")) {
             transform.localScale = new Vector3 (-1, 1, 1);
-            rigidbody.AddForce(new Vector2(-speed, 0));
+            _rigidbody.AddForce(new Vector2(-speed, 0));
         }
     }
 }

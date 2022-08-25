@@ -6,6 +6,8 @@ using Random = System.Random;
 
 public class Enemy : Character
 {
+    private Vector3 _startPosition;
+    private Rigidbody2D _rigidbody;
     private Animator _animator;
     private bool _isAttacking;
     private bool _isActivate;
@@ -17,18 +19,30 @@ public class Enemy : Character
         _isAttacking = false;
         _isActivate = false;
         _animator = GetComponent<Animator>();
+        _rigidbody = GetComponent<Rigidbody2D>();
+        _startPosition = transform.position;
     }
 
-    public void Walk(Transform target)
+    public void Update()
     {
-        if (transform.localPosition.x > target.transform.localPosition.x)
+        if (!_isActivate && !_isAttacking)
+        {
+            StartWalk();
+            _rigidbody.velocity = new Vector2 (transform.localScale.x, 0) * movementSpeed;
+        }
+        
+    }
+
+    public void Walk(Vector3 target)
+    {
+        if (transform.localPosition.x > target.x)
         {
             transform.localScale = new Vector3(-1, 1, 1);
-        }else if (transform.localPosition.x < target.transform.localPosition.x)
+        }else if (transform.localPosition.x < target.x)
         {
             transform.localScale = new Vector3(1, 1, 1);
         }
-        GetComponent<Rigidbody2D>().velocity = new Vector2 (transform.localScale.x, 0) * movementSpeed;
+        _rigidbody.velocity = new Vector2 (transform.localScale.x, 0) * movementSpeed;
     }
     
     public void StartWalk()
@@ -51,6 +65,11 @@ public class Enemy : Character
         _isActivate = value;
     }
 
+    public bool IsActivate()
+    {
+        return _isActivate;
+    }
+
     public bool IsAttacking()
     {
         return _isAttacking;
@@ -59,6 +78,11 @@ public class Enemy : Character
     public void SetAttack(bool value)
     {
         _isAttacking = value;
+    }
+
+    public Vector3 GetStartPosition()
+    {
+        return _startPosition;
     }
 
     public override void Dead()

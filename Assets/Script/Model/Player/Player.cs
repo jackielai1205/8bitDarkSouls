@@ -6,6 +6,7 @@ public class Player : Character
 {
     public int stamina;
     public Inventory inventory;
+    private int _currency;
 
     void Dodge()
     {

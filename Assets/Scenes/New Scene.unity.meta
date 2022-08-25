@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Scenes/New Scene.unity.meta
 guid: 5607326493b4742dd898a383bc814522
+=======
+guid: 01c3fb4beae9cb24ba9666ae290dfeba
+>>>>>>> 0d0502dcd3d4ec7d92cdfdc8c15eaa6705a6297c:Assets/Hero and Opponents/Scenes/Demo.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

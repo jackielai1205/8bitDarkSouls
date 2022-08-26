@@ -5,18 +5,18 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
 
-	public int maxHealth = 100;
-	public int currentHealth;
-	private Animator anim;
+	public float maxHealth = 100f;
+	public float currentHealth;
+	private Animator animState;
 
 	public HealthBar2 healthBar;
 
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
 		currentHealth = maxHealth;
 		healthBar.SetMaxHealth(maxHealth);
-		anim = GetComponent<Animator>();
+		this.animState = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -24,20 +24,24 @@ public class PlayerHealth : MonoBehaviour
     {
 		if (Input.GetKeyDown("z"))
 		{
-			TakeDamage(20);
+			TakeDamage(20f);
 		}
     }
 
-	public void TakeDamage(int _damage)
+	public void TakeDamage(float _damage)
 	{
-		currentHealth = Mathf.Clamp(currentHealth - _damage, 0, maxHealth);
+		currentHealth -= _damage;
 
-        if(currentHealth > 0){
-            anim.SetTrigger("Hurt");
-			currentHealth -= _damage;
+		if(currentHealth >= 0f)
+		{
 			healthBar.SetHealth(currentHealth);
+		}
+
+        if(currentHealth > 0f){
+            this.animState.SetTrigger("Hurt");
         } else {
-            anim.SetTrigger("Death");
+            this.animState.SetTrigger("Death");
+			//Time.timescale = 0;
         }
 		
 

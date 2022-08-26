@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHealth : MonoBehaviour
+public class PlayerStatus : MonoBehaviour
 {
 
 	public float maxHealth = 100f;
@@ -24,22 +24,20 @@ public class PlayerHealth : MonoBehaviour
     {
 		if (Input.GetKeyDown("z"))
 		{
-			TakeDamage(20f);
+			TakeDamage(15f);
 		}
     }
 
 	public void TakeDamage(float _damage)
 	{
-		currentHealth -= _damage;
 
-		if(currentHealth >= 0f)
-		{
-			healthBar.SetHealth(currentHealth);
-		}
-
-        if(currentHealth > 0f){
+        if(currentHealth - _damage > 0f){
+			currentHealth -= _damage;
             this.animState.SetTrigger("Hurt");
+			healthBar.SetHealth(currentHealth);
         } else {
+			currentHealth = 0f;
+			healthBar.SetHealth(currentHealth);
             this.animState.SetTrigger("Death");
 			//Time.timescale = 0;
         }

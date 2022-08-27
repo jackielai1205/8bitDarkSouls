@@ -102,16 +102,23 @@ public class Player : Character
         }
 	}
 
-    void OnTriggerEnter2D(Collider2D target)
+    public void Heal(int healthAmount)
     {
-        if(target.gameObject.tag == "HealthPotion")
-        {
-            //this.Heal(10);
-            currentHealth += 10;
-            Debug.Log(currentHealth);
-            healthBar.SetHealth(currentHealth);
-        }
+        currentHealth += 10;
+        Debug.Log(currentHealth);
+        healthBar.SetHealth(currentHealth);
     }
+
+    // void OnTriggerEnter2D(Collider2D target)
+    // {
+    //     if(target.gameObject.tag == "HealthPotion")
+    //     {
+    //         //this.Heal(10);
+    //         currentHealth += 10;
+    //         Debug.Log(currentHealth);
+    //         healthBar.SetHealth(currentHealth);
+    //     }
+    // }
 
     public void UseStamina(int depleted)
 	{

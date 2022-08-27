@@ -1068,7 +1068,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4436494040201295678, guid: 2f7eeaf41636b0f4f8ca52ea6858fd36, type: 3}
   m_PrefabInstance: {fileID: 1179891223}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1682870473
+--- !u!114 &1682870487
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1077,15 +1077,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1682870451}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82beaa469607aa54e9ca0433c9dd6a43, type: 3}
+  m_Script: {fileID: 11500000, guid: 2b271549ccb7dea42b28f5d7ddf669d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  health: 0
+  power: 0
+  attackPower: 0
+  maxHealth: 200
   currentHealth: 0
-  maxStamina: 50
+  maxStamina: 150
   currentStamina: 0
   healthBar: {fileID: 113703214}
   staminaBar: {fileID: 104261683}
+  inventory: {fileID: 0}
 --- !u!1 &1754739197
 GameObject:
   m_ObjectHideFlags: 0

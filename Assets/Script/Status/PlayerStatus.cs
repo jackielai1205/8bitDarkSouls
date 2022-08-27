@@ -8,7 +8,7 @@ public class PlayerStatus : MonoBehaviour
 
 	public int maxHealth = 200;
 	public int currentHealth;
-	public int maxStamina = 10;
+	public int maxStamina = 150;
 	public int currentStamina;
 
 	private Animator animState;

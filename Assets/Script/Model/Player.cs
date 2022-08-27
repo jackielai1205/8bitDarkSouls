@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class Player : Character
 {
-    public int maxHealth = 200;
 	public int currentHealth;
-	public int maxStamina = 150;
+	public int stamina = 150;
 	public int currentStamina;
 
 	private Animator animState;
@@ -45,11 +44,12 @@ public class Player : Character
     // Start is called before the first frame update
     void Start()
     {
-        currentHealth = maxHealth;
-		healthBar.SetMaxHealth(maxHealth);
+        health = 200;
+        currentHealth = health;
+		healthBar.SetMaxHealth(health);
 
-		currentStamina = maxStamina;
-		staminaBar.SetMaxStamina(maxStamina);
+		currentStamina = stamina;
+		staminaBar.SetMaxStamina(stamina);
 		this.animState = GetComponent<Animator>();
     }
 
@@ -87,10 +87,10 @@ public class Player : Character
         throw new System.NotImplementedException();
     }
 
-    public void TakeDamage(int _damage)
+    public void TakeDamage(int damage)
 	{
-        if(currentHealth - _damage > 0){
-			currentHealth -= _damage;
+        if(currentHealth - damage > 0){
+			currentHealth -= damage;
             this.animState.SetTrigger("Hurt");
 			healthBar.SetHealth(currentHealth);
         } 
@@ -102,11 +102,22 @@ public class Player : Character
         }
 	}
 
-    public void UseStamina(int stamina)
+    void OnTriggerEnter2D(Collider2D target)
+    {
+        if(target.gameObject.tag == "HealthPotion")
+        {
+            //this.Heal(10);
+            currentHealth += 10;
+            Debug.Log(currentHealth);
+            healthBar.SetHealth(currentHealth);
+        }
+    }
+
+    public void UseStamina(int depleted)
 	{
-		if(currentStamina - stamina >= 0)
+		if(currentStamina - depleted >= 0)
 		{
-			currentStamina -= stamina;
+			currentStamina -= depleted;
 			staminaBar.SetStamina(currentStamina);
 
 			if(regen != null)
@@ -119,6 +130,7 @@ public class Player : Character
 		else
 		{
 			Debug.Log("Not enough Stamina");
+            //need to stop player from being able to perform "attack"
 		}
 	}
 
@@ -126,10 +138,10 @@ public class Player : Character
 	{
 		yield return new WaitForSeconds(2);
 
-		while(currentStamina < maxStamina)
+		while(currentStamina < stamina)
 		{
 			currentStamina += 1;
-			Debug.Log("stamina increasing by: "+ currentStamina);
+			//Debug.Log("stamina increasing by: "+ currentStamina);
 			staminaBar.SetStamina(currentStamina);
 			yield return regenTick;
 		}

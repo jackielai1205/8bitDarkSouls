@@ -34,7 +34,9 @@ public class Potion : MonoBehaviour
             Destroy(gameObject);
             Debug.Log("potion destroyed");
 
-            player.Heal(10);
+            //these need to be in an if statement to determine which potion it is
+            player.RecoverHealth(10);
+            player.RecoverStamina(5);
         }
     }
 }

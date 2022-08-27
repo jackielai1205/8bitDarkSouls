@@ -44,10 +44,12 @@ public class Player : Character
     // Start is called before the first frame update
     void Start()
     {
+        //set health
         health = 200;
         currentHealth = health;
 		healthBar.SetMaxHealth(health);
 
+        //set stamina
 		currentStamina = stamina;
 		staminaBar.SetMaxStamina(stamina);
 		this.animState = GetComponent<Animator>();
@@ -56,6 +58,8 @@ public class Player : Character
     // Update is called once per frame
     void Update()
     {
+        //need to change these codes
+        //these are for testing convenience
         if (Input.GetKeyDown("z"))
 		{
 			TakeDamage(15);
@@ -102,29 +106,43 @@ public class Player : Character
         }
 	}
 
-    public void Heal(int healthAmount)
+    public void RecoverHealth(int healthAmount)
     {
-        currentHealth += 10;
+        //prevents health from going over current max health
+        if(currentHealth + healthAmount <= health)
+        {
+            currentHealth += 10;
+        }
+        else
+        {
+            currentHealth = health;
+        }
+
         Debug.Log(currentHealth);
         healthBar.SetHealth(currentHealth);
     }
 
-    // void OnTriggerEnter2D(Collider2D target)
-    // {
-    //     if(target.gameObject.tag == "HealthPotion")
-    //     {
-    //         //this.Heal(10);
-    //         currentHealth += 10;
-    //         Debug.Log(currentHealth);
-    //         healthBar.SetHealth(currentHealth);
-    //     }
-    // }
+    public void RecoverStamina(int staminaAmount)
+    {
+        //prevents health from going over current max health
+        if(currentStamina + staminaAmount <= stamina)
+        {
+            currentStamina += staminaAmount;
+        }
+        else
+        {
+            currentStamina = stamina;
+        }
 
-    public void UseStamina(int depleted)
+        Debug.Log(currentStamina);
+        staminaBar.SetStamina(currentStamina);
+    }
+
+    public void UseStamina(int staminaAmount)
 	{
-		if(currentStamina - depleted >= 0)
+		if(currentStamina - staminaAmount >= 0)
 		{
-			currentStamina -= depleted;
+			currentStamina -= staminaAmount;
 			staminaBar.SetStamina(currentStamina);
 
 			if(regen != null)
@@ -137,13 +155,14 @@ public class Player : Character
 		else
 		{
 			Debug.Log("Not enough Stamina");
-            //need to stop player from being able to perform "attack"
+            //code to stop player from being able to perform "attack"
 		}
 	}
 
+    //for regenerating stamina
 	private IEnumerator RegenStamina()
 	{
-		yield return new WaitForSeconds(2);
+		yield return new WaitForSeconds(3);
 
 		while(currentStamina < stamina)
 		{

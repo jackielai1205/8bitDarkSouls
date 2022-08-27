@@ -1,15 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
 
 public class PlayerStatus : MonoBehaviour
 {
 
-	public int maxHealth = 100;
+	public int maxHealth = 200;
 	public int currentHealth;
-	public int maxStamina = 50;
+	public int maxStamina = 10;
 	public int currentStamina;
+
 	private Animator animState;
+	private WaitForSeconds regenTick = new WaitForSeconds(0.1f);
+	private Coroutine regen;
 
 	public HealthBar2 healthBar;
 	public StaminaBar staminaBar;
@@ -37,7 +41,6 @@ public class PlayerStatus : MonoBehaviour
 		{
 			UseStamina(10);
 		}
-
     }
 
 	public void TakeDamage(int _damage)
@@ -52,7 +55,6 @@ public class PlayerStatus : MonoBehaviour
 			currentHealth = 0;
 			healthBar.SetHealth(currentHealth);
             this.animState.SetTrigger("Death");
-			//Time.timescale = 0;
         }
 	}
 
@@ -62,11 +64,31 @@ public class PlayerStatus : MonoBehaviour
 		{
 			currentStamina -= stamina;
 			staminaBar.SetStamina(currentStamina);
+
+			if(regen != null)
+			{
+				StopCoroutine(regen);
+			}
+
+			regen = StartCoroutine(RegenStamina());
 		}
 		else
 		{
 			Debug.Log("Not enough Stamina");
 		}
+	}
 
+	private IEnumerator RegenStamina()
+	{
+		yield return new WaitForSeconds(2);
+
+		while(currentStamina < maxStamina)
+		{
+			currentStamina += 1;
+			Debug.Log("stamina increasing by: "+ currentStamina);
+			staminaBar.SetStamina(currentStamina);
+			yield return regenTick;
+		}
+		regen = null;
 	}
 }

@@ -25,11 +25,11 @@ public class Enemy : Character
 
     public void Update()
     {
-        if (!_isActivate && !_isAttacking)
-        {
-            StartWalk();
-            _rigidbody.velocity = new Vector2 (transform.localScale.x, 0) * movementSpeed;
-        }
+        // if (!_isActivate && !_isAttacking)
+        // {
+        //     StartWalk();
+        //     _rigidbody.velocity = new Vector2 (transform.localScale.x, 0) * movementSpeed;
+        // }
         
     }
 

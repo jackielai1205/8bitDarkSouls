@@ -15,6 +15,7 @@ public class Player : Character
 	public HealthBar2 healthBar;
 	public StaminaBar staminaBar;
     public Inventory inventory;
+    private int _currency;
 
     void Dodge()
     {

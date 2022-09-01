@@ -113,19 +113,19 @@ public class Player : Character
         if(m_rollCurrentTime > m_rollDuration)
             m_rolling = false;
         
-        // //Check if character just landed on the ground
-        // if (!m_grounded && m_groundSensor.State())
-        // {
-        //     m_grounded = true;
-        //     m_animator.SetBool("Grounded", m_grounded);
-        // }
+        //Check if character just landed on the ground
+        if (!m_grounded && m_groundSensor.State())
+        {
+            m_grounded = true;
+            m_animator.SetBool("Grounded", m_grounded);
+        }
 
-        // //Check if character just started falling
-        // if (m_grounded && !m_groundSensor.State())
-        // {
-        //     m_grounded = false;
-        //     m_animator.SetBool("Grounded", m_grounded);
-        // }
+        //Check if character just started falling
+        if (m_grounded && !m_groundSensor.State())
+        {
+            m_grounded = false;
+            m_animator.SetBool("Grounded", m_grounded);
+        }
 
         // -- Handle input and movement --
         float inputX = Input.GetAxis("Horizontal");
@@ -145,25 +145,24 @@ public class Player : Character
 
         // Move
         if (!m_rolling ){
-
-        
-            // m_body2d.velocity = new Vector2(inputX * m_speed, m_body2d.velocity.y);
+            m_body2d.velocity = new Vector2(inputX * m_speed, m_body2d.velocity.y);
+        }
     
-        //Set AirSpeed in animator
-        // m_animator.SetFloat("AirSpeedY", m_body2d.velocity.y);
+        // Set AirSpeed in animator
+        m_animator.SetFloat("AirSpeedY", m_body2d.velocity.y);
 
         // -- Handle Animations --
-        //Wall Slide
-        // m_isWallSliding = (m_wallSensorR1.State() && m_wallSensorR2.State()) || (m_wallSensorL1.State() && m_wallSensorL2.State());
-        // m_animator.SetBool("WallSlide", m_isWallSliding);
+        // Wall Slide
+        m_isWallSliding = (m_wallSensorR1.State() && m_wallSensorR2.State()) || (m_wallSensorL1.State() && m_wallSensorL2.State());
+        m_animator.SetBool("WallSlide", m_isWallSliding);
 
-        // //Death
-        // if (Input.GetKeyDown("e") && !m_rolling)
-        // {
-        //     m_animator.SetBool("noBlood", m_noBlood);
-        //     m_animator.SetTrigger("Death");
-        // }
+        //Death
+        if (Input.GetKeyDown("e") && !m_rolling)
+        {
+            m_animator.SetBool("noBlood", m_noBlood);
+            m_animator.SetTrigger("Death");
         }
+        
         //Attack
         else if(Input.GetMouseButtonDown(0) && m_timeSinceAttack > 0.25f && !m_rolling)
         {

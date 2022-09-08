@@ -4,33 +4,23 @@ using System.Collections.Generic;
 using Script.Model.Enemy;
 using UnityEngine;
 
-public class Attack : MonoBehaviour
+namespace Script.Behaviour
 {
-    public Enemy enemy;
-    // Start is called before the first frame update
-    void Start()
+    public class AttackRange : MonoBehaviour
     {
-        
-    }
+        public Enemy enemy;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void OnTriggerStay2D(Collider2D col)
-    {
-        if (col.gameObject.CompareTag("Player"))
+        private void OnTriggerStay2D(Collider2D col)
         {
-            enemy.SetAttack(true);
-            enemy.Attack();
+            if (col.gameObject.CompareTag("Player"))
+            {
+                enemy.SetAttack(true);
+            }
         }
-    }
 
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        enemy.StopAttack();
-        enemy.SetAttack(false);
+        private void OnTriggerExit2D(Collider2D other)
+        {
+            enemy.SetAttack(false);
+        }
     }
 }

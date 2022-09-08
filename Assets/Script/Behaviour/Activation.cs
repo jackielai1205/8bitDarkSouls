@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Script.Model.Enemy;
 using UnityEditor;
 using UnityEngine;
 
@@ -25,25 +26,25 @@ public class Activation : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             enemy.SetActivate(true);
-            enemy.StartWalk();
+            enemy.SetTarget(other.gameObject);
+            // enemy.StartWalk();
         }
     }
 
-    void OnTriggerStay2D(Collider2D col)
-    {
-        if (col.gameObject.CompareTag("Player") && !enemy.IsAttacking())
-        {
-            Debug.DrawLine(enemy.transform.position, col.transform.position, Color.green);
-            enemy.Walk(col.transform.position);
-        }
-    }
+    // void OnTriggerStay2D(Collider2D col)
+    // {
+    //     if (col.gameObject.CompareTag("Player") && !enemy.IsAttacking())
+    //     {
+    //         Debug.DrawLine(enemy.transform.position, col.transform.position, Color.green);
+    //     }
+    // }
 
     void OnTriggerExit2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
             enemy.SetActivate(false);
-            enemy.StopWalk();
+            enemy.StartIdle();
         }
     }
 }

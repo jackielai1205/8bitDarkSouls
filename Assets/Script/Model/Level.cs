@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Script.Model.Enemy;
 using UnityEngine;
 
 public class Level : MonoBehaviour

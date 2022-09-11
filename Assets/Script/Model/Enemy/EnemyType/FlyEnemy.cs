@@ -19,10 +19,14 @@ namespace Script.Model.Enemy.EnemyType
             }
             if (GetTransform().localPosition.x > GetTarget().transform.position.x)
             {
-                transform.localScale = new Vector3(-1, 1, 1);
+                var localScale = transform.localScale;
+                localScale = new Vector3(-localScale.x, localScale.y, localScale.z);
+                transform.localScale = localScale;
             }else if (GetTransform().localPosition.x < GetTarget().transform.position.x)
             {
-                transform.localScale = new Vector3(1, 1, 1);
+                var localScale = transform.localScale;
+                localScale = new Vector3(localScale.x, localScale.y, localScale.z);
+                transform.localScale = localScale;
             }
 
             if (GetTransform().localPosition.y > GetTarget().transform.position.y)

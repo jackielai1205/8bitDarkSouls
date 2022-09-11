@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Script.Model.Enemy.EnemyType
@@ -14,22 +15,28 @@ namespace Script.Model.Enemy.EnemyType
             }
             if (transform.localPosition.x > GetTarget().transform.position.x)
             {
-                transform.localScale = new Vector3(-1, 1, 1);
+                var localScale = transform.localScale;
+                localScale = new Vector3(-Math.Abs(localScale.x), localScale.y, localScale.z);
+                transform.localScale = localScale;
             }else if (transform.localPosition.x < GetTarget().transform.position.x)
             {
-                transform.localScale = new Vector3(1, 1, 1);
+                var localScale = transform.localScale;
+                localScale = new Vector3(Math.Abs(localScale.x), localScale.y, localScale.z);
+                transform.localScale = localScale;
             }
             GetRigidbody2D().velocity = new Vector2 (transform.localScale.x, 0) * movementSpeed;
         }
         
         public override void StopMove()
         {
+            print("Stop");
             GetRigidbody2D().constraints = RigidbodyConstraints2D.FreezeAll;
         }
 
         public override void Move()
         {
-            GetRigidbody2D().constraints = RigidbodyConstraints2D.None;
+            print("Move");
+            GetRigidbody2D().constraints = RigidbodyConstraints2D.FreezeRotation;
         }
         
         public override void DeadState()

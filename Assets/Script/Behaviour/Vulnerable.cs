@@ -8,9 +8,9 @@ namespace Script.Behaviour
     public class Vulnerable : MonoBehaviour
     {
         public Enemy enemy;
-        public void OnTriggerEnter2D(Collider2D other)
+        public void OnCollisionEnter2D(Collision2D col)
         {
-            if (other.CompareTag("Damage"))
+            if (col.gameObject.CompareTag("Damage"))
             {
                 enemy.SetHurt(true);
             }

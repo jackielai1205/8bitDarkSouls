@@ -29,13 +29,11 @@ namespace Script.Model.Enemy.EnemyType
         
         public override void StopMove()
         {
-            print("Stop");
             GetRigidbody2D().constraints = RigidbodyConstraints2D.FreezeAll;
         }
 
         public override void Move()
         {
-            print("Move");
             GetRigidbody2D().constraints = RigidbodyConstraints2D.FreezeRotation;
         }
         

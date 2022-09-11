@@ -1,12 +1,17 @@
 using System;
+using Script.Behaviour;
 using UnityEditor.Build;
 using UnityEngine;
 using Random = System.Random;
 
-namespace Script.Model.Enemy
+namespace Script.Model.Enemy.EnemyType
 {
     public abstract class Enemy : Character
     {
+        public float movementSpeed = 1f;
+        public AttackRange attackRange;
+        
+        private Transform _transform;
         private Rigidbody2D _rigidbody;
         private Animator _animator;
         private BoxCollider2D _boxCollider2D;
@@ -16,12 +21,12 @@ namespace Script.Model.Enemy
         private bool _isDead = false;
         private bool _isStopMove = false;
         private GameObject _target = null;
-        public float movementSpeed = 1f;
         private static readonly int animState = Animator.StringToHash("AnimState");
         private static readonly int attack = Animator.StringToHash("Attack");
 
         public void Start()
         {
+            _transform = GetComponent<Transform>();
             _animator = GetComponent<Animator>();
             _rigidbody = GetComponent<Rigidbody2D>();
             _boxCollider2D = GetComponent<BoxCollider2D>();
@@ -49,7 +54,7 @@ namespace Script.Model.Enemy
             }
         }
 
-        private void IdleState()
+        public void IdleState()
         {
             if (_isHit)
             {
@@ -62,13 +67,9 @@ namespace Script.Model.Enemy
             //_rigidbody.velocity = new Vector2 (transform.localScale.x, 0) * movementSpeed;
         }
 
-        private void DeadState()
-        {
-            _boxCollider2D.enabled = false;
-            _rigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
-        }
+        public abstract void DeadState();
 
-        private void HitState()
+        public void HitState()
         {
             health -= 20;
             if (health > 0)
@@ -99,7 +100,7 @@ namespace Script.Model.Enemy
             }
         }
 
-        private void ChaseCharacterState()
+        public void ChaseCharacterState()
         {
             if (_isHit)
             {
@@ -119,7 +120,7 @@ namespace Script.Model.Enemy
             }
         }
 
-        private void AttackState()
+        public void AttackState()
         {
             if (_inAttackRange)
             {
@@ -131,7 +132,7 @@ namespace Script.Model.Enemy
             }
         }
 
-        private void StartChaseState()
+        public void StartChaseState()
         {
             _animator.SetInteger(animState, 1);
         }
@@ -144,21 +145,15 @@ namespace Script.Model.Enemy
             _animator.SetInteger(animState, 2);
         }
 
-        // private void WalkToCharacter()
-        // {
-        //     if (_isStopMove)
-        //     {
-        //         return;
-        //     }
-        //     if (transform.localPosition.x > _target.transform.position.x)
-        //     {
-        //         transform.localScale = new Vector3(-1, 1, 1);
-        //     }else if (transform.localPosition.x < _target.transform.position.x)
-        //     {
-        //         transform.localScale = new Vector3(1, 1, 1);
-        //     }
-        //     _rigidbody.velocity = new Vector2 (transform.localScale.x, 0) * movementSpeed;
-        // }
+        public void DoDamage()
+        {
+            attackRange.gameObject.tag = "Damage";
+        }
+
+        public void StopDoDamage()
+        {
+            attackRange.gameObject.tag = attackRange.GetOriginalTag();
+        }
 
         public abstract void WalkToCharacter();
 
@@ -217,15 +212,9 @@ namespace Script.Model.Enemy
             return _isHit;
         }
 
-        public void StopMove()
-        {
-            _isStopMove = true;
-        }
+        public abstract void StopMove();
 
-        public void Move()
-        {
-            _isStopMove = false;
-        }
+        public abstract void Move();
 
         public bool GetMove()
         {
@@ -236,5 +225,35 @@ namespace Script.Model.Enemy
         {
             return _rigidbody;
         }
+
+        public Transform GetTransform()
+        {
+            return _transform;
+        }
+
+        public BoxCollider2D GetBoxCollider2D()
+        {
+            return _boxCollider2D;
+        }
+        
+        public void Disappear()
+        {
+            Destroy(gameObject);
+        }
+
+        public Animator GetAnimator()
+        {
+            return _animator;
+        }
+
+        public int GetAnimState()
+        {
+            return animState;
+        }
+
+        // public void TakeDamage(int damage)
+        // {
+        //     Hurt();
+        // }
     }
 }

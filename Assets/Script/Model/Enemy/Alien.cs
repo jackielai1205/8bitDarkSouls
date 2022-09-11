@@ -1,10 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
+
+using Script.Model.Enemy.EnemyType;
 using UnityEngine;
 using Random = System.Random;
 
-namespace Script.Model.Enemy{
-    public class Alien : Enemy
+namespace Script.Model.Enemy
+{
+    public class Alien : LandEnemy
     {
         private static readonly int AnimState = Animator.StringToHash("AnimState");
         public override void Attack()

@@ -1,5 +1,6 @@
 using System;
 using Script.Model.Enemy;
+using Script.Model.Enemy.EnemyType;
 using UnityEngine;
 
 namespace Script.Behaviour

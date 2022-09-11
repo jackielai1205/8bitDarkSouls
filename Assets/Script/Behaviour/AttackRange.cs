@@ -1,7 +1,6 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using Script.Model.Enemy;
+using Script.Model.Enemy.EnemyType;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Script.Behaviour
@@ -9,6 +8,12 @@ namespace Script.Behaviour
     public class AttackRange : MonoBehaviour
     {
         public Enemy enemy;
+        private string _originalTag;
+
+        private void Start()
+        {
+            _originalTag = gameObject.tag;
+        }
 
         private void OnTriggerStay2D(Collider2D col)
         {
@@ -21,6 +26,11 @@ namespace Script.Behaviour
         private void OnTriggerExit2D(Collider2D other)
         {
             enemy.SetAttack(false);
+        }
+
+        public string GetOriginalTag()
+        {
+            return _originalTag;
         }
     }
 }

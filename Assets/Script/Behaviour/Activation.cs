@@ -1,8 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Script.Model.Enemy;
-using UnityEditor;
+using Script.Model.Enemy.EnemyType;
 using UnityEngine;
 
 public class Activation : MonoBehaviour

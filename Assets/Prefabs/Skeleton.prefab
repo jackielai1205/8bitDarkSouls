@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 368923517}
   - component: {fileID: 368923518}
   m_Layer: 0
-  m_Name: AttackRange
+  m_Name: SkeletonAttackRange
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -84,7 +84,7 @@ GameObject:
   - component: {fileID: 2099298226}
   - component: {fileID: 2099298225}
   m_Layer: 0
-  m_Name: Hitbox
+  m_Name: SkeletonHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -115,7 +115,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.18177766, y: -0.13295671}
@@ -318,6 +318,7 @@ MonoBehaviour:
   power: 1
   attackPower: 1
   movementSpeed: 1
+  attackRange: {fileID: 368923518}
 --- !u!1 &8579096698123474093
 GameObject:
   m_ObjectHideFlags: 0
@@ -330,7 +331,7 @@ GameObject:
   - component: {fileID: 8579096698123474098}
   - component: {fileID: 8579096698123474099}
   m_Layer: 0
-  m_Name: ActivationArea
+  m_Name: SkeletonActivationArea
   m_TagString: Untagged
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0

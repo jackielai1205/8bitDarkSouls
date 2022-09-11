@@ -1,6 +1,8 @@
+using Script.Model.Enemy.EnemyType;
+
 namespace Script.Model.Enemy
 {
-    public class Boss : Enemy
+    public class Boss : LandEnemy
     {
         public string bossName;
         public Skill[] skills;

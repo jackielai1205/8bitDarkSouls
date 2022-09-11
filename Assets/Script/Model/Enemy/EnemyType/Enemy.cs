@@ -21,8 +21,9 @@ namespace Script.Model.Enemy.EnemyType
         private bool _isDead = false;
         private bool _isStopMove = false;
         private GameObject _target = null;
-        private static readonly int animState = Animator.StringToHash("AnimState");
-        private static readonly int attack = Animator.StringToHash("Attack");
+        private static readonly int AnimState = Animator.StringToHash("AnimState");
+        private static readonly int AttackMethod = Animator.StringToHash("Attack");
+        private int _takeDamagePower = 0;
 
         public void Start()
         {
@@ -34,7 +35,7 @@ namespace Script.Model.Enemy.EnemyType
 
         public void Update()
         {
-            switch (_animator.GetInteger(animState))
+            switch (_animator.GetInteger(AnimState))
             {
                 case 0:
                     IdleState();
@@ -55,12 +56,8 @@ namespace Script.Model.Enemy.EnemyType
         }
 
         public void IdleState()
-        {
-            if (_isHit)
-            {
-                Hurt();
-            }
-            else if (_isActivate)
+        { 
+            if (_isActivate)
             {
                 StartWalk();
             }
@@ -71,7 +68,8 @@ namespace Script.Model.Enemy.EnemyType
 
         public void HitState()
         {
-            health -= 20;
+            health -= _takeDamagePower;
+            _takeDamagePower = 0;
             if (health > 0)
             {
                 return;
@@ -81,7 +79,6 @@ namespace Script.Model.Enemy.EnemyType
 
         private void StopHit()
         {
-            _isHit = false;
             if (_isDead)
             {
                 Dead();
@@ -134,15 +131,15 @@ namespace Script.Model.Enemy.EnemyType
 
         public void StartChaseState()
         {
-            _animator.SetInteger(animState, 1);
+            _animator.SetInteger(AnimState, 1);
         }
 
         private void StartAttack()
         {
             var random = new Random();
             var randomNumber = random.Next(0, 2);
-            _animator.SetInteger(attack, randomNumber);
-            _animator.SetInteger(animState, 2);
+            _animator.SetInteger(AttackMethod, randomNumber);
+            _animator.SetInteger(AnimState, 2);
         }
 
         public void DoDamage()
@@ -159,17 +156,17 @@ namespace Script.Model.Enemy.EnemyType
 
         public void StartWalk()
         {
-            _animator.SetInteger(animState, 1);
+            _animator.SetInteger(AnimState, 1);
         }
 
         public void StartIdle()
         {
-            _animator.SetInteger(animState, 0);
+            _animator.SetInteger(AnimState, 0);
         }
 
         public void StopAttack()
         {
-            _animator.SetInteger(animState, _isActivate ? 1 : 0);
+            _animator.SetInteger(AnimState, _isActivate ? 1 : 0);
         }
 
         public void SetActivate(bool value)
@@ -184,12 +181,12 @@ namespace Script.Model.Enemy.EnemyType
 
         public override void Dead()
         {
-            _animator.SetInteger(animState, 5);
+            _animator.SetInteger(AnimState, 5);
         }
 
         public override void Hurt()
         {
-            _animator.SetInteger(animState , 4);
+            _animator.SetInteger(AnimState , 4);
         }
 
         public GameObject GetTarget()
@@ -248,12 +245,13 @@ namespace Script.Model.Enemy.EnemyType
 
         public int GetAnimState()
         {
-            return animState;
+            return AnimState;
         }
 
-        // public void TakeDamage(int damage)
-        // {
-        //     Hurt();
-        // }
+        public void TakeDamage(int damage)
+        {
+            Hurt();
+            _takeDamagePower = damage;
+        }
     }
 }

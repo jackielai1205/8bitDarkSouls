@@ -18,6 +18,17 @@ public class Player : Character
 	private WaitForSeconds regenTick = new WaitForSeconds(0.1f);
 	private Coroutine regen;
 
+    // Player Attack Value
+
+    public float startTimeBtwAttack;
+
+    public Transform attackPos;
+    public LayerMask whatIsEnemies;
+    public float attackRange;
+    public int damage;
+
+    private float timeBtwAttack;
+
 	public HealthBar2 healthBar;
 	public StaminaBar staminaBar;
     public Inventory inventory;
@@ -39,6 +50,8 @@ public class Player : Character
     private float               m_delayToIdle = 0.0f;
     private float               m_rollDuration = 8.0f / 14.0f;
     private float               m_rollCurrentTime;
+
+
 
     void Dodge()
     {
@@ -155,33 +168,52 @@ public class Player : Character
         // Wall Slide
         m_isWallSliding = (m_wallSensorR1.State() && m_wallSensorR2.State()) || (m_wallSensorL1.State() && m_wallSensorL2.State());
         m_animator.SetBool("WallSlide", m_isWallSliding);
-
-        //Death
-        if (Input.GetKeyDown("e") && !m_rolling)
-        {
-            m_animator.SetBool("noBlood", m_noBlood);
-            m_animator.SetTrigger("Death");
-        }
         
         //Attack
-        else if(Input.GetMouseButtonDown(0) && m_timeSinceAttack > 0.25f && !m_rolling)
-        {
+        if(timeBtwAttack <= 0 && !m_rolling && Input.GetMouseButtonDown(0)){
+            Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemies);
+            for(int i = 0; i < enemiesToDamage.Length; i++){
+                if(enemiesToDamage[i].GetComponent<Skeleton>() != null){
+                    enemiesToDamage[i].GetComponent<Skeleton>().TakeDamage(damage);
+                }
+            }
             m_currentAttack++;
 
             // Loop back to one after third attack
-            if (m_currentAttack > 3)
+            if (m_currentAttack > 3){
                 m_currentAttack = 1;
-
+            }
             // Reset Attack combo if time since last attack is too large
-            if (m_timeSinceAttack > 1.0f)
+            if (m_timeSinceAttack > 1.0f){
                 m_currentAttack = 1;
+            }
 
             // Call one of three attack animations "Attack1", "Attack2", "Attack3"
             m_animator.SetTrigger("Attack" + m_currentAttack);
-
-            // Reset timer
             m_timeSinceAttack = 0.0f;
+            timeBtwAttack = startTimeBtwAttack;
+        } else if(timeBtwAttack > 0){
+            timeBtwAttack -= Time.deltaTime;
         }
+
+        // if(Input.GetMouseButtonDown(0) && m_timeSinceAttack > 0.25f && !m_rolling)
+        // {
+        //     m_currentAttack++;
+
+        //     // Loop back to one after third attack
+        //     if (m_currentAttack > 3)
+        //         m_currentAttack = 1;
+
+        //     // Reset Attack combo if time since last attack is too large
+        //     if (m_timeSinceAttack > 1.0f)
+        //         m_currentAttack = 1;
+
+        //     // Call one of three attack animations "Attack1", "Attack2", "Attack3"
+        //     m_animator.SetTrigger("Attack" + m_currentAttack);
+
+        //     // Reset timer
+        //     m_timeSinceAttack = 0.0f;
+        // }
 
         // Block
         else if (Input.GetMouseButtonDown(1) && !m_rolling)
@@ -352,5 +384,10 @@ public class Player : Character
             // Turn arrow in correct direction
             dust.transform.localScale = new Vector3(m_facingDirection, 1, 1);
         }
+    }
+
+    void OnDrawGizmosSelected(){
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(attackPos.position, attackRange);
     }
 }

@@ -1,15 +1,10 @@
-
+using Script.Model.Enemy.EnemyType;
 using UnityEngine;
 using Random = System.Random;
 
-public class Skeleton : Enemy
+namespace Script.Model.Enemy
 {
-
-    public override void Attack()
+    public class Skeleton : LandEnemy
     {
-        Random random = new Random();
-        int randomNumber = random.Next(2, 4);
-        GetComponent<Animator>().SetInteger("AnimState", randomNumber);
     }
-
 }

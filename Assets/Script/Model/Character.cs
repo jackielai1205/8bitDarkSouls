@@ -13,4 +13,5 @@ public abstract class Character : MonoBehaviour
     public abstract void Dead();
 
     public abstract void Hurt();
+    
 }

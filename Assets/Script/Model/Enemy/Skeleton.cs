@@ -4,18 +4,14 @@ using Random = System.Random;
 
 namespace Script.Model.Enemy
 {
-
-    public class Skeleton : LandEnemy
+    public class Skeleton : GroundEnemy
     {
-        public int currentHealth;
-
-        public override void Attack()
+        public override void StartAttack()
         {
+            var random = new Random();
+            var randomNumber = random.Next(0, 2);
+            GetAnimator().SetInteger(GetAttackMethod(), randomNumber);
+            GetAnimator().SetInteger(GetAnimState(), 2);
         }
-
-        // public void TakeDamage(int damage){
-        //     currentHealth -= damage;
-        //     Debug.Log("damage Taken!");
-        // }
     }
 }

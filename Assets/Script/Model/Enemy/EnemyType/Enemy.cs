@@ -68,9 +68,9 @@ namespace Script.Model.Enemy.EnemyType
 
         public void HitState()
         {
-            health -= _takeDamagePower;
+            health -= 10;
             _takeDamagePower = 0;
-            if (health > 0)
+            if (health >= 0)
             {
                 return;
             }
@@ -134,13 +134,8 @@ namespace Script.Model.Enemy.EnemyType
             _animator.SetInteger(AnimState, 1);
         }
 
-        private void StartAttack()
-        {
-            var random = new Random();
-            var randomNumber = random.Next(0, 2);
-            _animator.SetInteger(AttackMethod, randomNumber);
-            _animator.SetInteger(AnimState, 2);
-        }
+
+        public abstract void StartAttack();
 
         public void DoDamage()
         {
@@ -253,6 +248,11 @@ namespace Script.Model.Enemy.EnemyType
             Hurt();
             _takeDamagePower = damage;
             Debug.Log("Damage Taken!");
+        }
+
+        public int GetAttackMethod()
+        {
+            return AttackMethod;
         }
     }
 }

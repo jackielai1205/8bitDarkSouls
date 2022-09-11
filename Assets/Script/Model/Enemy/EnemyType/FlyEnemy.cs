@@ -57,7 +57,9 @@ namespace Script.Model.Enemy.EnemyType
 
         public override void Move()
         {
-            GetRigidbody2D().constraints = RigidbodyConstraints2D.None;
+            GetRigidbody2D().constraints = RigidbodyConstraints2D.FreezeRotation;
         }
+
+        public override void StartAttack() {}
     }
 }

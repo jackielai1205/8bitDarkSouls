@@ -1,4 +1,5 @@
 using System;
+using UnityEditor.Build;
 using UnityEngine;
 using Random = System.Random;
 
@@ -143,22 +144,24 @@ namespace Script.Model.Enemy
             _animator.SetInteger(animState, 2);
         }
 
-        private void WalkToCharacter()
-        {
-            if (_isStopMove)
-            {
-                return;
-            }
-            if (transform.localPosition.x > _target.transform.position.x)
-            {
-                transform.localScale = new Vector3(-1, 1, 1);
-            }else if (transform.localPosition.x < _target.transform.position.x)
-            {
-                transform.localScale = new Vector3(1, 1, 1);
-            }
-            _rigidbody.velocity = new Vector2 (transform.localScale.x, 0) * movementSpeed;
-        }
-    
+        // private void WalkToCharacter()
+        // {
+        //     if (_isStopMove)
+        //     {
+        //         return;
+        //     }
+        //     if (transform.localPosition.x > _target.transform.position.x)
+        //     {
+        //         transform.localScale = new Vector3(-1, 1, 1);
+        //     }else if (transform.localPosition.x < _target.transform.position.x)
+        //     {
+        //         transform.localScale = new Vector3(1, 1, 1);
+        //     }
+        //     _rigidbody.velocity = new Vector2 (transform.localScale.x, 0) * movementSpeed;
+        // }
+
+        public abstract void WalkToCharacter();
+
         public void StartWalk()
         {
             _animator.SetInteger(animState, 1);
@@ -224,5 +227,14 @@ namespace Script.Model.Enemy
             _isStopMove = false;
         }
 
+        public bool GetMove()
+        {
+            return _isStopMove;
+        }
+
+        public Rigidbody2D GetRigidbody2D()
+        {
+            return _rigidbody;
+        }
     }
 }

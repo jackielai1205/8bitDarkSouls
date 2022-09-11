@@ -147,13 +147,15 @@ public class Player : Character
         // Swap direction of sprite depending on walk direction
         if (inputX > 0)
         {
-            GetComponent<SpriteRenderer>().flipX = false;
+            // GetComponent<SpriteRenderer>().flipX = false;
+            transform.rotation = Quaternion.Euler(0f, 0f, 0f);
             m_facingDirection = 1;
         }
             
         else if (inputX < 0)
         {
-            GetComponent<SpriteRenderer>().flipX = true;
+            // GetComponent<SpriteRenderer>().flipX = true;
+            transform.rotation = Quaternion.Euler(0f, 180f, 0f);
             m_facingDirection = -1;
         }
 

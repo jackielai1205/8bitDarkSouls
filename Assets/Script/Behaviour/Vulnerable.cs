@@ -8,7 +8,7 @@ namespace Script.Behaviour
     public class Vulnerable : MonoBehaviour
     {
         public Enemy enemy;
-        public void OnTriggerEnter2D(Collider2D other)
+        public void OnTriggerStay2D(Collider2D other)
         {
             if (other.CompareTag("Damage"))
             {

@@ -10,7 +10,7 @@ namespace Script.Model.Enemy.EnemyType
     {
         public float movementSpeed = 1f;
         public AttackRange attackRange;
-        
+
         private Transform _transform;
         private Rigidbody2D _rigidbody;
         private Animator _animator;
@@ -247,6 +247,7 @@ namespace Script.Model.Enemy.EnemyType
         {
             Hurt();
             _takeDamagePower = damage;
+            Debug.Log("Damage Taken!");
         }
 
         public int GetAttackMethod()

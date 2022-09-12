@@ -1,8 +1,9 @@
 using System;
+using Script.Model.Enemy.EnemyType;
 
 namespace Script.Model.Enemy
 {
-    public class ShieldSkeleton : Skeleton
+    public class ShieldSkeleton : GroundEnemy
     {
         // public new void Update()
         // {

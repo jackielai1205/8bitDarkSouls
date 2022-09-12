@@ -54,7 +54,7 @@ namespace Script.Model.Enemy.EnemyType
                     break;
             }
         }
-
+        
         public void IdleState()
         { 
             if (_isActivate)
@@ -68,13 +68,12 @@ namespace Script.Model.Enemy.EnemyType
 
         public void HitState()
         {
-            health -= 10;
+            health -= _takeDamagePower;
             _takeDamagePower = 0;
-            if (health >= 0)
+            if (health <= 0)
             {
-                return;
+                _isDead = true;
             }
-            _isDead = true;
         }
 
         private void StopHit()
@@ -82,8 +81,7 @@ namespace Script.Model.Enemy.EnemyType
             if (_isDead)
             {
                 Dead();
-            }
-            else if (_inAttackRange)
+            }else if (_inAttackRange)
             {
                 StartAttack();
             }

@@ -2093,6 +2093,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d8f6928930952c4a8683ba0d2def613, type: 3}
+--- !u!114 &1291638276 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 520376637954003593, guid: 2d8f6928930952c4a8683ba0d2def613, type: 3}
+  m_PrefabInstance: {fileID: 1291638275}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d983c20dc00517b40bccaca3a0340549, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1291638277 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3917726234162641990, guid: 2d8f6928930952c4a8683ba0d2def613, type: 3}
+  m_PrefabInstance: {fileID: 1291638275}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c30753f69b290d64e98640158f268eac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1329602508
 GameObject:
   m_ObjectHideFlags: 0
@@ -2798,8 +2820,8 @@ MonoBehaviour:
   currentHealth: 0
   stamina: 150
   currentStamina: 0
-  healthBar: {fileID: 0}
-  staminaBar: {fileID: 0}
+  healthBar: {fileID: 1291638277}
+  staminaBar: {fileID: 1291638276}
   inventory: {fileID: 0}
 --- !u!1 &1716813199
 GameObject:

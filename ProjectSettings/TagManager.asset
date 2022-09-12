@@ -4,6 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Damage
+  - Enemy
   - HealthPotion
   layers:
   - Default
@@ -12,9 +14,9 @@ TagManager:
   - 
   - Water
   - UI
+  - Background
   - 
-  - 
-  - 
+  - Enemy
   - 
   - 
   - 
@@ -41,4 +43,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 1844150219
     locked: 0

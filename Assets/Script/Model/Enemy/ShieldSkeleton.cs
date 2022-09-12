@@ -1,3 +1,5 @@
+using System;
+
 namespace Script.Model.Enemy
 {
     public class ShieldSkeleton : Skeleton
@@ -23,5 +25,13 @@ namespace Script.Model.Enemy
         //             break;
         //     }
         // }
+        
+        public override void StartAttack()
+        {
+            var random = new Random();
+            var randomNumber = random.Next(0, 3);
+            GetAnimator().SetInteger(GetAttackMethod(), randomNumber);
+            GetAnimator().SetInteger(GetAnimState(), 2);
+        }
     }
 }

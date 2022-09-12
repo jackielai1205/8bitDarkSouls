@@ -199,25 +199,6 @@ public class Player : Character
             timeBtwAttack -= Time.deltaTime;
         }
 
-        // if(Input.GetMouseButtonDown(0) && m_timeSinceAttack > 0.25f && !m_rolling)
-        // {
-        //     m_currentAttack++;
-
-        //     // Loop back to one after third attack
-        //     if (m_currentAttack > 3)
-        //         m_currentAttack = 1;
-
-        //     // Reset Attack combo if time since last attack is too large
-        //     if (m_timeSinceAttack > 1.0f)
-        //         m_currentAttack = 1;
-
-        //     // Call one of three attack animations "Attack1", "Attack2", "Attack3"
-        //     m_animator.SetTrigger("Attack" + m_currentAttack);
-
-        //     // Reset timer
-        //     m_timeSinceAttack = 0.0f;
-        // }
-
         // Block
         else if (Input.GetMouseButtonDown(1) && !m_rolling)
         {

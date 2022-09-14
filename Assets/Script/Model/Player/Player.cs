@@ -287,7 +287,7 @@ public class Player : Character
         //prevents health from going over current max health
         if(currentHealth + healthAmount <= health)
         {
-            currentHealth += 10;
+            currentHealth += healthAmount;
         }
         else
         {

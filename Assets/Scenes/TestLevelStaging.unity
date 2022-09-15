@@ -1622,6 +1622,14 @@ PrefabInstance:
       propertyPath: staminaBar
       value: 
       objectReference: {fileID: 1291638276}
+    - target: {fileID: 1682870494, guid: 2f7eeaf41636b0f4f8ca52ea6858fd36, type: 3}
+      propertyPath: m_Size.y
+      value: 1.2438135
+      objectReference: {fileID: 0}
+    - target: {fileID: 1682870494, guid: 2f7eeaf41636b0f4f8ca52ea6858fd36, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.70537424
+      objectReference: {fileID: 0}
     - target: {fileID: 823119376235684874, guid: 2f7eeaf41636b0f4f8ca52ea6858fd36, type: 3}
       propertyPath: healthBar
       value: 
@@ -1678,7 +1686,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 823119376235684874, guid: 2f7eeaf41636b0f4f8ca52ea6858fd36, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2f7eeaf41636b0f4f8ca52ea6858fd36, type: 3}
 --- !u!1 &1204264393
 GameObject:
@@ -1693,7 +1702,7 @@ GameObject:
   - component: {fileID: 1204264397}
   m_Layer: 0
   m_Name: mainlev_build_17
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2104,7 +2113,7 @@ GameObject:
   - component: {fileID: 1332864793}
   m_Layer: 0
   m_Name: mainlev_build_7
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

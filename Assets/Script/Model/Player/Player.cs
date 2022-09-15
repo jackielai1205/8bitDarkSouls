@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Script.Model.Enemy.EnemyType;
+using UnityEditor;
 
 public class Player : Character
 {
@@ -138,6 +139,8 @@ public class Player : Character
             m_rolling = false;
         
         //Check if character just landed on the ground
+        Debug.Log("m_grounded" + m_grounded);
+        Debug.Log("m_sensor" + m_groundSensor.State());
         if (!m_grounded && m_groundSensor.State())
         {
             m_grounded = true;

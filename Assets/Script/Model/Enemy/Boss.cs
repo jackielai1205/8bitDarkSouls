@@ -1,36 +1,37 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using Script.Model.Enemy.EnemyType;
 
-public class Boss : Enemy
+namespace Script.Model.Enemy
 {
-    public string name;
-    public Skill[] skills;
+    public class Boss : GroundEnemy
+    {
+        public string bossName;
+        public Skill[] skills;
     
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+        // // Start is called before the first frame update
+        // void Start()
+        // {
+        //
+        // }
+        //
+        // // Update is called once per frame
+        // void Perform()
+        // {
+        //
+        // }
 
-    // Update is called once per frame
-    void Perform()
-    {
-        
-    }
+        public override void Attack()
+        {
+            throw new System.NotImplementedException();
+        }
 
-    public override void Attack()
-    {
-        throw new System.NotImplementedException();
-    }
+        public override void Dead()
+        {
+            throw new System.NotImplementedException();
+        }
 
-    public override void Dead()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public override void Hurt()
-    {
-        throw new System.NotImplementedException();
+        public override void Hurt()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

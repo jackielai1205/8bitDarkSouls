@@ -286,6 +286,7 @@ public class Player : Character
 
     public void TakeDamage(int damage)
 	{
+        Debug.Log("Damage Taken!");
         if(currentHealth - damage > 0){
 			currentHealth -= damage;
             this.animState.SetTrigger("Hurt");

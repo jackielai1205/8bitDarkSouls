@@ -4,7 +4,7 @@ using Random = System.Random;
 
 namespace Script.Model.Enemy
 {
-    public class Skeleton : GroundEnemy
+    public class SwordSkeleton : GroundEnemy
     {
         public override void StartAttack()
         {

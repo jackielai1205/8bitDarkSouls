@@ -8,8 +8,11 @@ namespace Script.Model.Enemy.EnemyType
 {
     public abstract class Enemy : Character
     {
+        public Transform attackPos;
+        public LayerMask whatIsEnemies;
+        public float attackRange;
         public float movementSpeed = 1f;
-        public AttackRange attackRange;
+        // public AttackRange attackRange;
 
         private Transform _transform;
         private Rigidbody2D _rigidbody;
@@ -31,6 +34,7 @@ namespace Script.Model.Enemy.EnemyType
             _animator = GetComponent<Animator>();
             _rigidbody = GetComponent<Rigidbody2D>();
             _boxCollider2D = GetComponent<BoxCollider2D>();
+            Physics2D.IgnoreLayerCollision(8, 8, true);
         }
 
         public void Update()
@@ -117,6 +121,13 @@ namespace Script.Model.Enemy.EnemyType
 
         public void AttackState()
         {
+            var facingX = gameObject.transform.localScale.x;
+            if (_target.transform.position.x < gameObject.transform.position.x)
+            {
+                facingX = -Math.Abs(facingX);
+            }
+            GetTransform().localScale = new Vector3(facingX, 
+                GetTransform().localScale.y, GetTransform().localScale.z);
             if (_inAttackRange)
             {
                 StartAttack();
@@ -137,13 +148,18 @@ namespace Script.Model.Enemy.EnemyType
 
         public void DoDamage()
         {
-            attackRange.gameObject.tag = "Damage";
+            Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemies);
+            for(int i = 0; i < enemiesToDamage.Length; i++){
+                if(enemiesToDamage[i].GetComponent<Player>() != null){
+                    enemiesToDamage[i].GetComponent<Player>().TakeDamage(attackPower);
+                }
+            }
         }
-
-        public void StopDoDamage()
-        {
-            attackRange.gameObject.tag = attackRange.GetOriginalTag();
-        }
+        //
+        // public void StopDoDamage()
+        // {
+        //     attackRange.gameObject.tag = attackRange.GetOriginalTag();
+        // }
 
         public abstract void WalkToCharacter();
 
@@ -245,12 +261,17 @@ namespace Script.Model.Enemy.EnemyType
         {
             Hurt();
             _takeDamagePower = damage;
-            Debug.Log("Damage Taken!");
         }
 
         public int GetAttackMethod()
         {
             return AttackMethod;
         }
+        
+        void OnDrawGizmosSelected(){
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(attackPos.position, attackRange);
+        }
+        
     }
 }

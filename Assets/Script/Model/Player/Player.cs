@@ -99,6 +99,16 @@ public class Player : Character
         m_wallSensorR2 = transform.Find("WallSensor_R2").GetComponent<Sensor_HeroKnight>();
         m_wallSensorL1 = transform.Find("WallSensor_L1").GetComponent<Sensor_HeroKnight>();
         m_wallSensorL2 = transform.Find("WallSensor_L2").GetComponent<Sensor_HeroKnight>();
+
+        // If statement that checks if character suppose to move to the checkpoint
+        if (PlayerPrefs.GetInt("PlayerHasDied") == 1) {
+            PlayerPrefs.SetInt("PlayerHasDied", 0);
+                float playerPosX = PlayerPrefs.GetFloat("playerPositionX");
+                float playerPosY = PlayerPrefs.GetFloat("playerPositionY");
+
+                Vector3 playerPos = new Vector3(playerPosX, playerPosY,0);
+                transform.position = playerPos;
+        }
     }
 
     // Update is called once per frame

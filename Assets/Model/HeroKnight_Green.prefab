@@ -233,14 +233,14 @@ MonoBehaviour:
   m_jumpForce: 7.5
   m_rollForce: 6
   m_noBlood: 0
-  m_slideDust: {fileID: 0}
+  m_slideDust: {fileID: 1038168246061390451, guid: 8b8c8cc6774fb074cb9139cc631b108e, type: 3}
   startTimeBtwAttack: 0.3
   attackPos: {fileID: 421056532}
   whatIsEnemies:
     serializedVersion: 2
     m_Bits: 256
   attackRange: 0.7
-  damage: 20
+  damage: 1
   healthBar: {fileID: 0}
   staminaBar: {fileID: 0}
   inventory: {fileID: 0}

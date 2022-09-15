@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 421056532}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: AttackPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 1682870487}
   - component: {fileID: 1682870494}
   - component: {fileID: 823119376235684874}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: HeroKnight_Green
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -279,7 +279,7 @@ GameObject:
   - component: {fileID: 7328360599874454458}
   - component: {fileID: 6589176608205827748}
   - component: {fileID: 2541945986914773845}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: WallSensor_L2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -340,7 +340,7 @@ GameObject:
   - component: {fileID: 2544283999141370526}
   - component: {fileID: 5141705694076100898}
   - component: {fileID: 7826924840274799159}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: WallSensor_R2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -401,7 +401,7 @@ GameObject:
   - component: {fileID: 5598588721529412490}
   - component: {fileID: 219586190323098885}
   - component: {fileID: 6286038296174568476}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: WallSensor_L1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -462,7 +462,7 @@ GameObject:
   - component: {fileID: 8479057430055069898}
   - component: {fileID: 9197638287954248106}
   - component: {fileID: 731880976726017237}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: WallSensor_R1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -523,7 +523,7 @@ GameObject:
   - component: {fileID: 7020248315614961313}
   - component: {fileID: 4769279221902672678}
   - component: {fileID: 6075425690129290126}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GroundSensor
   m_TagString: Untagged
   m_Icon: {fileID: 0}

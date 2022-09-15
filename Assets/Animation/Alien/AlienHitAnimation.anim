@@ -26,7 +26,7 @@ AnimationClip:
     - time: 0.033333335
       value: {fileID: 21300000, guid: a80a75ba0dcdcca44bb16b950986375b, type: 3}
     attribute: m_Sprite
-    path: 
+    path: AlienDisplay
     classID: 212
     script: {fileID: 0}
   m_SampleRate: 60
@@ -37,7 +37,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 0
+      path: 716895382
       attribute: 0
       script: {fileID: 0}
       typeID: 212
@@ -79,7 +79,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.016666668
+  - time: 0
     functionName: StopHit
     data: 
     objectReferenceParameter: {fileID: 0}

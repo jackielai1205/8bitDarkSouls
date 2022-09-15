@@ -24,7 +24,7 @@ namespace Script.Model.Enemy.EnemyType
                 localScale = new Vector3(Math.Abs(localScale.x), localScale.y, localScale.z);
                 transform.localScale = localScale;
             }
-            GetRigidbody2D().velocity = new Vector2 (transform.localScale.x, 0) * movementSpeed;
+            GetRigidbody2D().velocity = new Vector2 (transform.localScale.x, GetRigidbody2D().velocity.y) * movementSpeed;
         }
         
         public override void StopMove()

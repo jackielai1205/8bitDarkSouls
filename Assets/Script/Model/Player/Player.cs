@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Script.Model.Enemy.EnemyType;
+using UnityEditor;
 
 public class Player : Character
 {
@@ -146,6 +147,9 @@ public class Player : Character
         }
 
         // Check if character just landed on the ground
+        //Check if character just landed on the ground
+        Debug.Log("m_grounded" + m_grounded);
+        Debug.Log("m_sensor" + m_groundSensor.State());
         if (!m_grounded && m_groundSensor.State())
         {
             m_grounded = true;
@@ -306,7 +310,7 @@ public class Player : Character
         //prevents health from going over current max health
         if(currentHealth + healthAmount <= health)
         {
-            currentHealth += 10;
+            currentHealth += healthAmount;
         }
         else
         {

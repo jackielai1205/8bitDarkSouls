@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Script.Model.Enemy.EnemyType;
+using UnityEditor;
 
 public class Player : Character
 {
@@ -99,6 +100,16 @@ public class Player : Character
         m_wallSensorR2 = transform.Find("WallSensor_R2").GetComponent<Sensor_HeroKnight>();
         m_wallSensorL1 = transform.Find("WallSensor_L1").GetComponent<Sensor_HeroKnight>();
         m_wallSensorL2 = transform.Find("WallSensor_L2").GetComponent<Sensor_HeroKnight>();
+
+        // If statement that checks if character suppose to move to the checkpoint
+        if (PlayerPrefs.GetInt("PlayerHasDied") == 1) {
+            PlayerPrefs.SetInt("PlayerHasDied", 0);
+                float playerPosX = PlayerPrefs.GetFloat("playerPositionX");
+                float playerPosY = PlayerPrefs.GetFloat("playerPositionY");
+
+                Vector3 playerPos = new Vector3(playerPosX, playerPosY,0);
+                transform.position = playerPos;
+        }
     }
 
     // Update is called once per frame
@@ -128,6 +139,8 @@ public class Player : Character
             m_rolling = false;
         
         //Check if character just landed on the ground
+        Debug.Log("m_grounded" + m_grounded);
+        Debug.Log("m_sensor" + m_groundSensor.State());
         if (!m_grounded && m_groundSensor.State())
         {
             m_grounded = true;
@@ -147,13 +160,15 @@ public class Player : Character
         // Swap direction of sprite depending on walk direction
         if (inputX > 0)
         {
-            GetComponent<SpriteRenderer>().flipX = false;
+            // GetComponent<SpriteRenderer>().flipX = false;
+            transform.rotation = Quaternion.Euler(0f, 0f, 0f);
             m_facingDirection = 1;
         }
             
         else if (inputX < 0)
         {
-            GetComponent<SpriteRenderer>().flipX = true;
+            // GetComponent<SpriteRenderer>().flipX = true;
+            transform.rotation = Quaternion.Euler(0f, 180f, 0f);
             m_facingDirection = -1;
         }
 
@@ -196,25 +211,6 @@ public class Player : Character
         } else if(timeBtwAttack > 0){
             timeBtwAttack -= Time.deltaTime;
         }
-
-        // if(Input.GetMouseButtonDown(0) && m_timeSinceAttack > 0.25f && !m_rolling)
-        // {
-        //     m_currentAttack++;
-
-        //     // Loop back to one after third attack
-        //     if (m_currentAttack > 3)
-        //         m_currentAttack = 1;
-
-        //     // Reset Attack combo if time since last attack is too large
-        //     if (m_timeSinceAttack > 1.0f)
-        //         m_currentAttack = 1;
-
-        //     // Call one of three attack animations "Attack1", "Attack2", "Attack3"
-        //     m_animator.SetTrigger("Attack" + m_currentAttack);
-
-        //     // Reset timer
-        //     m_timeSinceAttack = 0.0f;
-        // }
 
         // Block
         else if (Input.GetMouseButtonDown(1) && !m_rolling)
@@ -305,7 +301,7 @@ public class Player : Character
         //prevents health from going over current max health
         if(currentHealth + healthAmount <= health)
         {
-            currentHealth += 10;
+            currentHealth += healthAmount;
         }
         else
         {

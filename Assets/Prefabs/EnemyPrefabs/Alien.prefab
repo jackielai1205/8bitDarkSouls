@@ -175,7 +175,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &516843967293052784
 Transform:
   m_ObjectHideFlags: 0
@@ -279,7 +279,7 @@ MonoBehaviour:
   attackPos: {fileID: 7181608925548716022}
   whatIsEnemies:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 512
   attackRange: 1
   movementSpeed: 1
 --- !u!1 &1221971582799486167

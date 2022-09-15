@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Script.Model.Enemy.EnemyType
@@ -20,12 +21,12 @@ namespace Script.Model.Enemy.EnemyType
             if (GetTransform().localPosition.x > GetTarget().transform.position.x)
             {
                 var localScale = transform.localScale;
-                localScale = new Vector3(-localScale.x, localScale.y, localScale.z);
+                localScale = new Vector3(-Math.Abs(localScale.x), localScale.y, localScale.z);
                 transform.localScale = localScale;
             }else if (GetTransform().localPosition.x < GetTarget().transform.position.x)
             {
                 var localScale = transform.localScale;
-                localScale = new Vector3(localScale.x, localScale.y, localScale.z);
+                localScale = new Vector3(Math.Abs(localScale.x), localScale.y, localScale.z);
                 transform.localScale = localScale;
             }
 

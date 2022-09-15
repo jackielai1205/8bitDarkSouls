@@ -160,12 +160,12 @@ GameObject:
   - component: {fileID: 8579096697903268924}
   - component: {fileID: 1180228243}
   m_Layer: 8
-  m_Name: Skeleton
+  m_Name: SwordSkeleton
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8579096697903268864
 Transform:
   m_ObjectHideFlags: 0
@@ -269,7 +269,7 @@ MonoBehaviour:
   attackPos: {fileID: 1953305812}
   whatIsEnemies:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 512
   attackRange: 0.5
   movementSpeed: 1
 --- !u!1 &8579096698123474093

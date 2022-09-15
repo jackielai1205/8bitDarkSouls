@@ -200,7 +200,7 @@ MonoBehaviour:
   attackPos: {fileID: 1888259066276577524}
   whatIsEnemies:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 512
   attackRange: 0.5
   movementSpeed: 1
 --- !u!50 &1665995118547656582

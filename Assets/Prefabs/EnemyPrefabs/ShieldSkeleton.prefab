@@ -57,7 +57,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 6, y: 6}
+  m_Size: {x: 3, y: 3}
   m_EdgeRadius: 0
 --- !u!114 &154940529
 MonoBehaviour:
@@ -232,7 +232,7 @@ GameObject:
   - component: {fileID: 908569036}
   - component: {fileID: 613846748}
   m_Layer: 8
-  m_Name: Skeleton2
+  m_Name: ShieldSkeleton
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -341,6 +341,6 @@ MonoBehaviour:
   attackPos: {fileID: 960237314}
   whatIsEnemies:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 512
   attackRange: 0.5
   movementSpeed: 1

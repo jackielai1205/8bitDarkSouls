@@ -192,14 +192,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 752067641}
     m_Modifications:
-    - target: {fileID: 1682870487, guid: 2f7eeaf41636b0f4f8ca52ea6858fd36, type: 3}
-      propertyPath: healthBar
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1682870487, guid: 2f7eeaf41636b0f4f8ca52ea6858fd36, type: 3}
-      propertyPath: staminaBar
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 2202566833572084585, guid: 2f7eeaf41636b0f4f8ca52ea6858fd36, type: 3}
       propertyPath: m_Name
       value: HeroKnight_Green
@@ -330,7 +322,7 @@ GameObject:
   - component: {fileID: 752067641}
   - component: {fileID: 752067640}
   - component: {fileID: 752067639}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}

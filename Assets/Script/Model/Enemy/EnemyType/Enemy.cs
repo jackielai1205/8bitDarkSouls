@@ -261,6 +261,8 @@ namespace Script.Model.Enemy.EnemyType
         {
             Hurt();
             _takeDamagePower = damage;
+            Debug.Log("Damage Taken!");
+            Debug.Log(health);
         }
 
         public int GetAttackMethod()

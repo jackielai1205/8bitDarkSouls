@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Potion : MonoBehaviour
 {
-    enum Status
+    public enum Status
     {
         Health,
         Power,
@@ -12,7 +12,7 @@ public class Potion : MonoBehaviour
     }
 
     public Player player;
-
+    public Status potionType;
     public int value;
 
     // Start is called before the first frame update
@@ -34,9 +34,19 @@ public class Potion : MonoBehaviour
             Destroy(gameObject);
             Debug.Log("potion destroyed");
 
+            switch(potionType)
+            {
+                case Status.Health:
+                    player.RecoverHealth(15);
+                    break;
+                case Status.Stamina:
+                    player.RecoverStamina(10);
+                    break;
+            }
+            
             //these need to be in an if statement to determine which potion it is
-            player.RecoverHealth(10);
-            player.RecoverStamina(5);
+            // player.RecoverHealth(10);
+            // player.RecoverStamina(5);
         }
     }
 }

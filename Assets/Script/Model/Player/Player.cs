@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Script.Model.Enemy.EnemyType;
+using UnityEditor;
 
 public class Player : Character
 {
@@ -45,6 +46,7 @@ public class Player : Character
     private bool                m_isWallSliding = false;
     private bool                m_grounded = false;
     private bool                m_rolling = false;
+    private bool m_dead = false;
     private int                 m_facingDirection = 1;
     private int                 m_currentAttack = 0;
     private float               m_timeSinceAttack = 0.0f;
@@ -99,6 +101,16 @@ public class Player : Character
         m_wallSensorR2 = transform.Find("WallSensor_R2").GetComponent<Sensor_HeroKnight>();
         m_wallSensorL1 = transform.Find("WallSensor_L1").GetComponent<Sensor_HeroKnight>();
         m_wallSensorL2 = transform.Find("WallSensor_L2").GetComponent<Sensor_HeroKnight>();
+
+        // If statement that checks if character suppose to move to the checkpoint
+        if (PlayerPrefs.GetInt("PlayerHasDied") == 1) {
+            PlayerPrefs.SetInt("PlayerHasDied", 0);
+                float playerPosX = PlayerPrefs.GetFloat("playerPositionX");
+                float playerPosY = PlayerPrefs.GetFloat("playerPositionY");
+
+                Vector3 playerPos = new Vector3(playerPosX, playerPosY,0);
+                transform.position = playerPos;
+        }
     }
 
     // Update is called once per frame
@@ -106,12 +118,12 @@ public class Player : Character
     {
         //need to change these codes
         //these are for testing convenience
-        if (Input.GetKeyDown("z"))
+        if (Input.GetKeyDown("z") && !m_dead)
 		{
 			TakeDamage(15);
 		}
 
-		if (Input.GetMouseButtonDown(0))
+		if (Input.GetMouseButtonDown(0) && !m_dead)
 		{
 			UseStamina(10);
 		}
@@ -124,17 +136,27 @@ public class Player : Character
             m_rollCurrentTime += Time.deltaTime;
 
         // Disable rolling if timer extends duration
-        if(m_rollCurrentTime > m_rollDuration)
+        if (m_rollCurrentTime > m_rollDuration)
+        {
             m_rolling = false;
+        }
         
+        if (!m_rolling)
+        {
+            Physics2D.IgnoreLayerCollision(9, 8, false);
+        }
+
+        // Check if character just landed on the ground
         //Check if character just landed on the ground
+        Debug.Log("m_grounded" + m_grounded);
+        Debug.Log("m_sensor" + m_groundSensor.State());
         if (!m_grounded && m_groundSensor.State())
         {
             m_grounded = true;
             m_animator.SetBool("Grounded", m_grounded);
         }
 
-        //Check if character just started falling
+        // Check if character just started falling
         if (m_grounded && !m_groundSensor.State())
         {
             m_grounded = false;
@@ -145,20 +167,20 @@ public class Player : Character
         float inputX = Input.GetAxis("Horizontal");
 
         // Swap direction of sprite depending on walk direction
-        if (inputX > 0)
+        if (inputX > 0 && !m_dead)
         {
-            GetComponent<SpriteRenderer>().flipX = false;
+            transform.rotation = Quaternion.Euler(0f, 0f, 0f);
             m_facingDirection = 1;
         }
             
-        else if (inputX < 0)
+        else if (inputX < 0 && !m_dead)
         {
-            GetComponent<SpriteRenderer>().flipX = true;
+            transform.rotation = Quaternion.Euler(0f, 180f, 0f);
             m_facingDirection = -1;
         }
 
         // Move
-        if (!m_rolling ){
+        if (!m_rolling&& !m_dead){
             m_body2d.velocity = new Vector2(inputX * m_speed, m_body2d.velocity.y);
         }
     
@@ -171,7 +193,7 @@ public class Player : Character
         m_animator.SetBool("WallSlide", m_isWallSliding);
         
         //Attack
-        if(timeBtwAttack <= 0 && !m_rolling && Input.GetMouseButtonDown(0)){
+        if(timeBtwAttack <= 0 && !m_rolling && Input.GetMouseButtonDown(0) && !m_dead){
             Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemies);
             for(int i = 0; i < enemiesToDamage.Length; i++){
                 if(enemiesToDamage[i].GetComponent<Enemy>() != null){
@@ -197,27 +219,8 @@ public class Player : Character
             timeBtwAttack -= Time.deltaTime;
         }
 
-        // if(Input.GetMouseButtonDown(0) && m_timeSinceAttack > 0.25f && !m_rolling)
-        // {
-        //     m_currentAttack++;
-
-        //     // Loop back to one after third attack
-        //     if (m_currentAttack > 3)
-        //         m_currentAttack = 1;
-
-        //     // Reset Attack combo if time since last attack is too large
-        //     if (m_timeSinceAttack > 1.0f)
-        //         m_currentAttack = 1;
-
-        //     // Call one of three attack animations "Attack1", "Attack2", "Attack3"
-        //     m_animator.SetTrigger("Attack" + m_currentAttack);
-
-        //     // Reset timer
-        //     m_timeSinceAttack = 0.0f;
-        // }
-
         // Block
-        else if (Input.GetMouseButtonDown(1) && !m_rolling)
+        else if (Input.GetMouseButtonDown(1) && !m_rolling && !m_dead && m_grounded)
         {
             m_animator.SetTrigger("Block");
             m_animator.SetBool("IdleBlock", true);
@@ -227,16 +230,18 @@ public class Player : Character
             m_animator.SetBool("IdleBlock", false);
 
         // Roll
-        else if (Input.GetKeyDown("left shift") && !m_rolling && !m_isWallSliding)
+        else if (Input.GetKeyDown("left shift") && !m_rolling && !m_isWallSliding && !m_dead && m_grounded)
         {
+            Physics2D.IgnoreLayerCollision(9, 8, true);
             m_rolling = true;
+            Debug.Log("rolling~");
             m_animator.SetTrigger("Roll");
             m_body2d.velocity = new Vector2(m_facingDirection * m_rollForce, m_body2d.velocity.y);
         }
             
 
         //Jump
-        else if (Input.GetKeyDown("space") && m_grounded && !m_rolling)
+        else if (Input.GetKeyDown("space") && m_grounded && !m_rolling && !m_dead)
         {
             m_animator.SetTrigger("Jump");
             m_grounded = false;
@@ -246,7 +251,7 @@ public class Player : Character
         }
 
         //Run
-        else if (Mathf.Abs(inputX) > Mathf.Epsilon)
+        else if (Mathf.Abs(inputX) > Mathf.Epsilon && !m_dead)
         {
             // Reset timer
             m_delayToIdle = 0.05f;
@@ -295,6 +300,7 @@ public class Player : Character
 		else 
 		{
 			currentHealth = 0;
+            m_dead = true;
 			healthBar.SetHealth(currentHealth);
             this.animState.SetTrigger("Death");
         }
@@ -305,7 +311,7 @@ public class Player : Character
         //prevents health from going over current max health
         if(currentHealth + healthAmount <= health)
         {
-            currentHealth += 10;
+            currentHealth += healthAmount;
         }
         else
         {
@@ -334,7 +340,7 @@ public class Player : Character
 
     public void UseStamina(int staminaAmount)
 	{
-		if(currentStamina - staminaAmount >= 0)
+		if(currentStamina - staminaAmount >= 0&& !m_dead)
 		{
 			currentStamina -= staminaAmount;
 			staminaBar.SetStamina(currentStamina);

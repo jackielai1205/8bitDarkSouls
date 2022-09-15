@@ -7,6 +7,8 @@ TagManager:
   - Damage
   - Enemy
   - HealthPotion
+  - ActivationArea
+  - Ground
   layers:
   - Default
   - TransparentFX
@@ -15,9 +17,9 @@ TagManager:
   - Water
   - UI
   - Background
-  - Player
+  - ActivationArea
   - Enemy
-  - 
+  - Player
   - 
   - 
   - 

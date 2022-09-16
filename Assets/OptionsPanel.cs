@@ -5,6 +5,7 @@ using UnityEngine;
 public class OptionsPanel : MonoBehaviour
 {
     public GameObject OptionsPanelObj;
+    public static bool OptionsOn = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,9 +15,25 @@ public class OptionsPanel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown("o")){
-        OptionsPanelObj.SetActive(true);
+        if(Input.GetKeyDown("o"))
+        {
+            if(!OptionsOn)
+            {
+                OptionsPanelObj.SetActive(true);
+                OptionsOn = true;
+            }
+            else 
+            {
+                OptionsPanelObj.SetActive(false);
+                OptionsOn = false;
+            }
+        }
 
-        Debug.Log("You have clicked the o button!");}
+        // Quitting won't work in Play mode:
+        if(Input.GetKeyDown("q"))
+        {
+            Debug.Log("Good bye!");
+            Application.Quit();
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Script.Model.Enemy;
 
 public class Sensor_HeroKnight : MonoBehaviour {
 
@@ -21,13 +22,18 @@ public class Sensor_HeroKnight : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        m_ColCount++;
+        if (other.CompareTag("Ground"))
+        {
+            m_ColCount++;
+        }
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
-        m_ColCount--;
-    }
+        if (other.CompareTag("Ground"))
+        {
+            m_ColCount--;
+        }    }
 
     void Update()
     {

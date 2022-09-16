@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 421056532}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: AttackPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,10 +43,11 @@ GameObject:
   - component: {fileID: 7892968322842795982}
   - component: {fileID: 7038025952267043030}
   - component: {fileID: 3839578496210338396}
-  - component: {fileID: 4023334027151554175}
   - component: {fileID: 7095928004088355633}
   - component: {fileID: 1682870487}
-  m_Layer: 8
+  - component: {fileID: 1682870494}
+  - component: {fileID: 823119376235684874}
+  m_Layer: 9
   m_Name: HeroKnight_Green
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -167,32 +168,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &4023334027151554175
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2202566833572084585}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.662}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
-    oldSize: {x: 3.125, y: 1.71875}
-    newSize: {x: 2, y: 2}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.73, y: 1.2}
-  m_EdgeRadius: 0
 --- !u!114 &7095928004088355633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -233,14 +208,63 @@ MonoBehaviour:
   m_jumpForce: 7.5
   m_rollForce: 6
   m_noBlood: 0
-  m_slideDust: {fileID: 0}
+  m_slideDust: {fileID: 1038168246061390451, guid: 8b8c8cc6774fb074cb9139cc631b108e, type: 3}
   startTimeBtwAttack: 0.3
   attackPos: {fileID: 421056532}
   whatIsEnemies:
     serializedVersion: 2
     m_Bits: 256
   attackRange: 0.7
-  damage: 20
+  damage: 1
+  healthBar: {fileID: 0}
+  staminaBar: {fileID: 0}
+  inventory: {fileID: 0}
+--- !u!70 &1682870494
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2202566833572084585}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.00000035762787, y: 0.7807158}
+  m_Size: {x: 1.0011995, y: 1.3944967}
+  m_Direction: 0
+--- !u!114 &823119376235684874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2202566833572084585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b271549ccb7dea42b28f5d7ddf669d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  power: 0
+  attackPower: 0
+  currentHealth: 0
+  stamina: 150
+  currentStamina: 0
+  m_speed: 4
+  m_jumpForce: 7.5
+  m_rollForce: 6
+  m_noBlood: 0
+  m_slideDust: {fileID: 0}
+  startTimeBtwAttack: 0
+  attackPos: {fileID: 421056532}
+  whatIsEnemies:
+    serializedVersion: 2
+    m_Bits: 256
+  attackRange: 0
+  damage: 0
   healthBar: {fileID: 0}
   staminaBar: {fileID: 0}
   inventory: {fileID: 0}
@@ -255,7 +279,7 @@ GameObject:
   - component: {fileID: 7328360599874454458}
   - component: {fileID: 6589176608205827748}
   - component: {fileID: 2541945986914773845}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: WallSensor_L2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -316,7 +340,7 @@ GameObject:
   - component: {fileID: 2544283999141370526}
   - component: {fileID: 5141705694076100898}
   - component: {fileID: 7826924840274799159}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: WallSensor_R2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -377,7 +401,7 @@ GameObject:
   - component: {fileID: 5598588721529412490}
   - component: {fileID: 219586190323098885}
   - component: {fileID: 6286038296174568476}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: WallSensor_L1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -438,7 +462,7 @@ GameObject:
   - component: {fileID: 8479057430055069898}
   - component: {fileID: 9197638287954248106}
   - component: {fileID: 731880976726017237}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: WallSensor_R1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -499,7 +523,7 @@ GameObject:
   - component: {fileID: 7020248315614961313}
   - component: {fileID: 4769279221902672678}
   - component: {fileID: 6075425690129290126}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GroundSensor
   m_TagString: Untagged
   m_Icon: {fileID: 0}

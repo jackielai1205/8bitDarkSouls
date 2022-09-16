@@ -11,7 +11,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleForPauseMenu.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
+  - enabled: 0
     path: Assets/test.unity
     guid: 00574df20fa6b4a4c834507d6c26712d
+  - enabled: 1
+    path: Assets/Scenes/TestLevelStaging.unity
+    guid: 12a259c7052cb91418ff1814c1ee0870
+  - enabled: 1
+    path: Assets/Scenes/Cave1Staging.unity
+    guid: f86a4ad3daaa17349bb8376ca7aeac5b
   m_configObjects: {}

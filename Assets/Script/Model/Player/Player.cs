@@ -46,6 +46,7 @@ public class Player : Character
     private bool                m_isWallSliding = false;
     private bool                m_grounded = false;
     private bool                m_rolling = false;
+    private bool m_blocking = false;
     private bool m_dead = false;
     private int                 m_facingDirection = 1;
     private int                 m_currentAttack = 0;
@@ -222,6 +223,7 @@ public class Player : Character
         {
             m_animator.SetTrigger("Block");
             m_animator.SetBool("IdleBlock", true);
+            m_blocking = true;
         }
 
         else if (Input.GetMouseButtonUp(1))
@@ -288,12 +290,12 @@ public class Player : Character
 
     public void TakeDamage(int damage)
 	{
-        if(currentHealth - damage > 0){
+        if(currentHealth - damage > 0 && m_blocking == false){
 			currentHealth -= damage;
             this.animState.SetTrigger("Hurt");
 			healthBar.SetHealth(currentHealth);
         } 
-		else 
+		else if(m_blocking == false)
 		{
 			currentHealth = 0;
             m_dead = true;

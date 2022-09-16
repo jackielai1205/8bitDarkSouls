@@ -33,7 +33,7 @@ public class OptionsPanel : MonoBehaviour
         if(Input.GetKeyDown("q"))
         {
             Debug.Log("Good bye!");
-            Application.Quit();
+            Application.Quit(); // Check with build, also could use QuitGame.cs
         }
     }
 }

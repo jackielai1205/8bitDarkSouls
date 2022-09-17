@@ -46,6 +46,7 @@ public class Player : Character
     private bool                m_isWallSliding = false;
     private bool                m_grounded = false;
     private bool                m_rolling = false;
+    private bool m_blocking = false;
     private bool m_dead = false;
     private int                 m_facingDirection = 1;
     private int                 m_currentAttack = 0;
@@ -148,8 +149,6 @@ public class Player : Character
 
         // Check if character just landed on the ground
         //Check if character just landed on the ground
-        Debug.Log("m_grounded" + m_grounded);
-        Debug.Log("m_sensor" + m_groundSensor.State());
         if (!m_grounded && m_groundSensor.State())
         {
             m_grounded = true;
@@ -224,6 +223,7 @@ public class Player : Character
         {
             m_animator.SetTrigger("Block");
             m_animator.SetBool("IdleBlock", true);
+            m_blocking = true;
         }
 
         else if (Input.GetMouseButtonUp(1))
@@ -234,7 +234,6 @@ public class Player : Character
         {
             Physics2D.IgnoreLayerCollision(9, 8, true);
             m_rolling = true;
-            Debug.Log("rolling~");
             m_animator.SetTrigger("Roll");
             m_body2d.velocity = new Vector2(m_facingDirection * m_rollForce, m_body2d.velocity.y);
         }
@@ -291,13 +290,12 @@ public class Player : Character
 
     public void TakeDamage(int damage)
 	{
-        Debug.Log("Damage Taken!");
-        if(currentHealth - damage > 0){
+        if(currentHealth - damage > 0 && m_blocking == false){
 			currentHealth -= damage;
             this.animState.SetTrigger("Hurt");
 			healthBar.SetHealth(currentHealth);
         } 
-		else 
+		else if(m_blocking == false)
 		{
 			currentHealth = 0;
             m_dead = true;
@@ -317,8 +315,6 @@ public class Player : Character
         {
             currentHealth = health;
         }
-
-        Debug.Log(currentHealth);
         healthBar.SetHealth(currentHealth);
     }
 
@@ -333,8 +329,6 @@ public class Player : Character
         {
             currentStamina = stamina;
         }
-
-        Debug.Log(currentStamina);
         staminaBar.SetStamina(currentStamina);
     }
 
@@ -354,7 +348,6 @@ public class Player : Character
 		}
 		else
 		{
-			Debug.Log("Not enough Stamina");
             //code to stop player from being able to perform "attack"
 		}
 	}

@@ -47,12 +47,14 @@ public class Player : Character
     private bool                m_grounded = false;
     private bool                m_rolling = false;
     private bool m_blocking = false;
+    private bool m_runBlockingAnimate = false;
     private bool m_dead = false;
     private int                 m_facingDirection = 1;
     private int                 m_currentAttack = 0;
     private float               m_timeSinceAttack = 0.0f;
     private float               m_delayToIdle = 0.0f;
-    private float               m_rollDuration = 8.0f / 14.0f;
+
+    private float m_rollDuration = 8.0f / 14.0f;
     private float               m_rollCurrentTime;
 
 
@@ -117,6 +119,10 @@ public class Player : Character
     // Update is called once per frame
     void Update()
     {
+        if (PauseMenu.GameIsPaused)
+        {
+            return;
+        }
         //need to change these codes
         //these are for testing convenience
         if (Input.GetKeyDown("z") && !m_dead)
@@ -140,6 +146,7 @@ public class Player : Character
         if (m_rollCurrentTime > m_rollDuration)
         {
             m_rolling = false;
+            m_rollCurrentTime = 0;
         }
         
         if (!m_rolling)
@@ -166,20 +173,20 @@ public class Player : Character
         float inputX = Input.GetAxis("Horizontal");
 
         // Swap direction of sprite depending on walk direction
-        if (inputX > 0 && !m_dead)
+        if (inputX > 0 && !m_dead && !m_blocking)
         {
             transform.rotation = Quaternion.Euler(0f, 0f, 0f);
             m_facingDirection = 1;
         }
             
-        else if (inputX < 0 && !m_dead)
+        else if (inputX < 0 && !m_dead && !m_blocking)
         {
             transform.rotation = Quaternion.Euler(0f, 180f, 0f);
             m_facingDirection = -1;
         }
 
         // Move
-        if (!m_rolling&& !m_dead){
+        if (!m_rolling&& !m_dead && !m_blocking){
             m_body2d.velocity = new Vector2(inputX * m_speed, m_body2d.velocity.y);
         }
     
@@ -224,13 +231,22 @@ public class Player : Character
             m_animator.SetTrigger("Block");
             m_animator.SetBool("IdleBlock", true);
             m_blocking = true;
+            if (m_runBlockingAnimate)
+            {
+                m_animator.SetTrigger("Blocked");
+                m_runBlockingAnimate = false;
+                Debug.Log("set run to false");
+            }
+        }
+        
+        else if (Input.GetMouseButtonUp(1))
+        {
+            m_animator.SetBool("IdleBlock", false);
+            m_blocking = false;
         }
 
-        else if (Input.GetMouseButtonUp(1))
-            m_animator.SetBool("IdleBlock", false);
-
         // Roll
-        else if (Input.GetKeyDown("left shift") && !m_rolling && !m_isWallSliding && !m_dead && m_grounded)
+        else if (Input.GetKeyDown("left shift") && !m_rolling && !m_isWallSliding && !m_dead && m_grounded && !m_blocking)
         {
             Physics2D.IgnoreLayerCollision(9, 8, true);
             m_rolling = true;
@@ -240,7 +256,7 @@ public class Player : Character
             
 
         //Jump
-        else if (Input.GetKeyDown("space") && m_grounded && !m_rolling && !m_dead)
+        else if (Input.GetKeyDown("space") && m_grounded && !m_rolling && !m_dead && !m_blocking)
         {
             m_animator.SetTrigger("Jump");
             m_grounded = false;
@@ -290,19 +306,24 @@ public class Player : Character
 
     public void TakeDamage(int damage)
 	{
-        if(currentHealth - damage > 0 && m_blocking == false){
+        if (m_blocking)
+        {
+            this.animState.SetTrigger("Block");
+            // m_runBlockingAnimate = true;
+        }
+        else if(currentHealth - damage > 0 && m_blocking == false){
 			currentHealth -= damage;
             this.animState.SetTrigger("Hurt");
 			healthBar.SetHealth(currentHealth);
-        } 
-		else if(m_blocking == false)
+        }
+        else if(m_blocking == false)
 		{
 			currentHealth = 0;
             m_dead = true;
 			healthBar.SetHealth(currentHealth);
             this.animState.SetTrigger("Death");
         }
-	}
+    }
 
     public void RecoverHealth(int healthAmount)
     {

@@ -167,15 +167,15 @@ GameObject:
   - component: {fileID: 516843967293052784}
   - component: {fileID: 6931394659552132121}
   - component: {fileID: 1272959261}
-  - component: {fileID: 1272959260}
   - component: {fileID: 1272959256}
+  - component: {fileID: 1860205513}
   m_Layer: 8
   m_Name: Alien
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &516843967293052784
 Transform:
   m_ObjectHideFlags: 0
@@ -235,32 +235,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &1272959260
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 162489777561300188}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.039076127, y: -0.35168684}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.28, y: 0.96}
-    newSize: {x: 1.28, y: 0.96}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.41296673, y: 0.19594431}
-  m_EdgeRadius: 0
 --- !u!114 &1272959256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -282,6 +256,24 @@ MonoBehaviour:
     m_Bits: 512
   attackRange: 1
   movementSpeed: 1
+  groundSensor: {fileID: 0}
+  jumpAreas: {fileID: 0}
+--- !u!70 &1860205513
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 162489777561300188}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.25000003}
+  m_Size: {x: 0.5, y: 0.50000006}
+  m_Direction: 0
 --- !u!1 &1221971582799486167
 GameObject:
   m_ObjectHideFlags: 0

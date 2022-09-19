@@ -13,9 +13,12 @@ namespace Script.Model.Enemy
         
         public override void StartAttack()
         {
-            var random = new Random();
-            var randomNumber = random.Next(0, 2);
-            GetAnimator().SetInteger(GetAttackMethod(), randomNumber);
+            var attack = 0;
+            if (GetTarget().transform.position.y < transform.position.y)
+            {
+                attack = 1;
+            }
+            GetAnimator().SetInteger(GetAttackMethod(), attack);
             GetAnimator().SetInteger(GetAnimState(), 2);
         }
 
@@ -30,8 +33,8 @@ namespace Script.Model.Enemy
             // {
             //     Instantiate(arrow, bow.transform.position, new Quaternion(bowRotation.x, bowRotation.y, bowRotation.z, bowRotation.w));
             // }
-            Instantiate(arrow, bow.position,
-                    Quaternion.FromToRotation(bow.position, GetTarget().transform.position));
+            var arr = Instantiate(arrow, bow.transform.position, arrow.transform.rotation);
+            arr.SetTarget(GetTarget().transform);
         }
     }
 }

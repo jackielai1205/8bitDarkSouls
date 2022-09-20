@@ -7,21 +7,34 @@ namespace Script.Model.Projectile
     {
         public float arrowSpeed;
         public int power;
-
+        private Transform _target;
+        
         public void Start()
         {
-            Destroy(gameObject, 3f);
+            Vector3 relativePos = _target.position - transform.position;
+            transform.right = relativePos;
+            GetComponent<Rigidbody2D>().AddForce(relativePos.normalized * arrowSpeed, ForceMode2D.Impulse);
         }
 
-        private void OnCollisionEnter2D(Collision2D collision)
+        public void Update()
         {
 
-            if (collision.gameObject.GetComponent<Player>() == null)
+        }
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+
+            if (other.gameObject.GetComponent<Player>() == null)
             {
                 return;
             }
-            collision.gameObject.GetComponent<Player>().TakeDamage(power);
+            other.gameObject.GetComponent<Player>().TakeDamage(power);
             Destroy(gameObject);
+        }
+
+        public void SetTarget(Transform target)
+        {
+            _target = target;
         }
     }
 }

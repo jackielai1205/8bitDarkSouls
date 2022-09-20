@@ -1,5 +1,6 @@
 using System;
 using Script.Behaviour;
+using Unity.VisualScripting;
 using UnityEditor.Build;
 using UnityEngine;
 using Random = System.Random;
@@ -17,7 +18,7 @@ namespace Script.Model.Enemy.EnemyType
         private Transform _transform;
         private Rigidbody2D _rigidbody;
         private Animator _animator;
-        private BoxCollider2D _boxCollider2D;
+        private CapsuleCollider2D _capsuleCollider2D;
         private bool _inAttackRange = false;
         private bool _isActivate = false;
         private bool _isHit = false;
@@ -33,11 +34,11 @@ namespace Script.Model.Enemy.EnemyType
             _transform = GetComponent<Transform>();
             _animator = GetComponent<Animator>();
             _rigidbody = GetComponent<Rigidbody2D>();
-            _boxCollider2D = GetComponent<BoxCollider2D>();
+            _capsuleCollider2D = GetComponent<CapsuleCollider2D>();
             Physics2D.IgnoreLayerCollision(8, 8, true);
         }
 
-        public void Update()
+        public virtual void Update()
         {
             switch (_animator.GetInteger(AnimState))
             {
@@ -58,7 +59,9 @@ namespace Script.Model.Enemy.EnemyType
                     break;
             }
         }
-        
+
+
+
         public void IdleState()
         { 
             if (_isActivate)
@@ -80,7 +83,7 @@ namespace Script.Model.Enemy.EnemyType
             }
         }
 
-        private void StopHit()
+        public void StopHit()
         {
             if (_isDead)
             {
@@ -222,7 +225,7 @@ namespace Script.Model.Enemy.EnemyType
 
         public abstract void Move();
 
-        public bool GetMove()
+        public bool GetStopMove()
         {
             return _isStopMove;
         }
@@ -237,9 +240,9 @@ namespace Script.Model.Enemy.EnemyType
             return _transform;
         }
 
-        public BoxCollider2D GetBoxCollider2D()
+        public CapsuleCollider2D GetBoxCollider2D()
         {
-            return _boxCollider2D;
+            return _capsuleCollider2D;
         }
         
         public void Disappear()
@@ -274,6 +277,5 @@ namespace Script.Model.Enemy.EnemyType
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(attackPos.position, attackRange);
         }
-        
     }
 }

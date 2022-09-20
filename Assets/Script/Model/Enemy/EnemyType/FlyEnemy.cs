@@ -14,7 +14,7 @@ namespace Script.Model.Enemy.EnemyType
         public override void WalkToCharacter()
         {
             int flyDirection;
-            if (GetMove())
+            if (GetStopMove())
             {
                 return;
             }

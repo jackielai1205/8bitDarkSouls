@@ -38,12 +38,13 @@ public class SaveLoad : MonoBehaviour
     It is a convinient way to remember where character entered
     a location and where he left it.
     */
-    void SaveCharacter() {
+    public void SaveCharacter() {
         Vector3 playerPos = player.transform.position;
 
         // Saving a position
         PlayerPrefs.SetFloat("playerPositionX", playerPos.x);
         PlayerPrefs.SetFloat("playerPositionY", playerPos.y);
+        PlayerPrefs.SetInt("SavedScene", SceneManager.GetActiveScene().buildIndex);
 
         PlayerPrefs.Save();
 
@@ -54,7 +55,7 @@ public class SaveLoad : MonoBehaviour
         */
     }
 
-    void LoadCharacter() {
+    public void LoadCharacter() {
         // Loading Player's pos
         float playerPosX = PlayerPrefs.GetFloat("playerPositionX");
         float playerPosY = PlayerPrefs.GetFloat("playerPositionY");
@@ -77,7 +78,7 @@ public class SaveLoad : MonoBehaviour
         // Waiting 3 seconds
         yield return new WaitForSeconds(2);
         // Reloading scene
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(PlayerPrefs.GetInt("SavedScene"));
 
     }
 }

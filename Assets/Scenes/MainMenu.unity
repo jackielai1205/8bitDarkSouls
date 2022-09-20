@@ -2336,7 +2336,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: CONTINUE GAME
+  m_text: LOAD GAME
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a738409c757cf47b784667d774b06aa6, type: 2}
   m_sharedMaterial: {fileID: -8921907197533177107, guid: a738409c757cf47b784667d774b06aa6, type: 2}

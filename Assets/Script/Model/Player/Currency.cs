@@ -15,7 +15,7 @@ public class Currency : MonoBehaviour
         if(target.gameObject.tag == "Player")
         {
         currencyCoins += 1;
-        currencyText.GetComponent<TextMeshPro>().text = "Coins: " + currencyCoins;
+        currencyText.GetComponent<Text>().text = "Coins: " + currencyCoins;
         Destroy(gameObject);
         }
     }

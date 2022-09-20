@@ -49,11 +49,11 @@ public class Player : Character
     private bool m_blocking = false;
     private bool m_runBlockingAnimate = false;
     private bool m_dead = false;
+    private bool m_allowAction = true;
     private int                 m_facingDirection = 1;
     private int                 m_currentAttack = 0;
     private float               m_timeSinceAttack = 0.0f;
     private float               m_delayToIdle = 0.0f;
-
     private float m_rollDuration = 8.0f / 14.0f;
     private float               m_rollCurrentTime;
 
@@ -119,10 +119,19 @@ public class Player : Character
     // Update is called once per frame
     void Update()
     {
+        // Player do nothing when game is paused
         if (PauseMenu.GameIsPaused)
         {
             return;
         }
+
+        // Release blocking and return to Idle when currentStamina not enough to perform a block
+        if (currentStamina <= 10)
+        {
+            m_animator.SetBool("IdleBlock", false);
+            m_blocking = false;
+        }
+
         //need to change these codes
         //these are for testing convenience
         if (Input.GetKeyDown("z") && !m_dead)
@@ -130,7 +139,7 @@ public class Player : Character
 			TakeDamage(15);
 		}
 
-		if (Input.GetMouseButtonDown(0) && !m_dead)
+		if (Input.GetMouseButtonDown(0) && !m_dead || Input.GetKeyDown("left shift") && !m_dead || Input.GetMouseButtonDown(1) && !m_dead)
 		{
 			UseStamina(10);
 		}
@@ -199,7 +208,7 @@ public class Player : Character
         m_animator.SetBool("WallSlide", m_isWallSliding);
         
         //Attack
-        if(timeBtwAttack <= 0 && !m_rolling && Input.GetMouseButtonDown(0) && !m_dead){
+        if(timeBtwAttack <= 0 && !m_rolling && Input.GetMouseButtonDown(0) && !m_dead && m_allowAction){
             Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemies);
             for(int i = 0; i < enemiesToDamage.Length; i++){
                 if(enemiesToDamage[i].GetComponent<Enemy>() != null){
@@ -226,17 +235,11 @@ public class Player : Character
         }
 
         // Block
-        else if (Input.GetMouseButtonDown(1) && !m_rolling && !m_dead && m_grounded)
+        else if (Input.GetMouseButtonDown(1) && !m_rolling && !m_dead && m_grounded && m_allowAction)
         {
             m_animator.SetTrigger("Block");
             m_animator.SetBool("IdleBlock", true);
             m_blocking = true;
-            if (m_runBlockingAnimate)
-            {
-                m_animator.SetTrigger("Blocked");
-                m_runBlockingAnimate = false;
-                Debug.Log("set run to false");
-            }
         }
         
         else if (Input.GetMouseButtonUp(1))
@@ -246,12 +249,13 @@ public class Player : Character
         }
 
         // Roll
-        else if (Input.GetKeyDown("left shift") && !m_rolling && !m_isWallSliding && !m_dead && m_grounded && !m_blocking)
+        else if (Input.GetKeyDown("left shift") && !m_rolling && !m_isWallSliding && !m_dead && m_grounded && !m_blocking && m_allowAction)
         {
             Physics2D.IgnoreLayerCollision(9, 8, true);
             m_rolling = true;
             m_animator.SetTrigger("Roll");
             m_body2d.velocity = new Vector2(m_facingDirection * m_rollForce, m_body2d.velocity.y);
+            UseStamina(10);
         }
             
 
@@ -308,8 +312,8 @@ public class Player : Character
 	{
         if (m_blocking)
         {
+            UseStamina(10);
             this.animState.SetTrigger("Block");
-            // m_runBlockingAnimate = true;
         }
         else if(currentHealth - damage > 0 && m_blocking == false){
 			currentHealth -= damage;
@@ -356,7 +360,8 @@ public class Player : Character
     public void UseStamina(int staminaAmount)
 	{
 		if(currentStamina - staminaAmount >= 0&& !m_dead)
-		{
+        {
+            m_allowAction = true;
 			currentStamina -= staminaAmount;
 			staminaBar.SetStamina(currentStamina);
 
@@ -370,13 +375,15 @@ public class Player : Character
 		else
 		{
             //code to stop player from being able to perform "attack"
-		}
+            m_allowAction = false;
+            m_blocking = false;
+        }
 	}
 
     //for regenerating stamina
 	private IEnumerator RegenStamina()
 	{
-		yield return new WaitForSeconds(3);
+		yield return new WaitForSeconds(2);
 
 		while(currentStamina < stamina)
 		{

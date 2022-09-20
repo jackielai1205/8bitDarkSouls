@@ -42,8 +42,8 @@ GameObject:
   - component: {fileID: 3030241722038937936}
   - component: {fileID: 2680408913732189227}
   - component: {fileID: 1742057408}
-  - component: {fileID: 1742057407}
   - component: {fileID: 1742057409}
+  - component: {fileID: 1276156188}
   m_Layer: 8
   m_Name: ArcherSkeleton
   m_TagString: Enemy
@@ -111,32 +111,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &1742057407
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2205181950127094867}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.515585, y: 0.26944637}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.92605364, y: 1.5388927}
-  m_EdgeRadius: 0
 --- !u!114 &1742057409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,10 +130,28 @@ MonoBehaviour:
   whatIsEnemies:
     serializedVersion: 2
     m_Bits: 0
-  attackRange: 1
+  attackRange: 5
   movementSpeed: 1
+  groundSensor: {fileID: 0}
+  jumpAreas: {fileID: 0}
   arrow: {fileID: 2846206030032215355, guid: ea3ff51f9173b438a83f2d14a3861778, type: 3}
   bow: {fileID: 8825774224006871541}
+--- !u!70 &1276156188
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2205181950127094867}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.21329737, y: 0.25595665}
+  m_Size: {x: 0.7559571, y: 1.5687923}
+  m_Direction: 0
 --- !u!1 &3824426480149975925
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,7 +178,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3824426480149975925}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.51, y: 0.28, z: 0}
+  m_LocalPosition: {x: 7.32, y: 0.28, z: 0}
   m_LocalScale: {x: -0.429004, y: 0.429004, z: 0.429004}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -208,7 +200,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 2
+  m_Radius: 15
 --- !u!114 &6268991260167091559
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -363,7 +355,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 6, y: 6}
+  m_Size: {x: 15, y: 15}
   m_EdgeRadius: 0
 --- !u!114 &859484298425936354
 MonoBehaviour:

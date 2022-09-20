@@ -3353,7 +3353,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 417295536}
     m_Modifications:
-<<<<<<< HEAD
     - target: {fileID: 1682870487, guid: 2f7eeaf41636b0f4f8ca52ea6858fd36, type: 3}
       propertyPath: healthBar
       value: 
@@ -3378,8 +3377,6 @@ PrefabInstance:
       propertyPath: damage
       value: 100
       objectReference: {fileID: 0}
-=======
->>>>>>> test
     - target: {fileID: 823119376235684874, guid: 2f7eeaf41636b0f4f8ca52ea6858fd36, type: 3}
       propertyPath: healthBar
       value: 
@@ -3402,11 +3399,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4436494040201295678, guid: 2f7eeaf41636b0f4f8ca52ea6858fd36, type: 3}
       propertyPath: m_LocalPosition.y
-<<<<<<< HEAD
       value: 0
-=======
-      value: -5.68
->>>>>>> test
       objectReference: {fileID: 0}
     - target: {fileID: 4436494040201295678, guid: 2f7eeaf41636b0f4f8ca52ea6858fd36, type: 3}
       propertyPath: m_LocalPosition.z

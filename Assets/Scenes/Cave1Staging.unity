@@ -2673,7 +2673,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 200993635}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 134.054, y: -6.2614007, z: 0.6158306}
+  m_LocalPosition: {x: 134.07, y: -6.2614007, z: 0.6158306}
   m_LocalScale: {x: 6.022437, y: 6.4572687, z: 6.1503654}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3087,6 +3087,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 232457563}
+  - {fileID: 1100941479}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5936,7 +5937,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &469063088
 GameObject:
@@ -14349,15 +14350,30 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1100941479}
-  - component: {fileID: 1100941478}
+  - component: {fileID: 1100941480}
   m_Layer: 0
-  m_Name: currencySystem
+  m_Name: inventorySystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1100941478
+--- !u!4 &1100941479
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1100941477}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 7.495915, y: -3.1290898, z: 0.17623532}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 222833342}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1100941480
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -14366,25 +14382,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1100941477}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba07f8389caefe949a44dd4b73135a4a, type: 3}
+  m_Script: {fileID: 11500000, guid: 569f02171f644b44a81c69eec494aecd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  items: []
   currencyText: {fileID: 410551536}
---- !u!4 &1100941479
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1100941477}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.475915, y: -4.25909, z: 0.17623532}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1128134050
 GameObject:
   m_ObjectHideFlags: 0
@@ -17731,7 +17733,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1401756886
 GameObject:
@@ -18156,7 +18158,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1430032942
 GameObject:
@@ -19729,6 +19731,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2500090622273546264, guid: 1372a8c3c55354a4ab4fdfc9cb5d73a9, type: 3}
+      propertyPath: scene
+      value: TestLevelStaging
+      objectReference: {fileID: 0}
+    - target: {fileID: 3007884288221588821, guid: 1372a8c3c55354a4ab4fdfc9cb5d73a9, type: 3}
+      propertyPath: scene
+      value: TestLevelStaging
+      objectReference: {fileID: 0}
+    - target: {fileID: 5739469215201961449, guid: 1372a8c3c55354a4ab4fdfc9cb5d73a9, type: 3}
+      propertyPath: scene
+      value: TestLevelStaging
+      objectReference: {fileID: 0}
     - target: {fileID: 6320019597384384060, guid: 1372a8c3c55354a4ab4fdfc9cb5d73a9, type: 3}
       propertyPath: m_Name
       value: Door (1)

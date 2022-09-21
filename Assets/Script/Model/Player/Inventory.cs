@@ -12,12 +12,13 @@ public class Inventory : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        currencyCoins = PlayerPrefs.GetInt("currency");
     }
 
     // Update is called once per frame
     void Update()
     {
         currencyText.GetComponent<Text>().text = "Coins: " + currencyCoins;
+        PlayerPrefs.SetInt("currency", currencyCoins);
     }
 }

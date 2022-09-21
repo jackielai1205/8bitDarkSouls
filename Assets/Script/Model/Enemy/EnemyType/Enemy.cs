@@ -258,10 +258,11 @@ namespace Script.Model.Enemy.EnemyType
 
         public void TakeDamage(int damage)
         {
-            Hurt();
-            _takeDamagePower = damage;
-            Debug.Log("Damage Taken!");
-            Debug.Log(health);
+            if (!_isDead)
+            {
+                Hurt();
+                _takeDamagePower = damage;
+            }
         }
 
         public int GetAttackMethod()

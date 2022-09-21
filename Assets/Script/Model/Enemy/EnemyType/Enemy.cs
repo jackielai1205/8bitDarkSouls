@@ -1,9 +1,5 @@
 using System;
-using Script.Behaviour;
-using Unity.VisualScripting;
-using UnityEditor.Build;
 using UnityEngine;
-using Random = System.Random;
 
 namespace Script.Model.Enemy.EnemyType
 {

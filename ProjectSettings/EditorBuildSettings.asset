@@ -9,12 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 608ce5976ae7f4e7195f2717ff3d8a4f
   - enabled: 1
-    path: Assets/Scenes/SampleForPauseMenu.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 0
-    path: Assets/test.unity
-    guid: 00574df20fa6b4a4c834507d6c26712d
-  - enabled: 1
     path: Assets/Scenes/TestLevelStaging.unity
     guid: 12a259c7052cb91418ff1814c1ee0870
   - enabled: 1

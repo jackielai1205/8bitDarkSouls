@@ -45,7 +45,6 @@ namespace Script.Model.Enemy.EnemyType
             {
                 return;
             }
-            
             if (jumpAreas != null)
             {
                 foreach (var destination in jumpAreas.destinations)
@@ -100,7 +99,7 @@ namespace Script.Model.Enemy.EnemyType
                 Vector3 finalVelocity = Quaternion.AngleAxis(angleBetweenObjects, Vector3.up) * velocity;
                 GetRigidbody2D().AddForce(finalVelocity * GetRigidbody2D().mass, ForceMode2D.Impulse);
                 jumpAreas = null;
-                StopHit();
+                FindNextState();
         }
         
         public override void DeadState()

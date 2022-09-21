@@ -24,15 +24,6 @@ namespace Script.Model.Enemy
 
         public void ShotArrow()
         {
-            // Quaternion bowRotation = bow.rotation;
-            // if (gameObject.transform.localScale.x < 0)
-            // {
-            //     Instantiate(arrow, bow.transform.position, new Quaternion(bowRotation.x, bowRotation.y, bowRotation.z - 180, bowRotation.w));    
-            // }
-            // else if(gameObject.transform.localScale.x > 0)
-            // {
-            //     Instantiate(arrow, bow.transform.position, new Quaternion(bowRotation.x, bowRotation.y, bowRotation.z, bowRotation.w));
-            // }
             var arr = Instantiate(arrow, bow.transform.position, arrow.transform.rotation);
             arr.SetTarget(GetTarget().transform);
         }

@@ -83,7 +83,7 @@ namespace Script.Model.Enemy.EnemyType
             }
         }
 
-        public void StopHit()
+        public void FindNextState()
         {
             if (_isDead)
             {
@@ -158,11 +158,6 @@ namespace Script.Model.Enemy.EnemyType
                 }
             }
         }
-        //
-        // public void StopDoDamage()
-        // {
-        //     attackRange.gameObject.tag = attackRange.GetOriginalTag();
-        // }
 
         public abstract void WalkToCharacter();
 
@@ -276,6 +271,16 @@ namespace Script.Model.Enemy.EnemyType
         void OnDrawGizmosSelected(){
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(attackPos.position, attackRange);
+        }
+
+        public void SetRigidBody(Rigidbody2D rigidbody2D)
+        {
+            _rigidbody = rigidbody2D;
+        }
+
+        public bool IsDead()
+        {
+            return _isDead;
         }
     }
 }

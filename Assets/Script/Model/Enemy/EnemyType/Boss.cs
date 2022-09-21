@@ -1,23 +1,11 @@
 using Script.Model.Enemy.EnemyType;
 
-namespace Script.Model.Enemy
+namespace Script.Model.Enemy.EnemyType
 {
     public class Boss : GroundEnemy
     {
         public string bossName;
         public Skill[] skills;
-    
-        // // Start is called before the first frame update
-        // void Start()
-        // {
-        //
-        // }
-        //
-        // // Update is called once per frame
-        // void Perform()
-        // {
-        //
-        // }
 
         public override void Attack()
         {

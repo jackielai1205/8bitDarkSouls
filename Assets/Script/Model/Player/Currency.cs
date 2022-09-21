@@ -13,7 +13,7 @@ public class Currency : MonoBehaviour
     {
         if(target.gameObject.tag == "Player")
         {
-        CurrencySystem.currencyCoins += 1;
+        Inventory.currencyCoins += 1;
         // currencyText.GetComponent<Text>().text = "Coins: " + currencyCoins;
         Destroy(gameObject);
         }

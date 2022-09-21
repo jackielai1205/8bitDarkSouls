@@ -2,20 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class Currency : MonoBehaviour
 {
-    public GameObject currencyText;
-    public int currencyCoins;
+    // public GameObject currencyText;
+    // public int currencyCoins;
     public Player player;
 
     void OnTriggerEnter2D(Collider2D target)
     {
         if(target.gameObject.tag == "Player")
         {
-        currencyCoins += 1;
-        currencyText.GetComponent<Text>().text = "Coins: " + currencyCoins;
+        CurrencySystem.currencyCoins += 1;
+        // currencyText.GetComponent<Text>().text = "Coins: " + currencyCoins;
         Destroy(gameObject);
         }
     }

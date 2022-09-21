@@ -45,19 +45,24 @@ public class MusicPlaying : MonoBehaviour
     //     numberText.text = value.ToString();
     // }
 
-    public AudioSource AudioSource;
+    private AudioSource AudioSource;
 
-    public Slider VolumeSlider;
+    public Slider volumeSlider;
 
     private float MusicVolume = 1f;
+
+    public GameObject ObjectMusic;
     // Start is called before the first frame update
     void Start()
     {
-        AudioSource.Play();
-        //MusicVolume = TextSlider.GetComponent<Slider>();
+
+        ObjectMusic = GameObject.FindWithTag("GameMusic");
+        AudioSource = ObjectMusic.GetComponent<AudioSource>();
+
+        //AudioSource.Play();
         MusicVolume = PlayerPrefs.GetFloat("volume");
         AudioSource.volume = MusicVolume;
-        VolumeSlider.value = MusicVolume;
+        volumeSlider.value = MusicVolume;
     }
 
     // Update is called once per frame

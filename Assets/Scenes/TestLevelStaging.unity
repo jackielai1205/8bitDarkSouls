@@ -2306,6 +2306,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberText: {fileID: 1695125054}
+  slider: {fileID: 0}
 --- !u!114 &799354874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3705,6 +3706,42 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 865056162057228539, guid: 2d8f6928930952c4a8683ba0d2def613, type: 3}
+      propertyPath: m_Value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 865056162057228539, guid: 2d8f6928930952c4a8683ba0d2def613, type: 3}
+      propertyPath: m_MaxValue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 865056162057228539, guid: 2d8f6928930952c4a8683ba0d2def613, type: 3}
+      propertyPath: m_WholeNumbers
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 865056162057228539, guid: 2d8f6928930952c4a8683ba0d2def613, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 865056162057228539, guid: 2d8f6928930952c4a8683ba0d2def613, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 865056162057228539, guid: 2d8f6928930952c4a8683ba0d2def613, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 11500000, guid: ea6dd207ddd83423fb17082850bd5ba7, type: 3}
+    - target: {fileID: 865056162057228539, guid: 2d8f6928930952c4a8683ba0d2def613, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 865056162057228539, guid: 2d8f6928930952c4a8683ba0d2def613, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEditor.MonoScript, UnityEditor.CoreModule
+      objectReference: {fileID: 0}
+    - target: {fileID: 865056162057228539, guid: 2d8f6928930952c4a8683ba0d2def613, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 865056162394901312, guid: 2d8f6928930952c4a8683ba0d2def613, type: 3}
       propertyPath: m_SizeDelta.x
       value: 111.6942
@@ -3720,6 +3757,10 @@ PrefabInstance:
     - target: {fileID: 865056162394901312, guid: 2d8f6928930952c4a8683ba0d2def613, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -212.65216
+      objectReference: {fileID: 0}
+    - target: {fileID: 865056162880217226, guid: 2d8f6928930952c4a8683ba0d2def613, type: 3}
+      propertyPath: m_text
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 865056162987166211, guid: 2d8f6928930952c4a8683ba0d2def613, type: 3}
       propertyPath: m_Name
@@ -3841,6 +3882,30 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -0.0000038146973
       objectReference: {fileID: 0}
+    - target: {fileID: 2051105934474224740, guid: 2d8f6928930952c4a8683ba0d2def613, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2051105934474224740, guid: 2d8f6928930952c4a8683ba0d2def613, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2051105934474224740, guid: 2d8f6928930952c4a8683ba0d2def613, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 11500000, guid: 2b4d8d6193a5a475093dd1dc0e942fc1, type: 3}
+    - target: {fileID: 2051105934474224740, guid: 2d8f6928930952c4a8683ba0d2def613, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2051105934474224740, guid: 2d8f6928930952c4a8683ba0d2def613, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEditor.MonoScript, UnityEditor.CoreModule
+      objectReference: {fileID: 0}
+    - target: {fileID: 2051105934474224740, guid: 2d8f6928930952c4a8683ba0d2def613, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2424463077733699509, guid: 2d8f6928930952c4a8683ba0d2def613, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -3857,7 +3922,8 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 865056162057228538, guid: 2d8f6928930952c4a8683ba0d2def613, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2d8f6928930952c4a8683ba0d2def613, type: 3}
 --- !u!114 &1291638276 stripped
 MonoBehaviour:

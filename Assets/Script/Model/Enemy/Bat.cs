@@ -5,11 +5,7 @@ namespace Script.Model.Enemy
 {
     public class Bat : FlyEnemy
     {
-        public override void Attack()
-        {
-            print("Attack");
-        }
-        
+        //Random available Animation and change the animstate
         public override void StartAttack()
         {
             var random = new Random();

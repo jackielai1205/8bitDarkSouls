@@ -1,13 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Skill : MonoBehaviour
+namespace Script.Model.Enemy
 {
-    public string skill;
-
-    public Skill(string skill) 
+    public class Skill : MonoBehaviour
     {
-        this.skill = skill;
+        public string skill;
+
+        public Skill(string skill) 
+        {
+            this.skill = skill;
+        }
     }
 }

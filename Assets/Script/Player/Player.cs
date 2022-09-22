@@ -293,11 +293,6 @@ public class Player : Character
         throw new System.NotImplementedException();
     }
 
-    public override void Attack()
-    {
-        throw new System.NotImplementedException();
-    }
-
     public override void Dead()
     {
         throw new System.NotImplementedException();

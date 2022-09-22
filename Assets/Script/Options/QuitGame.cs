@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class QuitGame : MonoBehaviour
 {
-     public int MainMenuScene;
+    public int MainMenuScene;
 
     public void ExitGame() {
         SceneManager.LoadScene(MainMenuScene);

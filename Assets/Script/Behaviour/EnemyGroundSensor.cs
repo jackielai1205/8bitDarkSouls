@@ -10,6 +10,7 @@ namespace Script.Behaviour
     {
         private bool _onGround;
 
+        //Check if enemy on the ground
         public void OnTriggerEnter2D(Collider2D col)
         {
             if (col.CompareTag("Ground"))

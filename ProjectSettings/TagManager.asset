@@ -9,6 +9,7 @@ TagManager:
   - HealthPotion
   - ActivationArea
   - Ground
+  - GameMusic
   layers:
   - Default
   - TransparentFX

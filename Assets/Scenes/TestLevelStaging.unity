@@ -1621,7 +1621,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 30
+  m_RootOrder: 31
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &664285364
 GameObject:
@@ -1701,7 +1701,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 664285364}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.93, y: -0.9, z: -10}
+  m_LocalPosition: {x: -9.31, y: -0.19, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3353,7 +3353,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 417295536}
     m_Modifications:
-<<<<<<< HEAD
     - target: {fileID: 1682870487, guid: 2f7eeaf41636b0f4f8ca52ea6858fd36, type: 3}
       propertyPath: healthBar
       value: 
@@ -3378,8 +3377,6 @@ PrefabInstance:
       propertyPath: damage
       value: 100
       objectReference: {fileID: 0}
-=======
->>>>>>> test
     - target: {fileID: 823119376235684874, guid: 2f7eeaf41636b0f4f8ca52ea6858fd36, type: 3}
       propertyPath: healthBar
       value: 
@@ -3402,11 +3399,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4436494040201295678, guid: 2f7eeaf41636b0f4f8ca52ea6858fd36, type: 3}
       propertyPath: m_LocalPosition.y
-<<<<<<< HEAD
       value: 0
-=======
-      value: -5.68
->>>>>>> test
       objectReference: {fileID: 0}
     - target: {fileID: 4436494040201295678, guid: 2f7eeaf41636b0f4f8ca52ea6858fd36, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3947,7 +3940,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 33
+  m_RootOrder: 34
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1329602508
 GameObject:
@@ -4934,7 +4927,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 29
+  m_RootOrder: 30
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1682870451 stripped
 GameObject:
@@ -4946,6 +4939,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4436494040201295678, guid: 2f7eeaf41636b0f4f8ca52ea6858fd36, type: 3}
   m_PrefabInstance: {fileID: 1179891223}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1682870453 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 823119376235684874, guid: 2f7eeaf41636b0f4f8ca52ea6858fd36, type: 3}
+  m_PrefabInstance: {fileID: 1179891223}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1682870451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b271549ccb7dea42b28f5d7ddf669d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1695125052
 GameObject:
   m_ObjectHideFlags: 0
@@ -5861,7 +5865,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 31
+  m_RootOrder: 32
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1895354417
 GameObject:
@@ -6553,7 +6557,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 32
+  m_RootOrder: 33
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2529875132942374425
 PrefabInstance:
@@ -6565,7 +6569,7 @@ PrefabInstance:
     - target: {fileID: 2529875133213834564, guid: e72b55a7b91e9394baa8986d5043c439, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1682870453}
     - target: {fileID: 2529875133213834565, guid: e72b55a7b91e9394baa8986d5043c439, type: 3}
       propertyPath: m_Name
       value: staminaPotion
@@ -6739,7 +6743,7 @@ PrefabInstance:
     - target: {fileID: 6479891152691787613, guid: 1e7697697ac50c84583f92ddb836ebec, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1682870453}
     - target: {fileID: 6479891152691787614, guid: 1e7697697ac50c84583f92ddb836ebec, type: 3}
       propertyPath: m_Name
       value: healthPotion

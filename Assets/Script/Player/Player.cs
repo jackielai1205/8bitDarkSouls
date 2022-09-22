@@ -305,22 +305,25 @@ public class Player : Character
 
     public void TakeDamage(int damage)
 	{
-        if (m_blocking)
+        if (!m_dead)
         {
-            UseStamina(10);
-            this.animState.SetTrigger("Block");
-        }
-        else if(currentHealth - damage > 0 && m_blocking == false){
-			currentHealth -= damage;
-            this.animState.SetTrigger("Hurt");
-			healthBar.SetHealth(currentHealth);
-        }
-        else if(m_blocking == false)
-		{
-			currentHealth = 0;
-            m_dead = true;
-			healthBar.SetHealth(currentHealth);
-            this.animState.SetTrigger("Death");
+            if (m_blocking)
+            {
+                UseStamina(10);
+                this.animState.SetTrigger("Block");
+            }
+            else if(currentHealth - damage > 0 && m_blocking == false){
+                currentHealth -= damage;
+                this.animState.SetTrigger("Hurt");
+                healthBar.SetHealth(currentHealth);
+            }
+            else if(m_blocking == false)
+            {
+                currentHealth = 0;
+                m_dead = true;
+                healthBar.SetHealth(currentHealth);
+                this.animState.SetTrigger("Death");
+            }
         }
     }
 

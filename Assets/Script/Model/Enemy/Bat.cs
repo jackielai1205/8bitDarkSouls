@@ -1,18 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using System;
+using Script.Model.Enemy.EnemyType;
 
-public class Bat : MonoBehaviour
+namespace Script.Model.Enemy
 {
-    // Start is called before the first frame update
-    void Start()
+    public class Bat : FlyEnemy
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        //Random available Animation and change the animstate
+        public override void StartAttack()
+        {
+            var random = new Random();
+            var randomNumber = random.Next(0, 2);
+            GetAnimator().SetInteger(GetAttackMethod(), randomNumber);
+            GetAnimator().SetInteger(GetAnimState(), 2);
+        }
     }
 }
+

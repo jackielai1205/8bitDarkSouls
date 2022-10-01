@@ -7,8 +7,8 @@ public class Potion : MonoBehaviour
     public enum Status
     {
         Health,
-        Power,
         Stamina,
+        Rejuvenate,
         Attack
     }
 
@@ -42,6 +42,10 @@ public class Potion : MonoBehaviour
                     break;
                 case Status.Stamina:
                     player.RecoverStamina(10);
+                    break;
+                case Status.Rejuvenate:
+                    player.RecoverHealth(10);
+                    player.RecoverStamina(5);
                     break;
             }
         }

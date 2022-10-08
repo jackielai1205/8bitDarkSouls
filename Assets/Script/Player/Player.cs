@@ -286,6 +286,29 @@ public class Player : Character
                     m_animator.SetInteger("AnimState", 0);
         }
 
+        //Drink potion
+        if(Input.GetKeyDown("1") && (PlayerPrefs.GetInt("healthPotion") != 0))
+        {
+            RecoverHealth(15);
+            Inventory.healthPotions -= 1;
+        }
+        else if(Input.GetKeyDown("2") && (PlayerPrefs.GetInt("staminaPotion") != 0))
+        {
+            RecoverStamina(10);
+            Inventory.staminaPotions -= 1;
+        }
+        else if(Input.GetKeyDown("3") && (PlayerPrefs.GetInt("rejuvenationPotion") != 0))
+        {
+            RecoverHealth(10);
+            RecoverStamina(5);
+            Inventory.rejuvenationPotions -= 1;
+        }
+        else if(Input.GetKeyDown("4") && (PlayerPrefs.GetInt("powerPotion") != 0))
+        {
+            // Need attack potion function here
+            Inventory.powerPotions -= 1;
+        }
+
     }
 
     public void Walk()

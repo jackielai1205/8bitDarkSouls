@@ -57,7 +57,9 @@ public class Player : Character
     private float m_rollDuration = 8.0f / 14.0f;
     private float               m_rollCurrentTime;
 
-
+    // Interact System
+    public GameObject interactIcon;
+    private Vector2 boxSize = new Vector2(0.1f, 1f);
 
     void Dodge()
     {
@@ -105,6 +107,8 @@ public class Player : Character
         m_wallSensorL1 = transform.Find("WallSensor_L1").GetComponent<Sensor_HeroKnight>();
         m_wallSensorL2 = transform.Find("WallSensor_L2").GetComponent<Sensor_HeroKnight>();
 
+        interactIcon.SetActive(false);
+        
         // If statement that checks if character suppose to move to the checkpoint
         if (PlayerPrefs.GetInt("PlayerHasDied") == 1) {
             PlayerPrefs.SetInt("PlayerHasDied", 0);
@@ -147,7 +151,7 @@ public class Player : Character
         // Increase timer that controls attack combo
         m_timeSinceAttack += Time.deltaTime;
         
-                // Increase timer that checks roll duration
+        // Increase timer that checks roll duration
         if(m_rolling)
             m_rollCurrentTime += Time.deltaTime;
 
@@ -286,6 +290,11 @@ public class Player : Character
                     m_animator.SetInteger("AnimState", 0);
         }
 
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Checkinteraction();
+        }
+
     }
 
     public void Walk()
@@ -412,9 +421,36 @@ public class Player : Character
             dust.transform.localScale = new Vector3(m_facingDirection, 1, 1);
         }
     }
-
+    
     void OnDrawGizmosSelected(){
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(attackPos.position, attackRange);
+    }
+    
+    // Interact System
+    public void OpenInteractableIcon()
+    {
+        interactIcon.SetActive(true);
+    }
+
+    public void CloseInteractableIcon()
+    {
+        interactIcon.SetActive(false);
+    }
+
+    private void Checkinteraction()
+    {
+        RaycastHit2D[] hits = Physics2D.BoxCastAll(transform.position, boxSize, 0, Vector2.zero);
+        if (hits.Length > 0)
+        {
+            foreach (RaycastHit2D rc in hits)
+            {
+                if (rc.transform.GetComponent<Interactable>())
+                {
+                    rc.transform.GetComponent<Interactable>().Interact();
+                    return;
+                }
+            }
+        }
     }
 }

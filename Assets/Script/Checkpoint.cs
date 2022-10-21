@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Checkpoint : MonoBehaviour
+public class Checkpoint : Interactable
 {
     public Player player;
     public SaveLoad sv;
@@ -12,12 +12,18 @@ public class Checkpoint : MonoBehaviour
         
     }
 
+    public override void Interact()
+    {
+        print("Game was saved on the checkpoint");
+        sv.SaveCharacter();
+    }
+
     void OnTriggerEnter2D(Collider2D other)
     {
 
         if (other.gameObject.name == player.name){
-            print("Game was saved on the checkpoint");
-            sv.SaveCharacter();
+            // print("Game was saved on the checkpoint");
+            // sv.SaveCharacter();
         }
     }
 

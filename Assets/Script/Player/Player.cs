@@ -88,7 +88,7 @@ public class Player : Character
     void Start()
     {
         //set health
-        health = 200;
+        // health = 200;
         currentHealth = health;
 		healthBar.SetMaxHealth(health);
 

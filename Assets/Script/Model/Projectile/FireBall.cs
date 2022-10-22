@@ -19,7 +19,6 @@ namespace Script.Model.Projectile
                 currentCoolDown = 0;
                 var fireBall = Instantiate(this, weapon.transform.position, weapon.transform.rotation);
                 Transform fireBallTransform = fireBall.GetComponent<Transform>();
-                print(fireBallTransform.position);
                 Vector3 relativePos = target.position - fireBallTransform.position;
                 fireBallTransform.right = relativePos;
                 fireBall.GetComponent<Rigidbody2D>().AddForce(relativePos.normalized * speed , ForceMode2D.Impulse);

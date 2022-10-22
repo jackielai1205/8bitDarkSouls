@@ -7,44 +7,6 @@ using TMPro;
 
 public class MusicPlaying : MonoBehaviour
 {
-
-    // public AudioSource AudioSource;
-
-    // public float musicVolume = 1f;
-
-    // //public Slider VolumeSlider;
-
-    // public Slider slider;
-
-    // public TextMeshProUGUI numberText;
-
-    // void Start()
-    // {
-    //     AudioSource.Play();
-    //     slider = GetComponent<Slider>();
-    //     SetNumberText(slider.value);
-    // }
-
-    // void Update() 
-    // {
-    //     AudioSource.volume = musicVolume;
-        
-    // }
-
-    // public void updateVolume(float volume) 
-    // {
-        
-    //     musicVolume = volume;
-    //     SetNumberText(slider.value);
-    // }
-
-    // public void SetNumberText(float value) {
-    //     //float roundValue = Math.Round((float)value, 2);
-    //     //numberText.text = roundValue.ToString();
-    //     //numberText.text = Math.Round((decimal)value, 2).ToString();
-    //     numberText.text = value.ToString();
-    // }
-
     private AudioSource AudioSource;
 
     public Slider volumeSlider;

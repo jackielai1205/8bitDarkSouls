@@ -20,8 +20,8 @@ Unity verison 2021.3.8f1
 4. Play
 
 ## Authors
-Ting Fung Siu
-Jackie Tin Lok Lai
-Davina Phan
-Elena Fedchenko
-Mark Leshchinskii
+Ting Fung Siu <br />
+Jackie Tin Lok Lai <br /> 
+Davina Phan <br />
+Elena Fedchenko <br />
+Mark Leshchinskii <br />

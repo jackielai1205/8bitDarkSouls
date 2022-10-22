@@ -9,6 +9,10 @@ public class SaveLoad : MonoBehaviour
     public Player player;
 
     void Update() {
+        if (PlayerPrefs.GetInt("GameLoaded") == 1){
+            PlayerPrefs.SetInt("GameLoaded", 0);
+            LoadCharacter();
+        }
         // Comment the following to not have saving buttons
         if (Input.GetKeyDown(KeyCode.K)) {
             SaveCharacter();

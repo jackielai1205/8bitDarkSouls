@@ -9,6 +9,7 @@ TagManager:
   - HealthPotion
   - ActivationArea
   - Ground
+  - GameMusic
   layers:
   - Default
   - TransparentFX
@@ -48,4 +49,16 @@ TagManager:
     locked: 0
   - name: Background
     uniqueID: 1844150219
+    locked: 0
+  - name: Platforms and Items
+    uniqueID: 3136427933
+    locked: 0
+  - name: New Layer 4
+    uniqueID: 3949603843
+    locked: 0
+  - name: New Layer 5
+    uniqueID: 3662427289
+    locked: 0
+  - name: Player and Enemies
+    uniqueID: 2009476679
     locked: 0

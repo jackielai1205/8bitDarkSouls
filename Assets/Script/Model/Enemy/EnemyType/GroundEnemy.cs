@@ -9,11 +9,11 @@ namespace Script.Model.Enemy.EnemyType
 {
     public class GroundEnemy : Enemy
     {
-        public override void Attack(){}
         public EnemyGroundSensor groundSensor;
         public JumpArea jumpAreas = null;
         private JumpArea _destination = null;
 
+        //Add jump state for ground enemy
         public override void Update()
         {
             switch (GetAnimator().GetInteger(GetAnimState()))
@@ -39,6 +39,7 @@ namespace Script.Model.Enemy.EnemyType
             }
         }
         
+        //Walk to character horizontally and jump if jump option available 
         public override void WalkToCharacter()
         {
             if (GetStopMove())
@@ -73,68 +74,69 @@ namespace Script.Model.Enemy.EnemyType
             GetRigidbody2D().velocity = new Vector2 (transform.localScale.x, GetRigidbody2D().velocity.y) * movementSpeed;
         }
         
+        //Freeze position x and rotation z
         public override void StopMove()
         {
             GetRigidbody2D().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
         }
 
+        //Release position x
         public override void Move()
         {
             GetRigidbody2D().constraints = RigidbodyConstraints2D.FreezeRotation;
         }
         
+        //Jump and find next state
         public void JumpState()
         {
-                Vector3 myPosition = transform.position;
-                Vector3 p = _destination.transform.position;
-                float gravity = Physics.gravity.magnitude;
-                float angle = 45 * Mathf.Deg2Rad;
-                Vector3 planarTarget = new Vector3(p.x, p.y, p.z);
-                Vector3 planarPosition = new Vector3(myPosition.x, myPosition.y, myPosition.z);
-                float distance = Vector3.Distance(planarTarget, planarPosition);
-                float yOffset = myPosition.y - p.y;
-                float initialVelocity = (1 / Mathf.Cos(angle)) * Mathf.Sqrt((0.5f * gravity * Mathf.Pow(distance, 2)) / (distance * Mathf.Tan(angle) + yOffset));
-                Vector3 velocity = new Vector3(0, initialVelocity * Mathf.Sin(angle), initialVelocity * Mathf.Cos(angle));
-                float angleBetweenObjects = Vector3.Angle(Vector3.forward, planarTarget - planarPosition);
-                Vector3 finalVelocity = Quaternion.AngleAxis(angleBetweenObjects, Vector3.up) * velocity;
-                GetRigidbody2D().AddForce(finalVelocity * GetRigidbody2D().mass, ForceMode2D.Impulse);
+                GetRigidbody2D().AddForce(CalculateJumpForce() * GetRigidbody2D().mass, ForceMode2D.Impulse);
                 jumpAreas = null;
                 FindNextState();
         }
+
+        //Calculate jump force
+        public Vector3 CalculateJumpForce()
+        {
+            Vector3 myPosition = transform.position;
+            Vector3 p = _destination.transform.position;
+            float gravity = Physics.gravity.magnitude;
+            float angle = 45 * Mathf.Deg2Rad;
+            Vector3 planarTarget = new Vector3(p.x, p.y, p.z);
+            Vector3 planarPosition = new Vector3(myPosition.x, myPosition.y, myPosition.z);
+            float distance = Vector3.Distance(planarTarget, planarPosition);
+            float yOffset = myPosition.y - p.y;
+            float initialVelocity = (1 / Mathf.Cos(angle)) * Mathf.Sqrt((0.5f * gravity * Mathf.Pow(distance, 2)) / (distance * Mathf.Tan(angle) + yOffset));
+            Vector3 velocity = new Vector3(0, initialVelocity * Mathf.Sin(angle), initialVelocity * Mathf.Cos(angle));
+            float angleBetweenObjects = Vector3.Angle(Vector3.forward, planarTarget - planarPosition);
+            return Quaternion.AngleAxis(angleBetweenObjects, Vector3.up) * velocity;
+        }
         
+        //Fixed movement and remove collider
         public override void DeadState()
         {
-            GetBoxCollider2D().enabled = false;
+            GetCollider2D().enabled = false;
             GetRigidbody2D().constraints = RigidbodyConstraints2D.FreezeAll;
         }
 
-        public override void StartAttack(){}
-
+        //Notify animator to change animstate
         public void StartJump()
         {
             GetAnimator().SetInteger(GetAnimState(), 6);
         }
 
+        //Getter for jump area
         public JumpArea GetJumpArea()
         {
             return jumpAreas;
         }
 
+        
+        //Setter for jump area
         public void SetJumpArea(JumpArea jumpArea)
         {
             this.jumpAreas = jumpArea;
         }
         
-        float CalculateProjectileMotion(float x, Transform start, Transform target)
-        {
-            float a = Physics.gravity.y;
-            float velocityX = start.position.x - target.position.x;
-            float velocityY = Mathf.Sqrt(2 * (a * (start.position.y - target.position.y) ));
- 
-            float projectileVelocity = Mathf.Sqrt(velocityX  * velocityX  + velocityY  * velocityY );
-            float trajectoryAngle = Mathf.Atan(velocityY/velocityX );
- 
-            return x * Mathf.Tan(trajectoryAngle) - ( (a * x * x) / (2 * (projectileVelocity * projectileVelocity) * (Mathf.Cos(trajectoryAngle) * Mathf.Cos(trajectoryAngle) ) ) );
-        }
+        public override void StartAttack(){}
     }
 }

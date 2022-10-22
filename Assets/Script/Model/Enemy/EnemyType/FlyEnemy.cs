@@ -5,12 +5,7 @@ namespace Script.Model.Enemy.EnemyType
 {
     public class FlyEnemy : Enemy
     {
-        
-        public override void Attack()
-        {
-            throw new System.NotImplementedException();
-        }
-
+        //Fastest path to player
         public override void WalkToCharacter()
         {
             int flyDirection;
@@ -45,22 +40,25 @@ namespace Script.Model.Enemy.EnemyType
             GetRigidbody2D().velocity = new Vector2 (GetTransform().localScale.x, flyDirection) * movementSpeed;
         }
         
+        //Fly enemy will fall down when dead
         public override void DeadState()
         {
             GetRigidbody2D().gravityScale = 1;
-            GetBoxCollider2D().enabled = true;
+            GetCollider2D().enabled = true;
         }
 
+        //Freeze position and rotation when enemy attacking
         public override void StopMove()
         {
             GetRigidbody2D().constraints = RigidbodyConstraints2D.FreezeAll;
         }
 
+        //Release enemy movement except rotation
         public override void Move()
         {
             GetRigidbody2D().constraints = RigidbodyConstraints2D.FreezeRotation;
         }
-
+        
         public override void StartAttack() {}
     }
 }

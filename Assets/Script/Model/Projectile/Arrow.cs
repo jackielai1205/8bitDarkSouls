@@ -9,18 +9,17 @@ namespace Script.Model.Projectile
         public int power;
         private Transform _target;
         
+        //Calculate rotation between target and arrow and add force to navigate arrow to target
         public void Start()
         {
-            Vector3 relativePos = _target.position - transform.position;
-            transform.right = relativePos;
+            Transform arrowTransform = GetComponent<Transform>();
+            Vector3 relativePos = _target.position - arrowTransform.position;
+            arrowTransform.right = relativePos;
             GetComponent<Rigidbody2D>().AddForce(relativePos.normalized * arrowSpeed, ForceMode2D.Impulse);
+            Destroy(gameObject, 3f);
         }
-
-        public void Update()
-        {
-
-        }
-
+        
+        //If arrow trigger player component, call player's TakeDamage function and destroy object
         private void OnTriggerEnter2D(Collider2D other)
         {
 
@@ -32,6 +31,7 @@ namespace Script.Model.Projectile
             Destroy(gameObject);
         }
 
+        //Setter for target
         public void SetTarget(Transform target)
         {
             _target = target;

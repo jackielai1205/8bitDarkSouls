@@ -10,6 +10,9 @@ public class StartGameBtn : MonoBehaviour
     public int gameStartScene;
 
     public void StartGame() {
-        SceneManager.LoadScene(gameStartScene);
+        if (PlayerPrefs.GetInt("SavedScene") != null) {
+            PlayerPrefs.SetInt("GameLoaded", 1);
+            SceneManager.LoadScene(PlayerPrefs.GetInt("SavedScene"));
+        }
     }
 }

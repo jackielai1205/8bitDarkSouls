@@ -5,17 +5,14 @@ using UnityEngine.UI;
 
 public class Currency : MonoBehaviour
 {
-    // public GameObject currencyText;
-    // public int currencyCoins;
     public Player player;
 
     void OnTriggerEnter2D(Collider2D target)
     {
         if(target.gameObject.tag == "Player")
         {
-        CurrencySystem.currencyCoins += 1;
-        // currencyText.GetComponent<Text>().text = "Coins: " + currencyCoins;
-        Destroy(gameObject);
+            Inventory.currencyCoins += 1;
+            Destroy(gameObject);
         }
     }
 

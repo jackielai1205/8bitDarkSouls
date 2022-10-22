@@ -286,14 +286,32 @@ public class Player : Character
                     m_animator.SetInteger("AnimState", 0);
         }
 
+        //Drink potion
+        if(Input.GetKeyDown("1") && (PlayerPrefs.GetInt("healthPotion") != 0))
+        {
+            RecoverHealth(15);
+            Inventory.healthPotions -= 1;
+        }
+        else if(Input.GetKeyDown("2") && (PlayerPrefs.GetInt("staminaPotion") != 0))
+        {
+            RecoverStamina(10);
+            Inventory.staminaPotions -= 1;
+        }
+        else if(Input.GetKeyDown("3") && (PlayerPrefs.GetInt("rejuvenationPotion") != 0))
+        {
+            RecoverHealth(10);
+            RecoverStamina(5);
+            Inventory.rejuvenationPotions -= 1;
+        }
+        else if(Input.GetKeyDown("4") && (PlayerPrefs.GetInt("powerPotion") != 0))
+        {
+            // Need attack potion function here
+            Inventory.powerPotions -= 1;
+        }
+
     }
 
     public void Walk()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public override void Attack()
     {
         throw new System.NotImplementedException();
     }
@@ -310,29 +328,35 @@ public class Player : Character
 
     public void TakeDamage(int damage)
 	{
-        if (m_blocking)
+        if (!m_dead)
         {
-            UseStamina(10);
-            this.animState.SetTrigger("Block");
-        }
-        else if(currentHealth - damage > 0 && m_blocking == false){
-			currentHealth -= damage;
-            this.animState.SetTrigger("Hurt");
-			healthBar.SetHealth(currentHealth);
-        }
-        else if(m_blocking == false)
-		{
-			currentHealth = 0;
-            m_dead = true;
-			healthBar.SetHealth(currentHealth);
-            this.animState.SetTrigger("Death");
+            if (m_blocking)
+            {
+                UseStamina(10);
+                this.animState.SetTrigger("Block");
+            }
+            else if(currentHealth - damage > 0 && m_blocking == false){
+                currentHealth -= damage;
+                this.animState.SetTrigger("Hurt");
+                healthBar.SetHealth(currentHealth);
+            }
+            else if(m_blocking == false)
+            {
+                currentHealth = 0;
+                m_dead = true;
+                healthBar.SetHealth(currentHealth);
+                this.animState.SetTrigger("Death");
+            }
         }
     }
 
     public void RecoverHealth(int healthAmount)
     {
-        //prevents health from going over current max health
-        if(currentHealth + healthAmount <= health)
+        if(healthAmount < 0)
+        {
+            Debug.Log("Health amount to recover cannot be negative!");
+        }
+        else if(currentHealth + healthAmount <= health)
         {
             currentHealth += healthAmount;
         }
@@ -340,6 +364,7 @@ public class Player : Character
         {
             currentHealth = health;
         }
+
         healthBar.SetHealth(currentHealth);
     }
 

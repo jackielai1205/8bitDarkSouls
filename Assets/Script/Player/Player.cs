@@ -352,8 +352,11 @@ public class Player : Character
 
     public void RecoverHealth(int healthAmount)
     {
-        //prevents health from going over current max health
-        if(currentHealth + healthAmount <= health)
+        if(healthAmount < 0)
+        {
+            Debug.Log("Health amount to recover cannot be negative!");
+        }
+        else if(currentHealth + healthAmount <= health)
         {
             currentHealth += healthAmount;
         }
@@ -361,6 +364,7 @@ public class Player : Character
         {
             currentHealth = health;
         }
+
         healthBar.SetHealth(currentHealth);
     }
 

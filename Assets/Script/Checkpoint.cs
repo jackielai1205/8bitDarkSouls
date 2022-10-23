@@ -18,14 +18,14 @@ public class Checkpoint : Interactable
         sv.SaveCharacter();
     }
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
-
-        if (other.gameObject.name == player.name){
-            // print("Game was saved on the checkpoint");
-            // sv.SaveCharacter();
-        }
-    }
+    // void OnTriggerEnter2D(Collider2D other)
+    // {
+    //
+    //     if (other.gameObject.name == player.name){
+    //         // print("Game was saved on the checkpoint");
+    //         // sv.SaveCharacter();
+    //     }
+    // }
 
     // Update is called once per frame
     void Update()

@@ -7,6 +7,14 @@ using UnityEngine;
 // [RequireComponent(typeof(BoxCollider2D))]
 public abstract class Interactable : MonoBehaviour
 {
+
+    public GameObject interactIcon;
+
+    public void Start()
+    {
+        this.interactIcon.SetActive(false);
+    }
+
     private void Reset()
     {
         GetComponent<BoxCollider2D>().isTrigger = true;
@@ -17,15 +25,27 @@ public abstract class Interactable : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            Debug.Log("display collision tag");
-            collision.GetComponent<Player>().OpenInteractableIcon();
+            Debug.Log(collision.GetComponent<Player>());
+            // collision.GetComponent<Player>().OpenInteractableIcon();
+            this.interactIcon.SetActive(true);
         }
 
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.CompareTag("Player"))
-            collision.GetComponent<Player>().CloseInteractableIcon();
+        if (collision.CompareTag("Player"))
+            // collision.GetComponent<Player>().CloseInteractableIcon();
+            this.interactIcon.SetActive(false);
     }
+    
+    // public void OpenInteractableIcon()
+    // {
+    //     interactIcon.SetActive(true);
+    // }
+    //
+    // public void CloseInteractableIcon()
+    // {
+    //     interactIcon.SetActive(false);
+    // }
 }

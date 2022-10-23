@@ -428,15 +428,15 @@ public class Player : Character
     }
     
     // Interact System
-    public void OpenInteractableIcon()
-    {
-        interactIcon.SetActive(true);
-    }
-
-    public void CloseInteractableIcon()
-    {
-        interactIcon.SetActive(false);
-    }
+    // public void OpenInteractableIcon()
+    // {
+    //     interactIcon.SetActive(true);
+    // }
+    //
+    // public void CloseInteractableIcon()
+    // {
+    //     interactIcon.SetActive(false);
+    // }
 
     private void Checkinteraction()
     {

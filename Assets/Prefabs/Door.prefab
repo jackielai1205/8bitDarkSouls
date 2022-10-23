@@ -712,7 +712,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31e220fd4947cc44481987e5e9eb7088, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   scene: Cave1Staging
+=======
+  scene: 2
+>>>>>>> remotes/origin/test
 --- !u!1 &6320019597340856504
 GameObject:
   m_ObjectHideFlags: 0
@@ -1089,7 +1093,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31e220fd4947cc44481987e5e9eb7088, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   scene: Cave1Staging
+=======
+  scene: 2
+>>>>>>> remotes/origin/test
 --- !u!1 &6320019598356418711
 GameObject:
   m_ObjectHideFlags: 0
@@ -1214,4 +1222,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31e220fd4947cc44481987e5e9eb7088, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   scene: Cave1Staging
+=======
+  scene: 2
+>>>>>>> remotes/origin/test

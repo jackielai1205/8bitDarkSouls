@@ -11,8 +11,8 @@ public class Currency : MonoBehaviour
     {
         if(target.gameObject.tag == "Player")
         {
-        Inventory.currencyCoins += 1;
-        Destroy(gameObject);
+            Inventory.currencyCoins += 1;
+            Destroy(gameObject);
         }
     }
 

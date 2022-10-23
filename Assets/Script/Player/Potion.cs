@@ -38,14 +38,16 @@ public class Potion : MonoBehaviour
             switch(potionType)
             {
                 case Status.Health:
-                    player.RecoverHealth(15);
+                    Inventory.healthPotions += 1;
                     break;
                 case Status.Stamina:
-                    player.RecoverStamina(10);
+                    Inventory.staminaPotions += 1;
                     break;
                 case Status.Rejuvenate:
-                    player.RecoverHealth(10);
-                    player.RecoverStamina(5);
+                    Inventory.rejuvenationPotions += 1;
+                    break;
+                case Status.Attack:
+                    Inventory.powerPotions += 1;
                     break;
             }
         }

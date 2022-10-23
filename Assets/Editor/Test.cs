@@ -1,9 +1,7 @@
+
 using System.Collections;
-using System.Collections.Generic;
 using NUnit.Framework;
 using Script.Model.Enemy;
-using Script.Model.Enemy.EnemyType;
-using Script.Model.Projectile;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -14,18 +12,6 @@ namespace Editor
 {
     public class Test
     {
-        // [UnityTest]
-        // public IEnumerable EnemyStopHitTest()
-        // {
-        //     var skeleton = AssetDatabase.LoadAssetAtPath<SwordSkeleton>("Assets/Prefabs/EnemyPrefabs/SwordSkeleton.prefab");
-        //     skeleton.Start();
-        //     skeleton.movementSpeed = 1;
-        //     var targetObj = new GameObject();
-        //     skeleton.SetTarget(targetObj);
-        //     skeleton.WalkToCharacter();
-        //     yield return new WaitForSeconds(skeleton.transform.position);
-        //     Assert.AreEqual(new Vector3(1, 0 ,0 ), skeleton.transform.position);
-        // }
 
         [Test]
         public void TakeDamageTest()
@@ -51,8 +37,8 @@ namespace Editor
             Assert.IsTrue(skeleton);
         }
 
-        [Test]
-        public void BatAttackTest()
+        [UnityTest]
+        public IEnumerator BatAttackTest()
         {
             var bat = new GameObject().AddComponent<Bat>();
             var animator = bat.AddComponent<Animator>();
@@ -60,8 +46,9 @@ namespace Editor
             animator.runtimeAnimatorController = Resources.Load("Assets/Animation/Bat/BatController.controller") as RuntimeAnimatorController;
             bat.Start();
             bat.StartChaseState();
-            animator.SetInteger("AnimState", 1);
-            Assert.AreEqual(1 , animator.GetInteger("AnimState"));
+            bat.transform.position = new Vector3(0, 0, 0);
+            yield return new WaitForSeconds(3);
+            Assert.AreEqual(bat.transform, new Vector3(1,0,0));
         }
     }
 }

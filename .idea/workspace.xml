@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="932893cb-3062-43ab-93c6-9eb7a0ee5220" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Script/Model/Enemy/Skill.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Script/Model/Enemy/Skill/Skill.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/SwordSkeleton/SkeletonDeadAnimation.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/SwordSkeleton/SkeletonDeadAnimation.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/SwordSkeleton/SwordSkeletonController.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/SwordSkeleton/SwordSkeletonController.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/Test.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/Test.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/EnemyPrefabs/Alien.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/EnemyPrefabs/Alien.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/EnemyPrefabs/ArcherSkeleton.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/EnemyPrefabs/ArcherSkeleton.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/EnemyPrefabs/Bat.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/EnemyPrefabs/Bat.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/EnemyPrefabs/ShieldSkeleton.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/EnemyPrefabs/ShieldSkeleton.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/EnemyPrefabs/SwordSkeleton.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/EnemyPrefabs/SwordSkeleton.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/TestLevelStaging.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/TestLevelStaging.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Model/Character.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Model/Character.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Model/Enemy/EnemyType/Boss.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Model/Enemy/EnemyType/Boss.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Model/Enemy/EnemyType/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Model/Enemy/EnemyType/Enemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Model/Enemy/Skill.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Model/Enemy/Skill.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Model/Enemy/Skill/Skill.cs.meta" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="2GTLjL8xQibQBecRTgq4bxhm0Dq" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="932893cb-3062-43ab-93c6-9eb7a0ee5220" name="Changes" comment="" />
+      <created>1666407763439</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1666407763439</updated>
+      <workItem from="1666407765652" duration="63000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

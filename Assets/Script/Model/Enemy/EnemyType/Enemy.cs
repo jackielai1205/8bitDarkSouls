@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using Random = System.Random;
 
 namespace Script.Model.Enemy.EnemyType
 {
@@ -9,8 +10,12 @@ namespace Script.Model.Enemy.EnemyType
         public LayerMask whatIsEnemies;
         public float attackRange;
         public float movementSpeed = 1f;
+        public GameObject[] dropItems;
+        public float probability;
+        public GameObject currency;
+        public EnemyHealthBar enemyHealthBar;
         // public AttackRange attackRange;
-
+        
         private Transform _transform;
         private Rigidbody2D _rigidbody;
         private Animator _animator;
@@ -27,6 +32,8 @@ namespace Script.Model.Enemy.EnemyType
 
         public void Start()
         {
+            SetMaxHealth(health);
+            enemyHealthBar.SetHealth(health, GetMaxHealth());
             _transform = GetComponent<Transform>();
             _animator = GetComponent<Animator>();
             _rigidbody = GetComponent<Rigidbody2D>();
@@ -73,12 +80,23 @@ namespace Script.Model.Enemy.EnemyType
         //When take damage, bot measure the power and reduce the health.
         public void HitState()
         {
-            health -= _takeDamagePower;
-            _takeDamagePower = 0;
-            if (health <= 0)
+
+            try
             {
-                _isDead = true;
+                health -= _takeDamagePower;
+                _takeDamagePower = 0;
+                enemyHealthBar.SetHealth(health, GetMaxHealth());
+                if (health <= 0)
+                {
+                    _isDead = true;
+                }
             }
+            catch (NullReferenceException err)
+            {
+                print("Health bar haven't initialize");
+                print(err);
+            }
+
         }
 
         //Perform action if any condition satisfied, otherwise walk to player
@@ -296,5 +314,33 @@ namespace Script.Model.Enemy.EnemyType
 
         //Abstract class for different implementation
         public abstract void Move();
+        
+        public void DropCurrency()
+        {
+            Instantiate(currency, transform.position, Quaternion.identity);
+        }
+
+        public void DropItems()
+        {
+            Random random = new Random();
+            double result = random.NextDouble();
+            print("result" + result);
+            if (result > probability)
+            {
+                return;
+            }
+            double number = (double) 1 / dropItems.Length;
+            int count = 0;
+            print("number" + number);
+            while (result >= number)
+            {
+                result -= number;
+                count++;
+            }
+            print(count);
+            Instantiate(dropItems[count], new Vector3(transform.position.x, (transform.position.y - 1f), transform.position.z), Quaternion.identity);
+        }
     }
 }
+
+

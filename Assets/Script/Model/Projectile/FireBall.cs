@@ -12,11 +12,12 @@ namespace Script.Model.Projectile
             Destroy(gameObject, 3f);
         }
 
-        public override void Perform(Transform weapon, Transform target)
+        public override void Perform(Transform weapon, Transform target, AudioSource source)
         {
             if (currentCoolDown >= coolDown)
             {
                 currentCoolDown = 0;
+                source.PlayOneShot(sound);
                 var fireBall = Instantiate(this, weapon.transform.position, weapon.transform.rotation);
                 Transform fireBallTransform = fireBall.GetComponent<Transform>();
                 Vector3 relativePos = target.position - fireBallTransform.position;

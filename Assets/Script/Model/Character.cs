@@ -6,7 +6,6 @@ public abstract class Character : MonoBehaviour
 {
     public int health;
     private int _maxHealth;
-    public int power;
     public int attackPower;
 
     public abstract void Dead();
@@ -23,5 +22,4 @@ public abstract class Character : MonoBehaviour
     {
         return _maxHealth;
     }
-    
 }

@@ -514,16 +514,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c51596ba773a4ec3b77070b4d146916c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 40
-  power: 0
+  health: 300
   attackPower: 20
   attackPos: {fileID: 960237314}
   whatIsEnemies:
     serializedVersion: 2
     m_Bits: 512
   attackRange: 0.5
-  movementSpeed: 1
+  movementSpeed: 0.7
+  dropItems: []
+  probability: 0
+  currency: {fileID: 7083456768601937698, guid: a34412cbe37e6d04a9bc51fc9e844f23, type: 3}
   enemyHealthBar: {fileID: 1659521125103310798}
+  source: {fileID: 0}
+  deathClip: {fileID: 8300000, guid: 3e01dfc2e19254af3ba33f3bed4ce23e, type: 3}
+  hitClip: {fileID: 8300000, guid: eddd2548d447f4db99cb06fb8f574074, type: 3}
+  attackClip: {fileID: 8300000, guid: eb5bc2680a25e4d6f882809ec59eb47c, type: 3}
   groundSensor: {fileID: 0}
   jumpAreas: {fileID: 0}
 --- !u!70 &725408092

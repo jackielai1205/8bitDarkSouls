@@ -13,7 +13,7 @@ namespace Script.Model.Projectile
             Destroy(gameObject);
         }
 
-        public override void Perform(Transform weapon, Transform target)
+        public override void Perform(Transform weapon, Transform target, AudioSource source)
         {
             if (currentCoolDown >= coolDown)
             {

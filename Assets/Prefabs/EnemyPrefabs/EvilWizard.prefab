@@ -214,14 +214,16 @@ MonoBehaviour:
   currency: {fileID: 7083456768601937698, guid: a34412cbe37e6d04a9bc51fc9e844f23, type: 3}
   enemyHealthBar: {fileID: 0}
   source: {fileID: 0}
-  deathClip: {fileID: 0}
-  hitClip: {fileID: 0}
-  attackClip: {fileID: 0}
+  deathClip: {fileID: 8300000, guid: 3ad1a8f957c2743b7aa65691c6816320, type: 3}
+  hitClip: {fileID: 8300000, guid: b3694aef6060c4c50ad195c310ddc2fa, type: 3}
+  attackClip: {fileID: 8300000, guid: c5dd2cc2d3244467790bf982c9500b6e, type: 3}
+  bossTheme: {fileID: 8300000, guid: 5e5736f4d5b1744d3ba1e29d6be49ded, type: 3}
   bossName: Evil Wizard
   skills:
   - {fileID: 4877397622984536855, guid: f640561795e0c4cde9261dd7a3dc5ed6, type: 3}
   - {fileID: 756290609292795202, guid: 512118622002e4317b5bf1e6bf575682, type: 3}
   weapon: {fileID: 1616922035649596537}
+  healthBar: {fileID: 0}
 --- !u!50 &20849562
 Rigidbody2D:
   serializedVersion: 4
@@ -283,8 +285,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 474082265966084609}
-  - component: {fileID: 8977577350684299919}
   - component: {fileID: 2858593462245549541}
+  - component: {fileID: 1099176203}
   m_Layer: 8
   m_Name: EvilWizardActivationArea
   m_TagString: Untagged
@@ -307,19 +309,6 @@ Transform:
   m_Father: {fileID: 3626164217745319433}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8977577350684299919
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7351984115219580482}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4524da39e1a154583b7f71b1df225afd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemy: {fileID: 8721864869432380994}
 --- !u!61 &2858593462245549541
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -346,3 +335,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5, y: 5}
   m_EdgeRadius: 0
+--- !u!114 &1099176203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7351984115219580482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 732f14c5bc9f4c5288923c32696d6ff4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 8721864869432380994}

@@ -397,9 +397,12 @@ MonoBehaviour:
     m_Bits: 512
   attackRange: 0.8
   movementSpeed: 1
-  dropItems: []
-  probability: 0
-  currency: {fileID: 0}
+  dropItems:
+  - {fileID: 6479891152691787614, guid: 1e7697697ac50c84583f92ddb836ebec, type: 3}
+  - {fileID: 7493709373610950062, guid: 7578143fc872e144ea9c45af4cf85333, type: 3}
+  - {fileID: 2529875133213834565, guid: e72b55a7b91e9394baa8986d5043c439, type: 3}
+  probability: 0.1
+  currency: {fileID: 7083456768601937698, guid: a34412cbe37e6d04a9bc51fc9e844f23, type: 3}
   enemyHealthBar: {fileID: 1500564046054401634}
   source: {fileID: 0}
   deathClip: {fileID: 0}

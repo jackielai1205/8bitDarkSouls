@@ -89,6 +89,7 @@ public class Player : Character
         if (Inventory.currencyCoins >= 5){
             Inventory.currencyCoins -= 5;
             this.stamina += 25;
+            staminaBar.slider.maxValue = stamina;
             print("Upgraded Stamina");
         } else {print("Not Enough coins!");}
     }
@@ -96,13 +97,14 @@ public class Player : Character
         if (Inventory.currencyCoins >= 5){
             Inventory.currencyCoins -= 5;
             this.health += 25;
+            healthBar.slider.maxValue = health;
             print("Upgraded Health");
         } else {print("Not Enough coins!");}
     }
     public void UpgradeDamage(){
         if (Inventory.currencyCoins >= 5){
             Inventory.currencyCoins -= 5;
-            this.damage += 25;
+            this.damage += 50;
             print("Upgraded Damage");
         } else {print("Not Enough coins!");}
     }

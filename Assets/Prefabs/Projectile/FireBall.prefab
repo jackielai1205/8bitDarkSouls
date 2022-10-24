@@ -120,10 +120,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 549bcad67bdf4646b53e336638a20660, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coolDown: 500
-  speed: 5
+  sound: {fileID: 8300000, guid: c5dd2cc2d3244467790bf982c9500b6e, type: 3}
+  coolDown: 1000
   power: 10
-  currentCoolDown: 0
+  currentCoolDown: 10646
+  speed: 5
 --- !u!50 &4081628779986355284
 Rigidbody2D:
   serializedVersion: 4

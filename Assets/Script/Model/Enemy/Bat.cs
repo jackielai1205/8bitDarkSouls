@@ -1,10 +1,13 @@
-using System;
 using Script.Model.Enemy.EnemyType;
+using UnityEngine;
+using Random = System.Random;
 
 namespace Script.Model.Enemy
 {
     public class Bat : FlyEnemy
     {
+        public AudioClip bitClip;
+        public AudioClip spinClip;
         //Random available Animation and change the animstate
         public override void StartAttack()
         {
@@ -12,6 +15,16 @@ namespace Script.Model.Enemy
             var randomNumber = random.Next(0, 2);
             GetAnimator().SetInteger(GetAttackMethod(), randomNumber);
             GetAnimator().SetInteger(GetAnimState(), 2);
+        }
+
+        public void PlayBitSound()
+        {
+            source.PlayOneShot(bitClip);
+        }
+
+        public void PlaySpinClip()
+        {
+            source.PlayOneShot(spinClip);
         }
     }
 }

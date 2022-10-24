@@ -17,8 +17,8 @@ namespace Editor
         public void TakeDamageTest()
         {
             var skeleton = AssetDatabase.LoadAssetAtPath<SwordSkeleton>("Assets/Prefabs/EnemyPrefabs/SwordSkeleton.prefab");
-            skeleton.Start();
             skeleton.health = 100;
+            skeleton.Start();
             int damage = 10;
             skeleton.TakeDamage(damage);
             skeleton.HitState();
@@ -28,13 +28,14 @@ namespace Editor
         [Test]
         public void DeadTest()
         {
-            var skeleton = AssetDatabase.LoadAssetAtPath<SwordSkeleton>("Assets/Prefabs/EnemyPrefabs/SwordSkeleton.prefab");
-            skeleton.Start();
+            var skeleton = AssetDatabase.LoadAssetAtPath<ShieldSkeleton>("Assets/Prefabs/EnemyPrefabs/ShieldSkeleton.prefab");
             skeleton.health = 10;
+            skeleton.SetIsDead(false);
+            skeleton.Start();
             int damage = 10;
             skeleton.TakeDamage(damage);
             skeleton.HitState();
-            Assert.IsTrue(skeleton);
+            Assert.IsTrue(skeleton.GetIsDead());
         }
 
         [UnityTest]

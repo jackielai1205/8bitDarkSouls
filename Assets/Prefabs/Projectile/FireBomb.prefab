@@ -145,7 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69ef238bcb014a319e6bcc5463c306ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sound: {fileID: 8300000, guid: b622104b1a63a4b6fad51fe8e74e413b, type: 3}
   coolDown: 2000
-  speed: 0
   power: 20
-  currentCoolDown: 0
+  currentCoolDown: 362

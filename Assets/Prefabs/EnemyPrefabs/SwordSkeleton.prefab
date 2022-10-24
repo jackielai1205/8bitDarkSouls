@@ -404,9 +404,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 90
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -469,7 +469,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8962264, g: 0.8919989, b: 0.8919989, a: 1}
+  m_Color: {r: 0.100000024, g: 0.9, b: 0.18193746, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -698,16 +698,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2aca37332ae63473090c44e862410c0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
-  power: 0
-  attackPower: 0
+  health: 90
+  attackPower: 10
   attackPos: {fileID: 1953305812}
   whatIsEnemies:
     serializedVersion: 2
     m_Bits: 512
   attackRange: 0.5
   movementSpeed: 1
+  dropItems: []
+  probability: 0
+  currency: {fileID: 7083456768601937698, guid: a34412cbe37e6d04a9bc51fc9e844f23, type: 3}
   enemyHealthBar: {fileID: 267337451}
+  source: {fileID: 0}
+  deathClip: {fileID: 8300000, guid: 3e01dfc2e19254af3ba33f3bed4ce23e, type: 3}
+  hitClip: {fileID: 8300000, guid: eddd2548d447f4db99cb06fb8f574074, type: 3}
+  attackClip: {fileID: 8300000, guid: ce5be1d32fbf0401f905059315dfbc62, type: 3}
   groundSensor: {fileID: 21186228}
   jumpAreas: {fileID: 0}
 --- !u!212 &945440252

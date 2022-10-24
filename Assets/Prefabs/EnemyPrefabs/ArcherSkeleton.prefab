@@ -522,7 +522,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  power: 0
   attackPower: 0
   attackPos: {fileID: 2118647385035187173}
   whatIsEnemies:
@@ -530,7 +529,14 @@ MonoBehaviour:
     m_Bits: 0
   attackRange: 5.6
   movementSpeed: 1
+  dropItems: []
+  probability: 0
+  currency: {fileID: 0}
   enemyHealthBar: {fileID: 1077355574}
+  source: {fileID: 0}
+  deathClip: {fileID: 8300000, guid: cd5f360745fd34db984819bb97bd4af1, type: 3}
+  hitClip: {fileID: 8300000, guid: b34565924d8a64a9a9c2683ee6e9feaf, type: 3}
+  attackClip: {fileID: 8300000, guid: f677390a824d84fb9af93e41f03698a7, type: 3}
   groundSensor: {fileID: 0}
   jumpAreas: {fileID: 0}
   arrow: {fileID: 2846206030032215355, guid: ea3ff51f9173b438a83f2d14a3861778, type: 3}

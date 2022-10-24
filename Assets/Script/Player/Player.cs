@@ -290,11 +290,10 @@ public class Player : Character
                     m_animator.SetInteger("AnimState", 0);
         }
 
-<<<<<<< HEAD
         if (Input.GetKeyDown(KeyCode.E))
         {
             Checkinteraction();
-=======
+        }
         //Drink potion
         if(Input.GetKeyDown("1") && (PlayerPrefs.GetInt("healthPotion") != 0))
         {
@@ -316,7 +315,6 @@ public class Player : Character
         {
             // Need attack potion function here
             Inventory.powerPotions -= 1;
->>>>>>> remotes/origin/test
         }
 
     }
@@ -454,17 +452,6 @@ public class Player : Character
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(attackPos.position, attackRange);
     }
-    
-    // Interact System
-    // public void OpenInteractableIcon()
-    // {
-    //     interactIcon.SetActive(true);
-    // }
-    //
-    // public void CloseInteractableIcon()
-    // {
-    //     interactIcon.SetActive(false);
-    // }
 
     private void Checkinteraction()
     {

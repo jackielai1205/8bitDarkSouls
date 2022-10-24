@@ -4,6 +4,7 @@ namespace Script.Model.Enemy.EnemyType
 {
     public class Wizard : Boss
     {
+        public EnemyHealthBar healthBar;
         //Add jump state for ground enemy
         public override void Update()
         {
@@ -13,6 +14,7 @@ namespace Script.Model.Enemy.EnemyType
                     IdleState();
                     break;
                 case 1:
+                    healthBar.gameObject.SetActive(true);
                     ChaseCharacterState();
                     Cast();
                     break;
@@ -25,6 +27,7 @@ namespace Script.Model.Enemy.EnemyType
                     break;
                 case 5:
                     DeadState();
+                    healthBar.gameObject.SetActive(false);
                     break;
             }
         }
@@ -39,7 +42,7 @@ namespace Script.Model.Enemy.EnemyType
         {
             foreach (Skill.Skill skill in skills)
             {
-                skill.Perform(weapon, GetTarget().transform);
+                skill.Perform(weapon, GetTarget().transform, source);
             }
         }
         

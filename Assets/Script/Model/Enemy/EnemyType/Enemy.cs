@@ -14,7 +14,12 @@ namespace Script.Model.Enemy.EnemyType
         public float probability;
         public GameObject currency;
         public EnemyHealthBar enemyHealthBar;
+        public AudioSource source;
+        public AudioClip deathClip;
+        public AudioClip hitClip;
+        public AudioClip attackClip;
         // public AttackRange attackRange;
+        
         
         private Transform _transform;
         private Rigidbody2D _rigidbody;
@@ -339,6 +344,31 @@ namespace Script.Model.Enemy.EnemyType
             }
             print(count);
             Instantiate(dropItems[count], new Vector3(transform.position.x, (transform.position.y - 1f), transform.position.z), Quaternion.identity);
+        }
+        
+        public void PlayDeathSound()
+        {
+            source.PlayOneShot(deathClip);
+        }
+        
+        public void PlayHitSound()
+        {
+            source.PlayOneShot(hitClip);
+        }
+        
+        public void PlayAttackSound()
+        {
+            source.PlayOneShot(attackClip);
+        }
+
+        public void SetIsDead(bool value)
+        {
+            _isDead = value;
+        }
+
+        public bool GetIsDead()
+        {
+            return _isDead;
         }
     }
 }

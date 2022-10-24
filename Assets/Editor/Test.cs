@@ -38,18 +38,16 @@ namespace Editor
             Assert.IsTrue(skeleton.GetIsDead());
         }
 
-        [UnityTest]
-        public IEnumerator BatAttackTest()
+        [Test]
+        public void BatTakeDamageTest()
         {
-            var bat = new GameObject().AddComponent<Bat>();
-            var animator = bat.AddComponent<Animator>();
-            var render = bat.AddComponent<SpriteRenderer>();
-            animator.runtimeAnimatorController = Resources.Load("Assets/Animation/Bat/BatController.controller") as RuntimeAnimatorController;
+            var bat = AssetDatabase.LoadAssetAtPath<Bat>("Assets/Prefabs/EnemyPrefabs/Bat.prefab");
+            bat.health = 30;
             bat.Start();
-            bat.StartChaseState();
-            bat.transform.position = new Vector3(0, 0, 0);
-            yield return new WaitForSeconds(3);
-            Assert.AreEqual(bat.transform, new Vector3(1,0,0));
+            int damage = 10;
+            bat.TakeDamage(damage);
+            bat.HitState();
+            Assert.AreEqual(20,bat.health);
         }
     }
 }

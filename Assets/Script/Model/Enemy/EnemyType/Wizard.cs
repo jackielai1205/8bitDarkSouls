@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 namespace Script.Model.Enemy.EnemyType
 {
@@ -15,6 +16,7 @@ namespace Script.Model.Enemy.EnemyType
                     break;
                 case 1:
                     healthBar.gameObject.SetActive(true);
+                    PlayBossTheme();
                     ChaseCharacterState();
                     Cast();
                     break;

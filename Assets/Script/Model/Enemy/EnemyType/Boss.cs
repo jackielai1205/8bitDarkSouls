@@ -22,5 +22,20 @@ namespace Script.Model.Enemy.EnemyType
                 themeIsPlaying = true;
             }
         }
+        
+        public override void FindNextState()
+        {
+            if (GetIsDead())
+            {
+                Dead();
+            }else if (GetInRange())
+            {
+                StartAttack();
+            }
+            else
+            {
+                StartChaseState();
+            }
+        }
     }
 }

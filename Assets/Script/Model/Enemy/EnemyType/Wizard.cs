@@ -6,6 +6,7 @@ namespace Script.Model.Enemy.EnemyType
     public class Wizard : Boss
     {
         public EnemyHealthBar healthBar;
+        
         //Add jump state for ground enemy
         public override void Update()
         {
@@ -33,7 +34,7 @@ namespace Script.Model.Enemy.EnemyType
                     break;
             }
         }
-        
+
         public override void StartAttack()
         {
             GetAnimator().SetInteger(GetAttackMethod(), 0);

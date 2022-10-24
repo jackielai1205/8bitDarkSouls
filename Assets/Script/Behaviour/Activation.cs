@@ -35,7 +35,7 @@ public class Activation : MonoBehaviour
     //     }
     // }
 
-    void OnTriggerExit2D(Collider2D other)
+    public virtual void OnTriggerExit2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player"))
         {

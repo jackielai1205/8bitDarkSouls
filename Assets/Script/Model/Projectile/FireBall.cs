@@ -9,7 +9,7 @@ namespace Script.Model.Projectile
         public float speed;
         public void Start()
         {
-            Destroy(gameObject, 3f);
+            Destroy(gameObject, 5f);
         }
 
         public override void Perform(Transform weapon, Transform target, AudioSource source)

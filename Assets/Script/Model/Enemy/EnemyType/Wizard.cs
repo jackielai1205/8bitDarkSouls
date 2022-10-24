@@ -1,10 +1,12 @@
 using System;
+using UnityEngine;
 
 namespace Script.Model.Enemy.EnemyType
 {
     public class Wizard : Boss
     {
         public EnemyHealthBar healthBar;
+        
         //Add jump state for ground enemy
         public override void Update()
         {
@@ -15,6 +17,7 @@ namespace Script.Model.Enemy.EnemyType
                     break;
                 case 1:
                     healthBar.gameObject.SetActive(true);
+                    PlayBossTheme();
                     ChaseCharacterState();
                     Cast();
                     break;
@@ -31,7 +34,7 @@ namespace Script.Model.Enemy.EnemyType
                     break;
             }
         }
-        
+
         public override void StartAttack()
         {
             GetAnimator().SetInteger(GetAttackMethod(), 0);

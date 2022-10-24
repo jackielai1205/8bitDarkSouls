@@ -27,7 +27,7 @@ public class Player : Character
     public Transform attackPos;
     public LayerMask whatIsEnemies;
     public float attackRange;
-    public int damage;
+    public double damage;
 
     private float timeBtwAttack;
 
@@ -60,6 +60,7 @@ public class Player : Character
     // Interact System
     public GameObject interactIcon;
     private Vector2 boxSize = new Vector2(0.1f, 1f);
+    public GameObject attackPotionTimeIcon;
 
     void Dodge()
     {
@@ -108,6 +109,7 @@ public class Player : Character
         m_wallSensorL2 = transform.Find("WallSensor_L2").GetComponent<Sensor_HeroKnight>();
 
         interactIcon.SetActive(false);
+        attackPotionTimeIcon.SetActive(false);
         
         // If statement that checks if character suppose to move to the checkpoint
         if (PlayerPrefs.GetInt("PlayerHasDied") == 1) {
@@ -216,7 +218,7 @@ public class Player : Character
             Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemies);
             for(int i = 0; i < enemiesToDamage.Length; i++){
                 if(enemiesToDamage[i].GetComponent<Enemy>() != null){
-                    enemiesToDamage[i].GetComponent<Enemy>().TakeDamage(damage);
+                    enemiesToDamage[i].GetComponent<Enemy>().TakeDamage((int)damage);
                 }
             }
             m_currentAttack++;
@@ -313,12 +315,27 @@ public class Player : Character
         }
         else if(Input.GetKeyDown("4") && (PlayerPrefs.GetInt("powerPotion") != 0))
         {
-            // Need attack potion function here
+            // Damage * 1.3
+            addAttack();
+            // Change back to origin damage after 5 seconds
+            Invoke("minusAttack", 5);
             Inventory.powerPotions -= 1;
         }
 
     }
 
+    public void addAttack()
+    {
+        this.damage = this.damage * 1.3;
+        attackPotionTimeIcon.SetActive(true);
+    }
+
+    public void minusAttack()
+    {
+        this.damage = this.damage / 1.3;
+        attackPotionTimeIcon.SetActive(false);
+    }
+    
     public void Walk()
     {
         throw new System.NotImplementedException();

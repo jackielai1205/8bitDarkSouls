@@ -80,7 +80,7 @@ public class SaveLoad : MonoBehaviour
         PlayerPrefs.SetInt("PlayerHasDied", 1);
         PlayerPrefs.Save();
         // Waiting 3 seconds
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(8);
         // Reloading scene
         SceneManager.LoadScene(PlayerPrefs.GetInt("SavedScene"));
 

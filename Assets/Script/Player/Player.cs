@@ -6,9 +6,11 @@ using UnityEditor;
 
 public class Player : Character
 {
+    public DeadUI deadUI;
 	public int currentHealth;
 	public int stamina = 150;
 	public int currentStamina;
+    public int winTime;
 
     [SerializeField] float      m_speed = 4.0f;
     [SerializeField] float      m_jumpForce = 7.5f;
@@ -62,6 +64,8 @@ public class Player : Character
     private Vector2 boxSize = new Vector2(0.1f, 1f);
     public GameObject attackPotionTimeIcon;
 
+    public CanvasGroup DeadUI;
+
     void Dodge()
     {
         //write code here
@@ -90,6 +94,7 @@ public class Player : Character
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = 1f;
         //set health
         // health = 200;
         currentHealth = health;
@@ -145,7 +150,7 @@ public class Player : Character
 			TakeDamage(15);
 		}
 
-		if (Input.GetMouseButtonDown(0) && !m_dead || Input.GetKeyDown("left shift") && !m_dead || Input.GetMouseButtonDown(1) && !m_dead)
+		if (Input.GetMouseButtonDown(0) && !m_dead || Input.GetKeyDown("left shift") && !m_dead || Input.GetMouseButtonDown(1) && !m_dead && m_grounded)
 		{
 			UseStamina(10);
 		}
@@ -170,7 +175,6 @@ public class Player : Character
         }
 
         // Check if character just landed on the ground
-        //Check if character just landed on the ground
         if (!m_grounded && m_groundSensor.State())
         {
             m_grounded = true;
@@ -213,7 +217,7 @@ public class Player : Character
         m_isWallSliding = (m_wallSensorR1.State() && m_wallSensorR2.State()) || (m_wallSensorL1.State() && m_wallSensorL2.State());
         m_animator.SetBool("WallSlide", m_isWallSliding);
         
-        //Attack
+        // Attack
         if(timeBtwAttack <= 0 && !m_rolling && Input.GetMouseButtonDown(0) && !m_dead && m_allowAction){
             Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemies);
             for(int i = 0; i < enemiesToDamage.Length; i++){
@@ -265,7 +269,7 @@ public class Player : Character
         }
             
 
-        //Jump
+        // Jump
         else if (Input.GetKeyDown("space") && m_grounded && !m_rolling && !m_dead && !m_blocking)
         {
             m_animator.SetTrigger("Jump");
@@ -275,7 +279,7 @@ public class Player : Character
             m_groundSensor.Disable(0.2f);
         }
 
-        //Run
+        // Run
         else if (Mathf.Abs(inputX) > Mathf.Epsilon && !m_dead)
         {
             // Reset timer
@@ -283,7 +287,7 @@ public class Player : Character
             m_animator.SetInteger("AnimState", 1);
         }
 
-        //Idle
+        // Idle
         else
         {
             // Prevents flickering transitions to idle
@@ -296,7 +300,7 @@ public class Player : Character
         {
             Checkinteraction();
         }
-        //Drink potion
+        // Drink potion
         if(Input.GetKeyDown("1") && (PlayerPrefs.GetInt("healthPotion") != 0))
         {
             RecoverHealth(15);
@@ -321,7 +325,19 @@ public class Player : Character
             Invoke("minusAttack", 5);
             Inventory.powerPotions -= 1;
         }
-
+        
+        // Set Player to Dead if falling to Killing Area
+        if (this.GetComponent<CapsuleCollider2D>().CompareTag("KillingArea"))
+        {
+            this.currentHealth = 0;
+        }
+        
+        // DeadUI display
+        if (currentHealth <= 0)
+        {
+            showDeadUI();
+            deadUI.PlayDeadAudio();
+        }
     }
 
     public void addAttack()
@@ -353,6 +369,10 @@ public class Player : Character
 
     public void TakeDamage(int damage)
 	{
+        if (m_rolling)
+        {
+            return;
+        } 
         if (!m_dead)
         {
             if (m_blocking)
@@ -433,11 +453,11 @@ public class Player : Character
     //for regenerating stamina
 	private IEnumerator RegenStamina()
 	{
-		yield return new WaitForSeconds(2);
+		yield return new WaitForSeconds(1);
 
 		while(currentStamina < stamina)
 		{
-			currentStamina += 1;
+			currentStamina += 2;
 			//Debug.Log("stamina increasing by: "+ currentStamina);
 			staminaBar.SetStamina(currentStamina);
 			yield return regenTick;
@@ -483,6 +503,14 @@ public class Player : Character
                     return;
                 }
             }
+        }
+    }
+
+    public void showDeadUI()
+    {
+        if (DeadUI.alpha <= 1)
+        {
+            DeadUI.alpha += Time.deltaTime;
         }
     }
 }

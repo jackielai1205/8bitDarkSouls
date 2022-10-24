@@ -215,6 +215,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 200
   attackPower: 0
+  deadUI: {fileID: 0}
   currentHealth: 0
   stamina: 150
   currentStamina: 0
@@ -234,6 +235,8 @@ MonoBehaviour:
   staminaBar: {fileID: 0}
   inventory: {fileID: 0}
   interactIcon: {fileID: 7083456768601937698, guid: a34412cbe37e6d04a9bc51fc9e844f23, type: 3}
+  attackPotionTimeIcon: {fileID: 0}
+  DeadUI: {fileID: 0}
 --- !u!1 &2865048481909255372
 GameObject:
   m_ObjectHideFlags: 0

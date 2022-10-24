@@ -10,11 +10,12 @@ TagManager:
   - ActivationArea
   - Ground
   - GameMusic
+  - KillingArea
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - DeadUI
   - Water
   - UI
   - Background

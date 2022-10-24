@@ -10220,15 +10220,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 588316892, guid: 2d8f6928930952c4a8683ba0d2def613, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 588316893, guid: 2d8f6928930952c4a8683ba0d2def613, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -300.98
+      value: -286.73
       objectReference: {fileID: 0}
     - target: {fileID: 588316893, guid: 2d8f6928930952c4a8683ba0d2def613, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -156.3
+      value: -95.05
       objectReference: {fileID: 0}
     - target: {fileID: 865056162987166211, guid: 2d8f6928930952c4a8683ba0d2def613, type: 3}
       propertyPath: m_Name

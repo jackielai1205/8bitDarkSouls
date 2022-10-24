@@ -404,9 +404,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 90
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -469,7 +469,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8962264, g: 0.8919989, b: 0.8919989, a: 1}
+  m_Color: {r: 0.100000024, g: 0.9, b: 0.18193746, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -698,7 +698,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2aca37332ae63473090c44e862410c0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 200
+  health: 90
   attackPower: 10
   attackPos: {fileID: 1953305812}
   whatIsEnemies:

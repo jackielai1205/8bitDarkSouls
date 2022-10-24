@@ -360,6 +360,16 @@ namespace Script.Model.Enemy.EnemyType
         {
             source.PlayOneShot(attackClip);
         }
+
+        public void SetIsDead(bool value)
+        {
+            _isDead = value;
+        }
+
+        public bool GetIsDead()
+        {
+            return _isDead;
+        }
     }
 }
 

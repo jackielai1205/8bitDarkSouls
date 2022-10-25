@@ -20,22 +20,22 @@ namespace Script.Model.Enemy
         {
             switch (GetAnimator().GetInteger(GetAnimState()))
             {
-                case 0:
+                case (int)State.Idle:
                     IdleState();
                     break;
-                case 1:
+                case (int)State.Chase:
                     ChaseCharacterState();
                     break;
-                case 2:
+                case (int)State.Attack:
                     AttackState();
                     break;
-                case 4:
+                case (int)State.Hit:
                     HitState();
                     break;
-                case 5:
+                case (int)State.Dead:
                     DeadState();
                     break;
-                case 6:
+                case (int)State.Block:
                     BlockState();
                     break;
             }
@@ -43,7 +43,7 @@ namespace Script.Model.Enemy
 
         public void StartBlock()
         {
-            GetAnimator().SetInteger(GetAnimState(), 6);
+            GetAnimator().SetInteger(GetAnimState(), (int)State.Block);
         }
 
         public void BlockState()

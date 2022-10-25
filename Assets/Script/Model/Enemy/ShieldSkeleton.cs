@@ -53,7 +53,7 @@ namespace Script.Model.Enemy
         
         public override void TakeDamage(int damage)
         {
-            if (GetAnimator().GetInteger(GetAnimState()) == 0 || GetAnimator().GetInteger(GetAnimState()) == 1 || _canBlock)
+            if (GetAnimator().GetInteger(GetAnimState()) == (int)State.Hit || GetAnimator().GetInteger(GetAnimState()) == (int)State.Chase || _canBlock)
             {
                 print("Block");
                 StartBlock();

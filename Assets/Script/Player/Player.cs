@@ -58,7 +58,6 @@ public class Player : Character
     private float               m_rollCurrentTime;
 
     // Interact System
-    public GameObject interactIcon;
     private Vector2 boxSize = new Vector2(0.1f, 1f);
     public GameObject attackPotionTimeIcon;
 
@@ -133,8 +132,7 @@ public class Player : Character
         m_wallSensorR2 = transform.Find("WallSensor_R2").GetComponent<Sensor_HeroKnight>();
         m_wallSensorL1 = transform.Find("WallSensor_L1").GetComponent<Sensor_HeroKnight>();
         m_wallSensorL2 = transform.Find("WallSensor_L2").GetComponent<Sensor_HeroKnight>();
-
-        interactIcon.SetActive(false);
+        
         attackPotionTimeIcon.SetActive(false);
         
         // If statement that checks if character suppose to move to the checkpoint

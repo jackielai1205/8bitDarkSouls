@@ -48,9 +48,9 @@ public class Player : Character
     private bool                m_isWallSliding = false;
     private bool                m_grounded = false;
     private bool                m_rolling = false;
-    private bool m_blocking = false;
+    public bool m_blocking = false;
     private bool m_runBlockingAnimate = false;
-    private bool m_dead = false;
+    public bool m_dead = false;
     private bool m_allowAction = true;
     private int                 m_facingDirection = 1;
     private int                 m_currentAttack = 0;
@@ -296,7 +296,7 @@ public class Player : Character
                     m_animator.SetInteger("AnimState", 0);
         }
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.F))
         {
             Checkinteraction();
         }

@@ -24,7 +24,7 @@ namespace Script.Model.Enemy
             {
                 slider.value = health;
             }
-            slider.value = (health <= 0) ? 0 : health;
+            slider.value = health;
             slider.maxValue = maxHealth;
             slider.fillRect.GetComponentInChildren<Image>().color = Color.Lerp(low, high, slider.normalizedValue);
         }

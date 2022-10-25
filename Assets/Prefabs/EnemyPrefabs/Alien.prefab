@@ -651,6 +651,7 @@ MonoBehaviour:
   low: {r: 1, g: 0, b: 0, a: 1}
   high: {r: 0, g: 1, b: 0.20215273, a: 1}
   offset: {x: 0, y: 0, z: 0}
+  fillArea: {fileID: 881706177958876688}
 --- !u!1 &6904831152803756696
 GameObject:
   m_ObjectHideFlags: 0

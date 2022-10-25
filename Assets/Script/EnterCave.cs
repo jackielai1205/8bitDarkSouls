@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class EnterCave : MonoBehaviour
+public class EnterCave : Interactable
 {
     public string scene;
 
@@ -19,11 +19,15 @@ public class EnterCave : MonoBehaviour
         
     }
 
-    void OnTriggerEnter2D(Collider2D target)
+    // void OnTriggerEnter2D(Collider2D target)
+    // {
+    //     if(target.gameObject.tag == "Player")
+    //     {
+    //         Application.LoadLevel(scene);
+    //     }
+    // }
+    public override void Interact()
     {
-        if(target.gameObject.tag == "Player")
-        {
-            Application.LoadLevel(scene);
-        }
+        Application.LoadLevel(scene);
     }
 }

@@ -6,9 +6,11 @@ using UnityEditor;
 
 public class Player : Character
 {
+    public DeadUI deadUI;
 	public int currentHealth;
 	public int stamina = 150;
 	public int currentStamina;
+    public int winTime;
 
     [SerializeField] float      m_speed = 4.0f;
     [SerializeField] float      m_jumpForce = 7.5f;
@@ -27,7 +29,7 @@ public class Player : Character
     public Transform attackPos;
     public LayerMask whatIsEnemies;
     public float attackRange;
-    public int damage;
+    public double damage;
 
     private float timeBtwAttack;
 
@@ -46,9 +48,9 @@ public class Player : Character
     private bool                m_isWallSliding = false;
     private bool                m_grounded = false;
     private bool                m_rolling = false;
-    private bool m_blocking = false;
+    public bool m_blocking = false;
     private bool m_runBlockingAnimate = false;
-    private bool m_dead = false;
+    public bool m_dead = false;
     private bool m_allowAction = true;
     private int                 m_facingDirection = 1;
     private int                 m_currentAttack = 0;
@@ -57,7 +59,12 @@ public class Player : Character
     private float m_rollDuration = 8.0f / 14.0f;
     private float               m_rollCurrentTime;
 
+    // Interact System
+    public GameObject interactIcon;
+    private Vector2 boxSize = new Vector2(0.1f, 1f);
+    public GameObject attackPotionTimeIcon;
 
+    public CanvasGroup DeadUI;
 
     void Dodge()
     {
@@ -112,6 +119,7 @@ public class Player : Character
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = 1f;
         //set health
         // health = 200;
         currentHealth = health;
@@ -130,6 +138,9 @@ public class Player : Character
         m_wallSensorL1 = transform.Find("WallSensor_L1").GetComponent<Sensor_HeroKnight>();
         m_wallSensorL2 = transform.Find("WallSensor_L2").GetComponent<Sensor_HeroKnight>();
 
+        interactIcon.SetActive(false);
+        attackPotionTimeIcon.SetActive(false);
+        
         // If statement that checks if character suppose to move to the checkpoint
         if (PlayerPrefs.GetInt("PlayerHasDied") == 1) {
             PlayerPrefs.SetInt("PlayerHasDied", 0);
@@ -164,7 +175,7 @@ public class Player : Character
 			TakeDamage(15);
 		}
 
-		if (Input.GetMouseButtonDown(0) && !m_dead || Input.GetKeyDown("left shift") && !m_dead || Input.GetMouseButtonDown(1) && !m_dead)
+		if (Input.GetKeyDown("left shift") && !m_dead || Input.GetMouseButtonDown(1) && !m_dead && m_grounded)
 		{
 			UseStamina(10);
 		}
@@ -172,7 +183,7 @@ public class Player : Character
         // Increase timer that controls attack combo
         m_timeSinceAttack += Time.deltaTime;
         
-                // Increase timer that checks roll duration
+        // Increase timer that checks roll duration
         if(m_rolling)
             m_rollCurrentTime += Time.deltaTime;
 
@@ -189,7 +200,6 @@ public class Player : Character
         }
 
         // Check if character just landed on the ground
-        //Check if character just landed on the ground
         if (!m_grounded && m_groundSensor.State())
         {
             m_grounded = true;
@@ -232,12 +242,13 @@ public class Player : Character
         m_isWallSliding = (m_wallSensorR1.State() && m_wallSensorR2.State()) || (m_wallSensorL1.State() && m_wallSensorL2.State());
         m_animator.SetBool("WallSlide", m_isWallSliding);
         
-        //Attack
+        // Attack
         if(timeBtwAttack <= 0 && !m_rolling && Input.GetMouseButtonDown(0) && !m_dead && m_allowAction){
             Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemies);
+            UseStamina(10);
             for(int i = 0; i < enemiesToDamage.Length; i++){
                 if(enemiesToDamage[i].GetComponent<Enemy>() != null){
-                    enemiesToDamage[i].GetComponent<Enemy>().TakeDamage(damage);
+                    enemiesToDamage[i].GetComponent<Enemy>().TakeDamage((int)damage);
                 }
             }
             m_currentAttack++;
@@ -284,7 +295,7 @@ public class Player : Character
         }
             
 
-        //Jump
+        // Jump
         else if (Input.GetKeyDown("space") && m_grounded && !m_rolling && !m_dead && !m_blocking)
         {
             m_animator.SetTrigger("Jump");
@@ -294,7 +305,7 @@ public class Player : Character
             m_groundSensor.Disable(0.2f);
         }
 
-        //Run
+        // Run
         else if (Mathf.Abs(inputX) > Mathf.Epsilon && !m_dead)
         {
             // Reset timer
@@ -302,7 +313,7 @@ public class Player : Character
             m_animator.SetInteger("AnimState", 1);
         }
 
-        //Idle
+        // Idle
         else
         {
             // Prevents flickering transitions to idle
@@ -311,7 +322,11 @@ public class Player : Character
                     m_animator.SetInteger("AnimState", 0);
         }
 
-        //Drink potion
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            Checkinteraction();
+        }
+        // Drink potion
         if(Input.GetKeyDown("1") && (PlayerPrefs.GetInt("healthPotion") != 0))
         {
             RecoverHealth(15);
@@ -330,12 +345,39 @@ public class Player : Character
         }
         else if(Input.GetKeyDown("4") && (PlayerPrefs.GetInt("powerPotion") != 0))
         {
-            // Need attack potion function here
+            // Damage * 1.3
+            addAttack();
+            // Change back to origin damage after 5 seconds
+            Invoke("minusAttack", 5);
             Inventory.powerPotions -= 1;
         }
-
+        
+        // Set Player to Dead if falling to Killing Area
+        if (this.GetComponent<CapsuleCollider2D>().CompareTag("KillingArea"))
+        {
+            this.currentHealth = 0;
+        }
+        
+        // DeadUI display
+        if (currentHealth <= 0)
+        {
+            showDeadUI();
+            deadUI.PlayDeadAudio();
+        }
     }
 
+    public void addAttack()
+    {
+        this.damage = this.damage * 1.3;
+        attackPotionTimeIcon.SetActive(true);
+    }
+
+    public void minusAttack()
+    {
+        this.damage = this.damage / 1.3;
+        attackPotionTimeIcon.SetActive(false);
+    }
+    
     public void Walk()
     {
         throw new System.NotImplementedException();
@@ -353,6 +395,10 @@ public class Player : Character
 
     public void TakeDamage(int damage)
 	{
+        if (m_rolling)
+        {
+            return;
+        } 
         if (!m_dead)
         {
             if (m_blocking)
@@ -433,11 +479,11 @@ public class Player : Character
     //for regenerating stamina
 	private IEnumerator RegenStamina()
 	{
-		yield return new WaitForSeconds(2);
+		yield return new WaitForSeconds(1);
 
 		while(currentStamina < stamina)
 		{
-			currentStamina += 1;
+			currentStamina += 2;
 			//Debug.Log("stamina increasing by: "+ currentStamina);
 			staminaBar.SetStamina(currentStamina);
 			yield return regenTick;
@@ -464,9 +510,33 @@ public class Player : Character
             dust.transform.localScale = new Vector3(m_facingDirection, 1, 1);
         }
     }
-
+    
     void OnDrawGizmosSelected(){
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(attackPos.position, attackRange);
+    }
+
+    private void Checkinteraction()
+    {
+        RaycastHit2D[] hits = Physics2D.BoxCastAll(transform.position, boxSize, 0, Vector2.zero);
+        if (hits.Length > 0)
+        {
+            foreach (RaycastHit2D rc in hits)
+            {
+                if (rc.transform.GetComponent<Interactable>())
+                {
+                    rc.transform.GetComponent<Interactable>().Interact();
+                    return;
+                }
+            }
+        }
+    }
+
+    public void showDeadUI()
+    {
+        if (DeadUI.alpha <= 1)
+        {
+            DeadUI.alpha += Time.deltaTime;
+        }
     }
 }

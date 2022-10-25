@@ -51,7 +51,7 @@ public class SaveLoad : MonoBehaviour
         // PLayer Stats
         PlayerPrefs.SetInt("playerST", player.stamina);
         PlayerPrefs.SetInt("playerHP", player.health);
-        PlayerPrefs.SetInt("playerDMG", player.damage);
+        PlayerPrefs.SetInt("playerDMG", (int)player.damage);
 
         PlayerPrefs.SetInt("playerCurrentST", player.currentStamina);
         PlayerPrefs.SetInt("playerCurrentHP", player.currentHealth);
@@ -100,7 +100,7 @@ public class SaveLoad : MonoBehaviour
         PlayerPrefs.SetInt("PlayerHasDied", 1);
         PlayerPrefs.Save();
         // Waiting 3 seconds
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(8);
         // Reloading scene
         SceneManager.LoadScene(PlayerPrefs.GetInt("SavedScene"));
 

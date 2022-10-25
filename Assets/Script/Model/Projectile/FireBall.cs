@@ -32,11 +32,11 @@ namespace Script.Model.Projectile
 
         public void OnTriggerEnter2D(Collider2D col)
         {
-            if (col.gameObject.GetComponent<Player>() == null)
+            if (col.gameObject.GetComponent<global::Player>() == null)
             {
                 return;
             }
-            col.gameObject.GetComponent<Player>().TakeDamage(power);
+            col.gameObject.GetComponent<global::Player>().TakeDamage(power);
             Destroy(gameObject);
         }
     }

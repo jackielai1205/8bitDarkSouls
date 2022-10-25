@@ -34,14 +34,14 @@ namespace Script.Model.Projectile
         
         public void OnTriggerStay2D(Collider2D col)
         {
-            if (col.gameObject.GetComponent<Player>() == null)
+            if (col.gameObject.GetComponent<global::Player>() == null)
             {
                 return;
             }
 
             if (_readyToAttack)
             {
-                col.gameObject.GetComponent<Player>().TakeDamage(power);
+                col.gameObject.GetComponent<global::Player>().TakeDamage(power);
                 _readyToAttack = false;
             }
         }

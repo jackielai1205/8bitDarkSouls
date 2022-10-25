@@ -23,11 +23,11 @@ namespace Script.Model.Projectile
         private void OnTriggerEnter2D(Collider2D other)
         {
 
-            if (other.gameObject.GetComponent<Player>() == null)
+            if (other.gameObject.GetComponent<global::Player>() == null)
             {
                 return;
             }
-            other.gameObject.GetComponent<Player>().TakeDamage(power);
+            other.gameObject.GetComponent<global::Player>().TakeDamage(power);
             Destroy(gameObject);
         }
 

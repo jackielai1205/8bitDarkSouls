@@ -190,8 +190,8 @@ namespace Script.Model.Enemy.EnemyType
         {
             Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemies);
             for(int i = 0; i < enemiesToDamage.Length; i++){
-                if(enemiesToDamage[i].GetComponent<Player>() != null){
-                    enemiesToDamage[i].GetComponent<Player>().TakeDamage(attackPower);
+                if(enemiesToDamage[i].GetComponent<global::Player>() != null){
+                    enemiesToDamage[i].GetComponent<global::Player>().TakeDamage(attackPower);
                 }
             }
         }

@@ -35,8 +35,6 @@ public class Player : Character
 
 	public HealthBar2 healthBar;
 	public StaminaBar staminaBar;
-    public Inventory inventory;
-    public int _currency;
 
     private Animator            m_animator;
     private Rigidbody2D         m_body2d;
@@ -66,54 +64,52 @@ public class Player : Character
 
     public CanvasGroup DeadUI;
 
-    void Dodge()
-    {
-        //write code here
-    }
-
-    void BlockIdle()
-    {
-        //write code here
-    }
-
-    void Block()
-    {
-        //write code here
-    }
-
-    void Interaction()
-    {
-        //write code here
-    }
-
-    void Jump()
-    {
-        //write code here
-    }
-
     // Upgrade functions:
-    public void UpgradeStamina(){
-        if (Inventory.currencyCoins >= 5){
-            Inventory.currencyCoins -= 5;
-            this.stamina += 25;
+    public void UpgradeStamina()
+    {
+        int cur = PlayerPrefs.GetInt("currency");
+        
+        if (cur >= 5)
+        {
+            PlayerPrefs.SetInt("currency", cur-5);
+            this.stamina += 5;
             staminaBar.slider.maxValue = stamina;
             print("Upgraded Stamina");
-        } else {print("Not Enough coins!");}
+        }
+        else
+        {
+            print("Not Enough coins!");
+        }
     }
-    public void UpgradeHealth(){
-        if (Inventory.currencyCoins >= 5){
-            Inventory.currencyCoins -= 5;
-            this.health += 25;
+    public void UpgradeHealth()
+    {
+        int cur = PlayerPrefs.GetInt("currency");
+        
+        if (cur >= 5)
+        {
+            PlayerPrefs.SetInt("currency", cur-5);
+            this.health += 10;
             healthBar.slider.maxValue = health;
             print("Upgraded Health");
-        } else {print("Not Enough coins!");}
+        }
+        else
+        {
+            print("Not Enough coins!");
+        }
     }
-    public void UpgradeDamage(){
-        if (Inventory.currencyCoins >= 5){
-            Inventory.currencyCoins -= 5;
-            this.damage += 50;
+    public void UpgradeDamage()
+    {
+        int cur = PlayerPrefs.GetInt("currency");
+        if (cur >= 5)
+        {
+            PlayerPrefs.SetInt("currency", cur-5);
+            this.damage += 5;
             print("Upgraded Damage");
-        } else {print("Not Enough coins!");}
+        }
+        else
+        {
+            print("Not Enough coins!");
+        }
     }
 
     // Start is called before the first frame update
@@ -142,13 +138,14 @@ public class Player : Character
         attackPotionTimeIcon.SetActive(false);
         
         // If statement that checks if character suppose to move to the checkpoint
-        if (PlayerPrefs.GetInt("PlayerHasDied") == 1) {
+        if (PlayerPrefs.GetInt("PlayerHasDied") == 1) 
+        {
             PlayerPrefs.SetInt("PlayerHasDied", 0);
-                float playerPosX = PlayerPrefs.GetFloat("playerPositionX");
-                float playerPosY = PlayerPrefs.GetFloat("playerPositionY");
+            float playerPosX = PlayerPrefs.GetFloat("playerPositionX");
+            float playerPosY = PlayerPrefs.GetFloat("playerPositionY");
 
-                Vector3 playerPos = new Vector3(playerPosX, playerPosY,0);
-                transform.position = playerPos;
+            Vector3 playerPos = new Vector3(playerPosX, playerPosY,0);
+            transform.position = playerPos;
         }
     }
 
@@ -222,7 +219,6 @@ public class Player : Character
             transform.rotation = Quaternion.Euler(0f, 0f, 0f);
             m_facingDirection = 1;
         }
-            
         else if (inputX < 0 && !m_dead && !m_blocking)
         {
             transform.rotation = Quaternion.Euler(0f, 180f, 0f);
@@ -230,7 +226,8 @@ public class Player : Character
         }
 
         // Move
-        if (!m_rolling&& !m_dead && !m_blocking){
+        if (!m_rolling&& !m_dead && !m_blocking)
+        {
             m_body2d.velocity = new Vector2(inputX * m_speed, m_body2d.velocity.y);
         }
     
@@ -243,22 +240,28 @@ public class Player : Character
         m_animator.SetBool("WallSlide", m_isWallSliding);
         
         // Attack
-        if(timeBtwAttack <= 0 && !m_rolling && Input.GetMouseButtonDown(0) && !m_dead && m_allowAction){
+        if(timeBtwAttack <= 0 && !m_rolling && Input.GetMouseButtonDown(0) && !m_dead && m_allowAction)
+        {
             Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemies);
             UseStamina(10);
-            for(int i = 0; i < enemiesToDamage.Length; i++){
-                if(enemiesToDamage[i].GetComponent<Enemy>() != null){
+            
+            for(int i = 0; i < enemiesToDamage.Length; i++)
+            {
+                if(enemiesToDamage[i].GetComponent<Enemy>() != null)
+                {
                     enemiesToDamage[i].GetComponent<Enemy>().TakeDamage((int)damage);
                 }
             }
             m_currentAttack++;
 
             // Loop back to one after third attack
-            if (m_currentAttack > 3){
+            if (m_currentAttack > 3)
+            {
                 m_currentAttack = 1;
             }
             // Reset Attack combo if time since last attack is too large
-            if (m_timeSinceAttack > 1.0f){
+            if (m_timeSinceAttack > 1.0f)
+            {
                 m_currentAttack = 1;
             }
 
@@ -266,10 +269,11 @@ public class Player : Character
             m_animator.SetTrigger("Attack" + m_currentAttack);
             m_timeSinceAttack = 0.0f;
             timeBtwAttack = startTimeBtwAttack;
-        } else if(timeBtwAttack > 0){
+        } 
+        else if(timeBtwAttack > 0)
+        {
             timeBtwAttack -= Time.deltaTime;
         }
-
         // Block
         else if (Input.GetMouseButtonDown(1) && !m_rolling && !m_dead && m_grounded && m_allowAction)
         {
@@ -277,13 +281,11 @@ public class Player : Character
             m_animator.SetBool("IdleBlock", true);
             m_blocking = true;
         }
-        
         else if (Input.GetMouseButtonUp(1))
         {
             m_animator.SetBool("IdleBlock", false);
             m_blocking = false;
         }
-
         // Roll
         else if (Input.GetKeyDown("left shift") && !m_rolling && !m_isWallSliding && !m_dead && m_grounded && !m_blocking && m_allowAction)
         {
@@ -293,8 +295,6 @@ public class Player : Character
             m_body2d.velocity = new Vector2(m_facingDirection * m_rollForce, m_body2d.velocity.y);
             UseStamina(10);
         }
-            
-
         // Jump
         else if (Input.GetKeyDown("space") && m_grounded && !m_rolling && !m_dead && !m_blocking)
         {
@@ -304,7 +304,6 @@ public class Player : Character
             m_body2d.velocity = new Vector2(m_body2d.velocity.x, m_jumpForce);
             m_groundSensor.Disable(0.2f);
         }
-
         // Run
         else if (Mathf.Abs(inputX) > Mathf.Epsilon && !m_dead)
         {
@@ -312,7 +311,6 @@ public class Player : Character
             m_delayToIdle = 0.05f;
             m_animator.SetInteger("AnimState", 1);
         }
-
         // Idle
         else
         {
@@ -326,6 +324,7 @@ public class Player : Character
         {
             Checkinteraction();
         }
+        
         // Drink potion
         if(Input.GetKeyDown("1") && (PlayerPrefs.GetInt("healthPotion") != 0))
         {
@@ -399,6 +398,7 @@ public class Player : Character
         {
             return;
         } 
+        
         if (!m_dead)
         {
             if (m_blocking)
@@ -435,7 +435,6 @@ public class Player : Character
         {
             currentHealth = health;
         }
-
         healthBar.SetHealth(currentHealth);
     }
 
@@ -498,10 +497,13 @@ public class Player : Character
         Vector3 spawnPosition;
 
         if (m_facingDirection == 1)
+        {
             spawnPosition = m_wallSensorR2.transform.position;
+        }
         else
+        {
             spawnPosition = m_wallSensorL2.transform.position;
-
+        }
         if (m_slideDust != null)
         {
             // Set correct arrow spawn position

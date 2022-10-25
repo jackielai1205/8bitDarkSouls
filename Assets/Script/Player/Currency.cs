@@ -3,28 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Currency : MonoBehaviour
+namespace Script.Player
 {
-    public Player player;
-
-    void OnTriggerEnter2D(Collider2D target)
+    public class Currency : MonoBehaviour
     {
-        if(target.gameObject.tag == "Player")
+        void OnTriggerEnter2D(Collider2D target)
         {
-            Inventory.currencyCoins += 1;
-            Destroy(gameObject);
+            if(target.gameObject.CompareTag("Player"))
+            {
+                Inventory.currencyCoins += 1;
+                Destroy(gameObject);
+            }
         }
     }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
+

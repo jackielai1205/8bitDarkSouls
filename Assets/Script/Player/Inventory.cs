@@ -17,10 +17,21 @@ public class Inventory : MonoBehaviour
     public static int staminaPotions;
     public static int rejuvenationPotions;
     public static int powerPotions;
+    private Text _currencyText;
+    private Text _healthText;
+    private Text _staminaText;
+    private Text _rejuvenationText;
+    private Text _powerText;
 
     // Start is called before the first frame update
     void Start()
     {
+        _currencyText = currencyText.GetComponent<Text>();
+        _healthText = healthQuantityText.GetComponent<Text>();
+        _staminaText = staminaQuantityText.GetComponent<Text>();
+        _rejuvenationText = rejuvenationQuantityText.GetComponent<Text>();
+        _powerText = powerQuantityText.GetComponent<Text>();
+        
         currencyCoins = PlayerPrefs.GetInt("currency");
         healthPotions = PlayerPrefs.GetInt("healthPotion");
         staminaPotions = PlayerPrefs.GetInt("staminaPotion");
@@ -32,20 +43,20 @@ public class Inventory : MonoBehaviour
     void Update()
     {
         //update coins quantity UI canvas
-        currencyText.GetComponent<Text>().text = "Coins: " + currencyCoins;
+        _currencyText.text = "Coins: " + currencyCoins;
         PlayerPrefs.SetInt("currency", currencyCoins);
 
         //update potions quantity UI canvas
-        healthQuantityText.GetComponent<Text>().text = healthPotions.ToString();
+        _healthText.text = healthPotions.ToString();
         PlayerPrefs.SetInt("healthPotion", healthPotions);
 
-        staminaQuantityText.GetComponent<Text>().text = staminaPotions.ToString();
+        _staminaText.text = staminaPotions.ToString();
         PlayerPrefs.SetInt("staminaPotion", staminaPotions);
 
-        rejuvenationQuantityText.GetComponent<Text>().text = rejuvenationPotions.ToString();
+        _rejuvenationText.text = rejuvenationPotions.ToString();
         PlayerPrefs.SetInt("rejuvenationPotion", rejuvenationPotions);
 
-        powerQuantityText.GetComponent<Text>().text = powerPotions.ToString();
+        _powerText.text = powerPotions.ToString();
         PlayerPrefs.SetInt("powerPotion", powerPotions);
     }
 }

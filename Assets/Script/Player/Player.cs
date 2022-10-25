@@ -36,7 +36,7 @@ public class Player : Character
 	public HealthBar2 healthBar;
 	public StaminaBar staminaBar;
     public Inventory inventory;
-    private int _currency;
+    public int _currency;
 
     private Animator            m_animator;
     private Rigidbody2D         m_body2d;
@@ -89,6 +89,31 @@ public class Player : Character
     void Jump()
     {
         //write code here
+    }
+
+    // Upgrade functions:
+    public void UpgradeStamina(){
+        if (Inventory.currencyCoins >= 5){
+            Inventory.currencyCoins -= 5;
+            this.stamina += 25;
+            staminaBar.slider.maxValue = stamina;
+            print("Upgraded Stamina");
+        } else {print("Not Enough coins!");}
+    }
+    public void UpgradeHealth(){
+        if (Inventory.currencyCoins >= 5){
+            Inventory.currencyCoins -= 5;
+            this.health += 25;
+            healthBar.slider.maxValue = health;
+            print("Upgraded Health");
+        } else {print("Not Enough coins!");}
+    }
+    public void UpgradeDamage(){
+        if (Inventory.currencyCoins >= 5){
+            Inventory.currencyCoins -= 5;
+            this.damage += 50;
+            print("Upgraded Damage");
+        } else {print("Not Enough coins!");}
     }
 
     // Start is called before the first frame update

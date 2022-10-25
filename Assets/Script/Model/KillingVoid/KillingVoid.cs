@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class KillingVoid : MonoBehaviour
 {
-    public Player player;
     // Start is called before the first frame update
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.name == player.name){
-            player.TakeDamage(1000);
+        if (other.gameObject.CompareTag("Player")){
+            other.GetComponent<Player>().TakeDamage(1000);
         }
     }
 }

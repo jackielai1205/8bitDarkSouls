@@ -153,7 +153,7 @@ namespace Script.Model.Enemy.EnemyType
         
         
         //After performed a action, bot will find next state
-        public void FindNextState()
+        public virtual void FindNextState()
         {
             if (_isDead)
             {
@@ -369,6 +369,11 @@ namespace Script.Model.Enemy.EnemyType
         public bool GetIsDead()
         {
             return _isDead;
+        }
+
+        public bool GetInRange()
+        {
+            return _inAttackRange;
         }
     }
 }

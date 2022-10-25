@@ -347,7 +347,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1363973787883544346
 RectTransform:
   m_ObjectHideFlags: 0
@@ -417,7 +417,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 10
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 10
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -514,7 +514,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c51596ba773a4ec3b77070b4d146916c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
+  health: 300
   attackPower: 20
   attackPos: {fileID: 960237314}
   whatIsEnemies:
@@ -522,8 +522,11 @@ MonoBehaviour:
     m_Bits: 512
   attackRange: 0.5
   movementSpeed: 0.7
-  dropItems: []
-  probability: 0
+  dropItems:
+  - {fileID: 6479891152691787614, guid: 1e7697697ac50c84583f92ddb836ebec, type: 3}
+  - {fileID: 7493709373610950062, guid: 7578143fc872e144ea9c45af4cf85333, type: 3}
+  - {fileID: 2529875133213834565, guid: e72b55a7b91e9394baa8986d5043c439, type: 3}
+  probability: 1
   currency: {fileID: 7083456768601937698, guid: a34412cbe37e6d04a9bc51fc9e844f23, type: 3}
   enemyHealthBar: {fileID: 1659521125103310798}
   source: {fileID: 0}
@@ -659,7 +662,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 1, b: 0.20215273, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -794,3 +797,4 @@ MonoBehaviour:
   low: {r: 1, g: 0, b: 0, a: 1}
   high: {r: 0, g: 1, b: 0.20215273, a: 1}
   offset: {x: 0, y: 0.5, z: 0}
+  fillArea: {fileID: 2315786697541404140}

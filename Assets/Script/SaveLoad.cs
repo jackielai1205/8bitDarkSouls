@@ -48,6 +48,16 @@ public class SaveLoad : MonoBehaviour
         // Saving a position
         PlayerPrefs.SetFloat("playerPositionX", playerPos.x);
         PlayerPrefs.SetFloat("playerPositionY", playerPos.y);
+        // PLayer Stats
+        PlayerPrefs.SetInt("playerST", player.stamina);
+        PlayerPrefs.SetInt("playerHP", player.health);
+        PlayerPrefs.SetInt("playerDMG", player.damage);
+
+        PlayerPrefs.SetInt("playerCurrentST", player.currentStamina);
+        PlayerPrefs.SetInt("playerCurrentHP", player.currentHealth);
+        // Saving coints
+        PlayerPrefs.SetInt("playerCoins", Inventory.currencyCoins);
+
         PlayerPrefs.SetInt("SavedScene", SceneManager.GetActiveScene().buildIndex);
 
         PlayerPrefs.Save();
@@ -63,6 +73,16 @@ public class SaveLoad : MonoBehaviour
         // Loading Player's pos
         float playerPosX = PlayerPrefs.GetFloat("playerPositionX");
         float playerPosY = PlayerPrefs.GetFloat("playerPositionY");
+        // Loading stats
+        player.stamina = PlayerPrefs.GetInt("playerST");
+        player.health = PlayerPrefs.GetInt("playerHP");
+        player.damage = PlayerPrefs.GetInt("playerDMG");
+        player.currentStamina = PlayerPrefs.GetInt("playerCurrentST");
+        player.currentHealth = PlayerPrefs.GetInt("playerCurrentHP");
+        Inventory.currencyCoins = PlayerPrefs.GetInt("playerCoins");
+        // Triggering UI Rerender
+        player.RecoverHealth(0);
+        player.UseStamina(0);
 
         Vector3 playerPos = new Vector3(playerPosX, playerPosY,0);
         player.transform.position = playerPos;

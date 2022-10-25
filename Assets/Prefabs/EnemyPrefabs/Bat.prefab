@@ -323,7 +323,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 200
-  attackPower: 0
+  attackPower: 15
   attackPos: {fileID: 1888259066276577524}
   whatIsEnemies:
     serializedVersion: 2

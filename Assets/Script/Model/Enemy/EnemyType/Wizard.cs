@@ -1,12 +1,16 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Script.Model.Enemy.EnemyType
 {
     public class Wizard : Boss
     {
         public EnemyHealthBar healthBar;
-        
+        public CanvasGroup winUI;
+        public int MainMenuScene;
+
         //Add jump state for ground enemy
         public override void Update()
         {
@@ -33,6 +37,10 @@ namespace Script.Model.Enemy.EnemyType
                     healthBar.gameObject.SetActive(false);
                     break;
             }
+            if (this.health <= 0)
+            {
+                showWinUI();
+            }
         }
 
         public override void StartAttack()
@@ -54,5 +62,25 @@ namespace Script.Model.Enemy.EnemyType
             // GetRigidbody2D().gravityScale = 1;
             // GetCollider2D().enabled = true;
         }
+
+        public void showWinUI()
+        {
+            if (winUI.alpha <= 1)
+            {
+                winUI.alpha += Time.deltaTime;
+            }
+
+            if (winUI.alpha >= 0.95)
+            {
+                backtoMainMenu();
+            }
+        }
+
+        public void backtoMainMenu()
+        {
+            Debug.Log("load to main");
+            SceneManager.LoadScene(MainMenuScene);
+        }
+        
     }
 }

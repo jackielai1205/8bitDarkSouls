@@ -157,6 +157,12 @@ public class Player : Character
         {
             return;
         }
+        
+        // allow to action after stamina regen to more than 10
+        if (this.currentStamina >= 10)
+        {
+            this.m_allowAction = true;
+        }
 
         // Release blocking and return to Idle when currentStamina not enough to perform a block
         if (currentStamina <= 10)

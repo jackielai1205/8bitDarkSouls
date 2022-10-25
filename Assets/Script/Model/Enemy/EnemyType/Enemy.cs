@@ -52,19 +52,19 @@ namespace Script.Model.Enemy.EnemyType
         {
             switch (_animator.GetInteger(AnimState))
             {
-                case 0:
+                case (int)State.Idle:
                     IdleState();
                     break;
-                case 1:
+                case (int)State.Chase:
                     ChaseCharacterState();
                     break;
-                case 2:
+                case (int)State.Attack:
                     AttackState();
                     break;
-                case 4:
+                case (int)State.Hit:
                     HitState();
                     break;
-                case 5:
+                case (int)State.Dead:
                     DeadState();
                     break;
             }
@@ -85,7 +85,6 @@ namespace Script.Model.Enemy.EnemyType
         //When take damage, bot measure the power and reduce the health.
         public void HitState()
         {
-
             try
             {
                 health -= _takeDamagePower;
@@ -148,7 +147,7 @@ namespace Script.Model.Enemy.EnemyType
         //Notify animator to change animation
         public void StartChaseState()
         {
-            _animator.SetInteger(AnimState, 1);
+            _animator.SetInteger(AnimState, (int)State.Chase);
         }
         
         
@@ -173,7 +172,7 @@ namespace Script.Model.Enemy.EnemyType
         }
         
         //Take Damage function for Player attack
-        public void TakeDamage(int damage)
+        public virtual void TakeDamage(int damage)
         {
             if (_isDead)
             {
@@ -209,13 +208,13 @@ namespace Script.Model.Enemy.EnemyType
         //Notify animator to change animation
         public void StartWalk()
         {
-            _animator.SetInteger(AnimState, 1);
+            _animator.SetInteger(AnimState, (int)State.Chase);
         }
 
         //Notify animator to change animation
         public void StartIdle()
         {
-            _animator.SetInteger(AnimState, 0);
+            _animator.SetInteger(AnimState, (int)State.Idle);
         }
 
         //Notify animator to change animation
@@ -233,13 +232,13 @@ namespace Script.Model.Enemy.EnemyType
         //Notify animator to change animation
         public override void Dead()
         {
-            _animator.SetInteger(AnimState, 5);
+            _animator.SetInteger(AnimState, (int)State.Dead);
         }
 
         //Notify animator to change animation
         public override void Hurt()
         {
-            _animator.SetInteger(AnimState , 4);
+            _animator.SetInteger(AnimState , (int)State.Hit);
         }
 
         //Getter of target
@@ -374,6 +373,11 @@ namespace Script.Model.Enemy.EnemyType
         public bool GetInRange()
         {
             return _inAttackRange;
+        }
+
+        public void SetTakeDamagePower(int value)
+        {
+            _takeDamagePower = value;
         }
     }
 }

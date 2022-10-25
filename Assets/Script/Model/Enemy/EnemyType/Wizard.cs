@@ -12,23 +12,23 @@ namespace Script.Model.Enemy.EnemyType
         {
             switch (GetAnimator().GetInteger(GetAnimState()))
             {
-                case 0:
+                case (int)State.Idle:
                     IdleState();
                     break;
-                case 1:
+                case (int)State.Chase:
                     healthBar.gameObject.SetActive(true);
                     PlayBossTheme();
                     ChaseCharacterState();
                     Cast();
                     break;
-                case 2:
+                case (int)State.Attack:
                     AttackState();
                     Cast();
                     break;
-                case 4:
+                case (int)State.Hit:
                     HitState();
                     break;
-                case 5:
+                case (int)State.Dead:
                     DeadState();
                     healthBar.gameObject.SetActive(false);
                     break;

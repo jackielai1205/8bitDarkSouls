@@ -86,24 +86,27 @@ public class Player : Character
 
     // Upgrade functions:
     public void UpgradeStamina(){
-        if (Inventory.currencyCoins >= 5){
-            Inventory.currencyCoins -= 5;
+        int cur = PlayerPrefs.GetInt("currency");
+        if (cur >= 5){
+            PlayerPrefs.SetInt("currency", cur-5);
             this.stamina += 25;
-            staminaBar.slider.maxValue = stamina;
+            //staminaBar.slider.maxValue = stamina;
             print("Upgraded Stamina");
         } else {print("Not Enough coins!");}
     }
     public void UpgradeHealth(){
-        if (Inventory.currencyCoins >= 5){
-            Inventory.currencyCoins -= 5;
+        int cur = PlayerPrefs.GetInt("currency");
+        if (cur >= 5){
+            PlayerPrefs.SetInt("currency", cur-5);
             this.health += 25;
-            healthBar.slider.maxValue = health;
+            //healthBar.slider.maxValue = health;
             print("Upgraded Health");
         } else {print("Not Enough coins!");}
     }
     public void UpgradeDamage(){
-        if (Inventory.currencyCoins >= 5){
-            Inventory.currencyCoins -= 5;
+        int cur = PlayerPrefs.GetInt("currency");
+        if (cur >= 5){
+            PlayerPrefs.SetInt("currency", cur-5);
             this.damage += 50;
             print("Upgraded Damage");
         } else {print("Not Enough coins!");}

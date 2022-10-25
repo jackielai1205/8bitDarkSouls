@@ -4,34 +4,38 @@ using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
 
-public class MyScript
+public class MarkTests
 {
     // A Test behaves as an ordinary method
+    
     [Test]
-    public void MyScriptSimplePasses()
-    {
-        // Use the Assert class to test conditions
+    public void TestHealthUpgradePass(){
+        PlayerPrefs.SetInt("currency", 5);
+        
+        Player player = new Player();
+        player.health = 100;
+        player.UpgradeHealth();
+        
+        Assert.That(player.health, Is.EqualTo(125));
     }
+    [Test]
+    public void TestStaminaUpgradePass(){
+        PlayerPrefs.SetInt("currency", 5);
 
-    // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
-    // `yield return null;` to skip a frame.
-    [UnityTest]
-    public IEnumerator MonoBehaviourTest_Works()
-    {
-        yield return new MonoBehaviourTest<PauseMenu>();
+        Player player = new Player();
+        player.stamina = 100;
+        player.UpgradeStamina();
+        
+        Assert.That(player.stamina, Is.EqualTo(125));
     }
+    [Test]
+    public void TestDamageUpgradePass(){
+        PlayerPrefs.SetInt("currency", 5);
 
-    public class PauseMenu : MonoBehaviour, IMonoBehaviourTest
-    {
-    private int frameCount;
-    public bool IsTestFinished
-    {
-        get { return frameCount > 10; }
-    }
-
-     void Update()
-     {
-        frameCount++;
-     }
+        Player player = new Player();
+        player.damage = 50;
+        player.UpgradeDamage();
+        
+        Assert.That(player.damage, Is.EqualTo(100));
     }
 }

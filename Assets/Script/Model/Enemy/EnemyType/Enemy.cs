@@ -85,7 +85,6 @@ namespace Script.Model.Enemy.EnemyType
         //When take damage, bot measure the power and reduce the health.
         public void HitState()
         {
-
             try
             {
                 health -= _takeDamagePower;
@@ -173,7 +172,7 @@ namespace Script.Model.Enemy.EnemyType
         }
         
         //Take Damage function for Player attack
-        public void TakeDamage(int damage)
+        public virtual void TakeDamage(int damage)
         {
             if (_isDead)
             {
@@ -374,6 +373,11 @@ namespace Script.Model.Enemy.EnemyType
         public bool GetInRange()
         {
             return _inAttackRange;
+        }
+
+        public void SetTakeDamagePower(int value)
+        {
+            _takeDamagePower = value;
         }
     }
 }

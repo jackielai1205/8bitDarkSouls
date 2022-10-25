@@ -171,7 +171,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -228,9 +228,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 1334988250}
-  low: {r: 1, g: 0, b: 0, a: 1}
-  high: {r: 0, g: 1, b: 0.20215273, a: 1}
+  low: {r: 0, g: 0, b: 0, a: 0}
+  high: {r: 0, g: 0, b: 0, a: 0}
   offset: {x: -0.3, y: 1.2, z: 0}
+  fillArea: {fileID: 638843329}
 --- !u!1 &1334988249
 GameObject:
   m_ObjectHideFlags: 0

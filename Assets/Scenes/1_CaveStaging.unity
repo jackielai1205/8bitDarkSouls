@@ -3530,18 +3530,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 222833342}
     m_Modifications:
-    - target: {fileID: 1682870487, guid: 2f7eeaf41636b0f4f8ca52ea6858fd36, type: 3}
-      propertyPath: healthBar
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1682870487, guid: 2f7eeaf41636b0f4f8ca52ea6858fd36, type: 3}
-      propertyPath: staminaBar
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1774303831, guid: 2f7eeaf41636b0f4f8ca52ea6858fd36, type: 3}
-      propertyPath: m_Name
-      value: save
-      objectReference: {fileID: 0}
     - target: {fileID: 823119376235684874, guid: 2f7eeaf41636b0f4f8ca52ea6858fd36, type: 3}
       propertyPath: healthBar
       value: 
@@ -3550,10 +3538,6 @@ PrefabInstance:
       propertyPath: staminaBar
       value: 
       objectReference: {fileID: 186209851}
-    - target: {fileID: 823119376235684874, guid: 2f7eeaf41636b0f4f8ca52ea6858fd36, type: 3}
-      propertyPath: m_slideDust
-      value: 
-      objectReference: {fileID: 1038168246061390451, guid: 8b8c8cc6774fb074cb9139cc631b108e, type: 3}
     - target: {fileID: 2202566833572084585, guid: 2f7eeaf41636b0f4f8ca52ea6858fd36, type: 3}
       propertyPath: m_Name
       value: HeroKnight_Green
@@ -3564,7 +3548,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4436494040201295678, guid: 2f7eeaf41636b0f4f8ca52ea6858fd36, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 58.35
+      value: 57.17
       objectReference: {fileID: 0}
     - target: {fileID: 4436494040201295678, guid: 2f7eeaf41636b0f4f8ca52ea6858fd36, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3602,17 +3586,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5598588721529412490, guid: 2f7eeaf41636b0f4f8ca52ea6858fd36, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.033
-      objectReference: {fileID: 0}
-    - target: {fileID: 8479057430055069898, guid: 2f7eeaf41636b0f4f8ca52ea6858fd36, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.032
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1682870487, guid: 2f7eeaf41636b0f4f8ca52ea6858fd36, type: 3}
-    - {fileID: 1682870454, guid: 2f7eeaf41636b0f4f8ca52ea6858fd36, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f7eeaf41636b0f4f8ca52ea6858fd36, type: 3}
 --- !u!4 &232457563 stripped
 Transform:
@@ -9496,7 +9470,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 1
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -11098,17 +11072,13 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 940502689}
     - target: {fileID: 1180228243, guid: 3bb2fd8de48fa4b4ca52826fc03b7951, type: 3}
-      propertyPath: hitClip
-      value: 
-      objectReference: {fileID: 8300000, guid: eddd2548d447f4db99cb06fb8f574074, type: 3}
-    - target: {fileID: 1180228243, guid: 3bb2fd8de48fa4b4ca52826fc03b7951, type: 3}
-      propertyPath: deathClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 3e01dfc2e19254af3ba33f3bed4ce23e, type: 3}
-    - target: {fileID: 1180228243, guid: 3bb2fd8de48fa4b4ca52826fc03b7951, type: 3}
-      propertyPath: attackClip
-      value: 
-      objectReference: {fileID: 8300000, guid: ce5be1d32fbf0401f905059315dfbc62, type: 3}
+      propertyPath: probability
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2762544563810191992, guid: 3bb2fd8de48fa4b4ca52826fc03b7951, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2762544563810191992, guid: 3bb2fd8de48fa4b4ca52826fc03b7951, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -11161,10 +11131,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SwordSkeleton (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 8579096697903268925, guid: 3bb2fd8de48fa4b4ca52826fc03b7951, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3bb2fd8de48fa4b4ca52826fc03b7951, type: 3}
 --- !u!1001 &799540986
@@ -11178,6 +11144,10 @@ PrefabInstance:
       propertyPath: source
       value: 
       objectReference: {fileID: 940502689}
+    - target: {fileID: 613846748, guid: e355a9370897449a4963a6532a429206, type: 3}
+      propertyPath: probability
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2532311859755836928, guid: e355a9370897449a4963a6532a429206, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -15998,6 +15968,10 @@ PrefabInstance:
       propertyPath: source
       value: 
       objectReference: {fileID: 940502689}
+    - target: {fileID: 1742057409, guid: d6c236957a0ec46b19719dbc19687951, type: 3}
+      propertyPath: probability
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2205181950127094867, guid: d6c236957a0ec46b19719dbc19687951, type: 3}
       propertyPath: m_Name
       value: ArcherSkeleton (2)
@@ -18115,8 +18089,8 @@ Transform:
   m_GameObject: {fileID: 1309751329}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -12.17, y: -0.62, z: -0.6158306}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1401756887}
   - {fileID: 337309253}
@@ -24439,6 +24413,18 @@ PrefabInstance:
       propertyPath: source
       value: 
       objectReference: {fileID: 940502689}
+    - target: {fileID: 1180228243, guid: 3bb2fd8de48fa4b4ca52826fc03b7951, type: 3}
+      propertyPath: probability
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2762544563810191992, guid: 3bb2fd8de48fa4b4ca52826fc03b7951, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2762544563810191992, guid: 3bb2fd8de48fa4b4ca52826fc03b7951, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8579096697903268864, guid: 3bb2fd8de48fa4b4ca52826fc03b7951, type: 3}
       propertyPath: m_RootOrder
       value: 14
@@ -28889,6 +28875,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1212803085197675245, guid: 76f69a5cc8b154ce1a3fb1abe743f425, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1212803085197675245, guid: 76f69a5cc8b154ce1a3fb1abe743f425, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1665995118547656632, guid: 76f69a5cc8b154ce1a3fb1abe743f425, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -28937,6 +28931,10 @@ PrefabInstance:
       propertyPath: source
       value: 
       objectReference: {fileID: 940502689}
+    - target: {fileID: 1665995118547656635, guid: 76f69a5cc8b154ce1a3fb1abe743f425, type: 3}
+      propertyPath: probability
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1665995118547656636, guid: 76f69a5cc8b154ce1a3fb1abe743f425, type: 3}
       propertyPath: m_Name
       value: Bat (1)

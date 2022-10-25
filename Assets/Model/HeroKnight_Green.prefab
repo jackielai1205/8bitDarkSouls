@@ -46,7 +46,6 @@ GameObject:
   - component: {fileID: 7095928004088355633}
   - component: {fileID: 1682870494}
   - component: {fileID: 823119376235684874}
-  - component: {fileID: 1682870454}
   m_Layer: 9
   m_Name: HeroKnight_Green
   m_TagString: Player
@@ -133,8 +132,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 2009476679
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: ae297123f091bbf4e8f1835eb98fb293, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -215,7 +214,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 200
-  power: 0
   attackPower: 0
   currentHealth: 0
   stamina: 150
@@ -235,19 +233,6 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   staminaBar: {fileID: 0}
   inventory: {fileID: 0}
---- !u!114 &1682870454
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2202566833572084585}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42532baad72644561ab334066399fd09, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 823119376235684874}
 --- !u!1 &2865048481909255372
 GameObject:
   m_ObjectHideFlags: 0
@@ -396,7 +381,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3766626996699659502}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.44, y: 0.022000015, z: 0}
+  m_LocalPosition: {x: -0.44, y: 0.033, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -457,7 +442,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4510679003453995216}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.375, y: 0.02699995, z: 0}
+  m_LocalPosition: {x: 0.375, y: 0.032, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -3095,6 +3095,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 502251156}
     - target: {fileID: 823119376235684874, guid: 2f7eeaf41636b0f4f8ca52ea6858fd36, type: 3}
+      propertyPath: inventory
+      value: 
+      objectReference: {fileID: 1100941480}
+    - target: {fileID: 823119376235684874, guid: 2f7eeaf41636b0f4f8ca52ea6858fd36, type: 3}
       propertyPath: staminaBar
       value: 
       objectReference: {fileID: 186209851}
@@ -13130,8 +13134,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 569f02171f644b44a81c69eec494aecd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  items: []
   currencyText: {fileID: 410551536}
+  healthQuantityText: {fileID: 0}
+  staminaQuantityText: {fileID: 0}
+  rejuvenationQuantityText: {fileID: 0}
+  powerQuantityText: {fileID: 0}
 --- !u!1 &1135986283
 GameObject:
   m_ObjectHideFlags: 0

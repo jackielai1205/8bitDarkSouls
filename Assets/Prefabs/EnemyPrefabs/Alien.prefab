@@ -334,7 +334,7 @@ MonoBehaviour:
   movementSpeed: 1
   dropItems: []
   probability: 0
-  currency: {fileID: 0}
+  currency: {fileID: 4674200167485582893, guid: bc1998b336e3c41ec8431702decee592, type: 3}
   enemyHealthBar: {fileID: 1857685100405051564}
   source: {fileID: 0}
   deathClip: {fileID: 8300000, guid: fe3d46c07ffdf4dcf8b0e442d9a47a10, type: 3}

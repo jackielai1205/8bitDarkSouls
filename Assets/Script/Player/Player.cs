@@ -150,7 +150,7 @@ public class Player : Character
 			TakeDamage(15);
 		}
 
-		if (Input.GetMouseButtonDown(0) && !m_dead || Input.GetKeyDown("left shift") && !m_dead || Input.GetMouseButtonDown(1) && !m_dead && m_grounded)
+		if (Input.GetKeyDown("left shift") && !m_dead || Input.GetMouseButtonDown(1) && !m_dead && m_grounded)
 		{
 			UseStamina(10);
 		}
@@ -220,6 +220,7 @@ public class Player : Character
         // Attack
         if(timeBtwAttack <= 0 && !m_rolling && Input.GetMouseButtonDown(0) && !m_dead && m_allowAction){
             Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemies);
+            UseStamina(10);
             for(int i = 0; i < enemiesToDamage.Length; i++){
                 if(enemiesToDamage[i].GetComponent<Enemy>() != null){
                     enemiesToDamage[i].GetComponent<Enemy>().TakeDamage((int)damage);

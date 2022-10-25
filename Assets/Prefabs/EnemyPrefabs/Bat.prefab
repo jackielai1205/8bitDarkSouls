@@ -335,12 +335,12 @@ MonoBehaviour:
   - {fileID: 7493709373610950062, guid: 7578143fc872e144ea9c45af4cf85333, type: 3}
   - {fileID: 2529875133213834565, guid: e72b55a7b91e9394baa8986d5043c439, type: 3}
   probability: 0
-  currency: {fileID: 7083456768601937698, guid: a34412cbe37e6d04a9bc51fc9e844f23, type: 3}
+  currency: {fileID: 4674200167485582893, guid: bc1998b336e3c41ec8431702decee592, type: 3}
   enemyHealthBar: {fileID: 8529168854718157287}
   source: {fileID: 0}
   deathClip: {fileID: 0}
   hitClip: {fileID: 0}
-  attackClip: {fileID: 8300000, guid: 3e9b62e35561344ca803af33cecf6bb8, type: 3}
+  attackClip: {fileID: 8300000, guid: 942a1a856e5b340c1b048cd29e05419b, type: 3}
   bitClip: {fileID: 8300000, guid: 3e9b62e35561344ca803af33cecf6bb8, type: 3}
   spinClip: {fileID: 8300000, guid: 942a1a856e5b340c1b048cd29e05419b, type: 3}
 --- !u!50 &1665995118547656582

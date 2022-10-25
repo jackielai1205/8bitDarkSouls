@@ -30585,25 +30585,5 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeadUI
       objectReference: {fileID: 0}
-    - target: {fileID: 7033366762107892550, guid: a4251ec48333a4b6b87e6ede0d69c2c6, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 1464
-      objectReference: {fileID: 0}
-    - target: {fileID: 7033366762107892550, guid: a4251ec48333a4b6b87e6ede0d69c2c6, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 712
-      objectReference: {fileID: 0}
-    - target: {fileID: 7033366762107892550, guid: a4251ec48333a4b6b87e6ede0d69c2c6, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7033366762107892550, guid: a4251ec48333a4b6b87e6ede0d69c2c6, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7033366762107892551, guid: a4251ec48333a4b6b87e6ede0d69c2c6, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4251ec48333a4b6b87e6ede0d69c2c6, type: 3}

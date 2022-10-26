@@ -7,20 +7,20 @@ using UnityEditor;
 public class Player : Character
 {
     public DeadUI deadUI;
-	public int currentHealth;
-	public int stamina = 150;
-	public int currentStamina;
+    public int currentHealth;
+    public int stamina = 150;
+    public int currentStamina;
     public int winTime;
 
-    [SerializeField] float      m_speed = 4.0f;
-    [SerializeField] float      m_jumpForce = 7.5f;
-    [SerializeField] float      m_rollForce = 6.0f;
-    [SerializeField] bool       m_noBlood = false;
+    [SerializeField] float m_speed = 4.0f;
+    [SerializeField] float m_jumpForce = 7.5f;
+    [SerializeField] float m_rollForce = 6.0f;
+    [SerializeField] bool m_noBlood = false;
     [SerializeField] GameObject m_slideDust;
 
-	private Animator animState;
-	private WaitForSeconds regenTick = new WaitForSeconds(0.1f);
-	private Coroutine regen;
+    private Animator animState;
+    private WaitForSeconds regenTick = new WaitForSeconds(0.1f);
+    private Coroutine regen;
 
     // Player Attack Value
 
@@ -33,29 +33,29 @@ public class Player : Character
 
     private float timeBtwAttack;
 
-	public HealthBar2 healthBar;
-	public StaminaBar staminaBar;
+    public HealthBar2 healthBar;
+    public StaminaBar staminaBar;
 
-    private Animator            m_animator;
-    private Rigidbody2D         m_body2d;
-    private Sensor_HeroKnight   m_groundSensor;
-    private Sensor_HeroKnight   m_wallSensorR1;
-    private Sensor_HeroKnight   m_wallSensorR2;
-    private Sensor_HeroKnight   m_wallSensorL1;
-    private Sensor_HeroKnight   m_wallSensorL2;
-    private bool                m_isWallSliding = false;
-    private bool                m_grounded = false;
-    private bool                m_rolling = false;
+    private Animator m_animator;
+    private Rigidbody2D m_body2d;
+    private Sensor_HeroKnight m_groundSensor;
+    private Sensor_HeroKnight m_wallSensorR1;
+    private Sensor_HeroKnight m_wallSensorR2;
+    private Sensor_HeroKnight m_wallSensorL1;
+    private Sensor_HeroKnight m_wallSensorL2;
+    private bool m_isWallSliding = false;
+    private bool m_grounded = false;
+    private bool m_rolling = false;
     public bool m_blocking = false;
     private bool m_runBlockingAnimate = false;
     public bool m_dead = false;
     private bool m_allowAction = true;
-    private int                 m_facingDirection = 1;
-    private int                 m_currentAttack = 0;
-    private float               m_timeSinceAttack = 0.0f;
-    private float               m_delayToIdle = 0.0f;
+    private int m_facingDirection = 1;
+    private int m_currentAttack = 0;
+    private float m_timeSinceAttack = 0.0f;
+    private float m_delayToIdle = 0.0f;
     private float m_rollDuration = 8.0f / 14.0f;
-    private float               m_rollCurrentTime;
+    private float m_rollCurrentTime;
 
     // Interact System
     private Vector2 boxSize = new Vector2(0.1f, 1f);
@@ -66,11 +66,10 @@ public class Player : Character
     // Upgrade functions:
     public void UpgradeStamina()
     {
-        int cur = PlayerPrefs.GetInt("currency");
         
-        if (cur >= 5)
+        if (Inventory.currencyCoins >= 5)
         {
-            PlayerPrefs.SetInt("currency", cur-5);
+            Inventory.currencyCoins -= 5;
             this.stamina += 5;
             staminaBar.slider.maxValue = stamina;
             print("Upgraded Stamina");
@@ -82,11 +81,10 @@ public class Player : Character
     }
     public void UpgradeHealth()
     {
-        int cur = PlayerPrefs.GetInt("currency");
         
-        if (cur >= 5)
+        if (Inventory.currencyCoins >= 5)
         {
-            PlayerPrefs.SetInt("currency", cur-5);
+            Inventory.currencyCoins -= 5;
             this.health += 10;
             healthBar.slider.maxValue = health;
             print("Upgraded Health");
@@ -98,10 +96,10 @@ public class Player : Character
     }
     public void UpgradeDamage()
     {
-        int cur = PlayerPrefs.GetInt("currency");
-        if (cur >= 5)
+        
+        if (Inventory.currencyCoins >= 5)
         {
-            PlayerPrefs.SetInt("currency", cur-5);
+            Inventory.currencyCoins -= 5;
             this.damage += 5;
             print("Upgraded Damage");
         }

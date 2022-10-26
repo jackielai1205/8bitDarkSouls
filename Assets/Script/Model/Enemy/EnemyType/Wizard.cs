@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -69,16 +70,12 @@ namespace Script.Model.Enemy.EnemyType
             {
                 winUI.alpha += Time.deltaTime;
             }
-
-            if (winUI.alpha >= 0.95)
-            {
-                backtoMainMenu();
-            }
+            StartCoroutine(backtoMainMenu());
         }
 
-        public void backtoMainMenu()
+        IEnumerator backtoMainMenu()
         {
-            Debug.Log("load to main");
+            yield return new WaitForSeconds(1);
             SceneManager.LoadScene(MainMenuScene);
         }
         

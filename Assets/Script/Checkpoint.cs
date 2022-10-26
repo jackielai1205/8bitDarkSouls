@@ -32,6 +32,7 @@ public class Checkpoint : MonoBehaviour
             isCollidingPlayer = false;
             menuIsOpen = false;
             UpgradeMenu.SetActive(false);
+            sv.SaveCharacter();
         }
     }
     // Update is called once per frame

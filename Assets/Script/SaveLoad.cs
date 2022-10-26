@@ -8,6 +8,14 @@ public class SaveLoad : MonoBehaviour
 {
     public Player player;
 
+    void Start()
+    {
+        if (PlayerPrefs.GetInt("PlayerHasDied") == 1){
+            PlayerPrefs.SetInt("PlayerHasDied", 0);
+            LoadCharacter();
+        }
+    }
+
     void Update() {
         if (PlayerPrefs.GetInt("GameLoaded") == 1){
             PlayerPrefs.SetInt("GameLoaded", 0);
@@ -34,6 +42,7 @@ public class SaveLoad : MonoBehaviour
         // Launches respawn after 2 seconds.
         if (player.currentHealth <= 0) {
             StartCoroutine(CharacterRespawn());
+            
         }
     }
     /*
@@ -99,10 +108,10 @@ public class SaveLoad : MonoBehaviour
         // Saving a PlayerHasDied state
         PlayerPrefs.SetInt("PlayerHasDied", 1);
         PlayerPrefs.Save();
-        // Waiting 3 seconds
+        // Waiting 8 seconds
         yield return new WaitForSeconds(8);
         // Reloading scene
         SceneManager.LoadScene(PlayerPrefs.GetInt("SavedScene"));
-
+        
     }
 }

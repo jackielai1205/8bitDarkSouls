@@ -11,13 +11,13 @@ public class SceneSwitcher : MonoBehaviour
     public Player player;
     void Update() 
     {
-        if(Input.GetKeyDown("k"))
-        {
-            Time.timeScale = 0f;
-            player.winTime += 1;
-            WinUI.SetActive(true);
-            Debug.Log(player.winTime);
-        }
+        // if(Input.GetKeyDown("k"))
+        // {
+        //     Time.timeScale = 0f;
+        //     player.winTime += 1;
+        //     WinUI.SetActive(true);
+        //     Debug.Log(player.winTime);
+        // }
     }
     
     public void backToMenu()

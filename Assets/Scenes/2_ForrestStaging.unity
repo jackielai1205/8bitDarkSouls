@@ -21206,6 +21206,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8903230464291748820, guid: 32b7bc856eb84fd44aabd7731d5c5055, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3870406027633000362}
+    - target: {fileID: 8903230464291748820, guid: 32b7bc856eb84fd44aabd7731d5c5055, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UpgradeStamina
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903230464449595081, guid: 32b7bc856eb84fd44aabd7731d5c5055, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3870406027633000362}
+    - target: {fileID: 8903230464449595081, guid: 32b7bc856eb84fd44aabd7731d5c5055, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UpgradeHealth
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903230464765500212, guid: 32b7bc856eb84fd44aabd7731d5c5055, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3870406027633000362}
+    - target: {fileID: 8903230464765500212, guid: 32b7bc856eb84fd44aabd7731d5c5055, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UpgradeDamage
+      objectReference: {fileID: 0}
     - target: {fileID: 8903230465476349830, guid: 32b7bc856eb84fd44aabd7731d5c5055, type: 3}
       propertyPath: m_Name
       value: UpgradeMenu
